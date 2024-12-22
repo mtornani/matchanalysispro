@@ -27,6 +27,22 @@
         header p {
             font-size: 1.2rem;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0056b3;
+            padding: 1rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         section {
             padding: 2rem 1rem;
             text-align: center;
@@ -61,15 +77,27 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav>
+        <a href="#chi-sono">Chi Sono</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#innovazione">Innovazione</a>
+        <a href="#contatti">Contatti</a>
+    </nav>
+
+    <!-- Header -->
     <header>
         <h1>Match Analysis Pro</h1>
         <p>Innovazione e analisi per il calcio di domani.</p>
     </header>
-    <section>
+
+    <!-- Sezioni -->
+    <section id="chi-sono">
         <h2>Chi Sono</h2>
         <p>Con oltre 13 anni di esperienza come allenatore, creo soluzioni innovative per semplificare il lavoro degli allenatori e migliorare le performance delle squadre.</p>
     </section>
-    <section>
+
+    <section id="servizi">
         <h2>Servizi Offerti</h2>
         <ul style="list-style: none; padding: 0;">
             <li>✔️ Analisi tattica personalizzata</li>
@@ -78,12 +106,21 @@
         </ul>
         <button class="cta">Contattami</button>
     </section>
-    <section>
+
+    <section id="innovazione">
         <h2>Innovazione</h2>
         <p>Ho investito in un drone DJI Neo per riprese migliori e sto sviluppando un sistema automatizzato di analisi video basato su principi scientifici.</p>
     </section>
+
+    <section id="contatti">
+        <h2>Contatti</h2>
+        <p>Per maggiori informazioni o richieste, contattami:</p>
+        <p>Email: <a href="mailto:info@matchanalysispro.online">info@matchanalysispro.online</a></p>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Contattami per saperne di più: <a href="mailto:info@matchanalysispro.online">info@matchanalysispro.online</a></p>
+        <p>© 2024 Match Analysis Pro. Tutti i diritti riservati.</p>
     </footer>
 </body>
 </html>
