@@ -14,6 +14,32 @@
             color: #333;
             line-height: 1.6;
         }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background: #0056b3;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        nav a.active {
+            color: #ffd700;
+            font-weight: bold;
+        }
         header {
             background: linear-gradient(135deg, #007BFF, #0056b3);
             color: #fff;
@@ -24,31 +50,16 @@
             margin: 0;
             font-size: 2.5rem;
         }
-        header p {
-            font-size: 1.2rem;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #0056b3;
-            padding: 1rem;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
         section {
             padding: 2rem 1rem;
             text-align: center;
         }
-        section:nth-child(even) {
-            background: #fff;
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 1rem 0;
         }
         .intro {
             display: flex;
@@ -86,6 +97,15 @@
             color: #007BFF;
             text-decoration: none;
         }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -116,12 +136,12 @@
     <!-- Sezione Servizi -->
     <section id="servizi">
         <h2>Servizi Offerti</h2>
-        <ul style="list-style: none; padding: 0;">
+        <ul>
             <li>✔️ <strong>Analisi tattica personalizzata</strong>: Report dettagliati e video analisi per migliorare le strategie.</li>
             <li>✔️ <strong>Riprese video professionali</strong>: Drone e videocamere per catturare ogni dettaglio del gioco.</li>
             <li>✔️ <strong>Consulenza per l’analisi dati</strong>: Soluzioni basate su statistiche e AI per decisioni tattiche migliori.</li>
         </ul>
-        <a href="#contatti"><button class="cta">Contattami</button></a>
+        <a href="#contatti" class="cta">Contattami</a>
     </section>
 
     <!-- Sezione Innovazione -->
@@ -133,11 +153,11 @@
     <!-- Sezione Portfolio -->
     <section id="portfolio">
         <h2>Portfolio</h2>
-        <p>Alcuni esempi di analisi e progetti recenti:</p>
-        <ul style="list-style: none; padding: 0;">
-            <li>📊 Analisi tattica per il Rimini FC (2024)</li>
-            <li>🎥 Video riprese per SP Cailungo</li>
-            <li>🧠 Sviluppo del sistema APES per l’analisi automatizzata.</li>
+        <p>Alcuni esempi di progetti recenti:</p>
+        <ul>
+            <li>📊 Collaborazione tecnica con Rimini FC Under 14: Aumento dell’efficienza e precisione nel lavoro.</li>
+            <li>🎥 Referente Under 8 SP Cailungo: Crescita tecnica attraverso formazione continua.</li>
+            <li>🤖 Sviluppo del sistema APES per analisi automatizzata.</li>
         </ul>
     </section>
 
@@ -161,3 +181,4 @@
     </footer>
 </body>
 </html>
+
