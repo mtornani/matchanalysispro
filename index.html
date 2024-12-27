@@ -50,6 +50,18 @@
         section:nth-child(even) {
             background: #fff;
         }
+        .intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .intro img {
+            width: 200px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .cta {
             background-color: #007BFF;
             color: #fff;
@@ -82,40 +94,65 @@
         <a href="#chi-sono">Chi Sono</a>
         <a href="#servizi">Servizi</a>
         <a href="#innovazione">Innovazione</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#contatti">Contatti</a>
     </nav>
 
     <!-- Header -->
     <header>
         <h1>Match Analysis Pro</h1>
-        <p>Innovazione e analisi per il calcio di domani.</p>
+        <p>Analisi, tecnologia e coaching per il calcio del futuro.</p>
     </header>
 
-    <!-- Sezioni -->
+    <!-- Sezione Chi Sono -->
     <section id="chi-sono">
         <h2>Chi Sono</h2>
-        <p>Con oltre 13 anni di esperienza come allenatore, creo soluzioni innovative per semplificare il lavoro degli allenatori e migliorare le performance delle squadre.</p>
+        <div class="intro">
+            <img src="images/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani">
+            <p>Sono Mirko Tornani, collaboratore tecnico per il Rimini FC e tecnico UEFA B per SP Cailungo. Con oltre 13 anni di esperienza, unisco passione per il calcio e tecnologia per creare soluzioni innovative e personalizzate per allenatori e squadre.</p>
+        </div>
     </section>
 
+    <!-- Sezione Servizi -->
     <section id="servizi">
         <h2>Servizi Offerti</h2>
         <ul style="list-style: none; padding: 0;">
-            <li>✔️ Analisi tattica personalizzata</li>
-            <li>✔️ Riprese video professionali</li>
-            <li>✔️ Consulenza per l’analisi dati</li>
+            <li>✔️ <strong>Analisi tattica personalizzata</strong>: Report dettagliati e video analisi per migliorare le strategie.</li>
+            <li>✔️ <strong>Riprese video professionali</strong>: Drone e videocamere per catturare ogni dettaglio del gioco.</li>
+            <li>✔️ <strong>Consulenza per l’analisi dati</strong>: Soluzioni basate su statistiche e AI per decisioni tattiche migliori.</li>
         </ul>
-        <button class="cta">Contattami</button>
+        <a href="#contatti"><button class="cta">Contattami</button></a>
     </section>
 
+    <!-- Sezione Innovazione -->
     <section id="innovazione">
         <h2>Innovazione</h2>
-        <p>Ho investito in un drone DJI Neo per riprese migliori e sto sviluppando un sistema automatizzato di analisi video basato su principi scientifici.</p>
+        <p>Sto sviluppando <strong>APES</strong>, un sistema automatizzato di analisi video basato su principi scientifici, per portare l’analisi calcistica a un nuovo livello.</p>
     </section>
 
+    <!-- Sezione Portfolio -->
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <p>Alcuni esempi di analisi e progetti recenti:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li>📊 Analisi tattica per il Rimini FC (2024)</li>
+            <li>🎥 Video riprese per SP Cailungo</li>
+            <li>🧠 Sviluppo del sistema APES per l’analisi automatizzata.</li>
+        </ul>
+    </section>
+
+    <!-- Sezione Contatti -->
     <section id="contatti">
-        <h2>Contatti</h2>
-        <p>Per maggiori informazioni o richieste, contattami:</p>
-        <p>Email: <a href="mailto:info@matchanalysispro.online">info@matchanalysispro.online</a></p>
+        <h2>Contattami</h2>
+        <form action="mailto:info@matchanalysispro.online" method="post" enctype="text/plain">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="message">Messaggio:</label>
+            <textarea id="message" name="message" rows="5" required></textarea><br>
+            <button type="submit" class="cta">Invia</button>
+        </form>
     </section>
 
     <!-- Footer -->
