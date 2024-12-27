@@ -15,10 +15,14 @@
             line-height: 1.6;
         }
         nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: center;
             background: #0056b3;
             padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         nav a {
             color: #fff;
@@ -26,9 +30,15 @@
             margin: 0 1rem;
             font-weight: bold;
             text-transform: uppercase;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
         }
         nav a:hover {
+            color: #ffd700;
             text-decoration: underline;
+        }
+        nav a.active {
+            color: #ffd700;
+            font-weight: bold;
         }
         header {
             background: linear-gradient(135deg, #007BFF, #0056b3);
@@ -67,13 +77,22 @@
             color: #007BFF;
             text-decoration: none;
         }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav>
         <a href="index.html">Home</a>
-        <a href="chi-sono.html">Chi Sono</a>
+        <a href="chi-sono.html" class="active">Chi Sono</a>
         <a href="servizi.html">Servizi</a>
         <a href="innovazione.html">Innovazione</a>
         <a href="portfolio.html">Portfolio</a>
@@ -88,7 +107,7 @@
     <!-- Contenuto -->
     <section>
         <div class="intro">
-            <img src="C:\Users\Mirko\Desktop/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani">
+            <img src="images/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani">
             <p>Sono Mirko Tornani, collaboratore tecnico per il Rimini FC Under 14 e tecnico UEFA B per SP Cailungo. Con oltre 13 anni di esperienza nel settore calcistico, mi dedico alla crescita di giovani talenti e all’innovazione nel calcio attraverso l’uso della tecnologia e l’analisi dati. La mia missione è supportare allenatori e squadre nel raggiungere il loro massimo potenziale, unendo passione, competenza e innovazione.</p>
         </div>
     </section>
