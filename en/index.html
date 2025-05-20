@@ -14,6 +14,21 @@
             color: #333;
             line-height: 1.6;
         }
+        .language-switch {
+            text-align: right;
+            padding: 1rem;
+        }
+        .language-switch a {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .language-switch a:hover {
+            background-color: #0056b3;
+        }
         nav {
             position: sticky;
             top: 0;
@@ -33,151 +48,4 @@
             transition: color 0.3s ease, text-decoration 0.3s ease;
         }
         nav a:hover {
-            color: #ffd700;
-            text-decoration: underline;
-        }
-        nav a.active {
-            color: #ffd700;
-            font-weight: bold;
-        }
-        header {
-            background: linear-gradient(135deg, #007BFF, #0056b3);
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        section {
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 1rem 0;
-        }
-        .intro {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .intro img {
-            width: 200px;
-            border-radius: 50%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .cta {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .cta:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        footer a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav a {
-                margin: 0.5rem 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="innovation.html">Innovation</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <h1>Match Analysis Pro</h1>
-        <p>Technology, insight and coaching for the football of tomorrow.</p>
-    </header>
-
-    <!-- About -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="intro">
-            <img src="../images/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani">
-            <p>I'm Mirko Tornani, Technical Collaborator at Rimini FC and UEFA B coach at SP Cailungo. With over 13 years of experience, I merge football knowledge and technology to create innovative, efficient solutions for coaches, clubs, and academies.</p>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-        <h2>What I Offer</h2>
-        <ul>
-            <li>✔️ <strong>Custom Tactical Analysis</strong>: Match reports and video analysis tailored to your system and needs.</li>
-            <li>✔️ <strong>Professional Match Filming</strong>: Drone and high-definition camera footage for clear tactical review.</li>
-            <li>✔️ <strong>Data Analysis Consulting</strong>: Use of statistics and AI to support tactical and strategic decisions.</li>
-        </ul>
-        <a href="contact.html" class="cta">Contact Me</a>
-    </section>
-
-    <!-- Innovation -->
-    <section id="innovation">
-        <h2>Innovation</h2>
-        <p>I'm developing <strong>APES</strong>, an automated video analysis system based on cognitive principles and simplified tagging. It brings smarter tools to football analysis—efficient, fast, and designed for remote work.</p>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio">
-        <h2>Recent Projects</h2>
-        <ul>
-            <li>📊 Tactical and physical support with Rimini FC U14.</li>
-            <li>🎥 Lead role in SP Cailungo U8: player development and cross-club knowledge exchange.</li>
-            <li>🤖 APES MVP: cognitive scouting system from video footage.</li>
-        </ul>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <form action="mailto:info@matchanalysispro.online" method="post" enctype="text/plain">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br>
-            <button type="submit" class="cta">Send</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 Match Analysis Pro. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+            color:0
