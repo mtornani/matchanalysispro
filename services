@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Match Analysis Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f4f4, #eaeaea);
+            color: #333;
+            line-height: 1.6;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background: #0056b3;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        nav a.active {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        header {
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        section {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 1rem 0;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="innovation.html">Innovation</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Services Offered</h1>
+    </header>
+
+    <!-- Content -->
+    <section>
+        <h2>What I Offer</h2>
+        <ul>
+            <li>✔️ <strong>Personalized Tactical Analysis</strong>: Detailed reports and video analysis to enhance game strategies and team performance.</li>
+            <li>✔️ <strong>Professional Video Capture</strong>: Drones and cameras used to record every detail with high-quality footage.</li>
+            <li>✔️ <strong>Data Analysis Consulting</strong>: Technical support for interpreting stats and turning numbers into tactical insights.</li>
+            <li>✔️ <strong>Coaches' Training</strong>: Workshops for coaches aiming to improve their technical and analytical skills.</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Match Analysis Pro. All rights reserved.</p>
+    </footer>
+</body>
+</html>
