@@ -54,34 +54,17 @@
             padding: 2rem 1rem;
             text-align: center;
         }
-        form {
-            max-width: 500px;
+        .contact-info {
+            max-width: 600px;
             margin: 0 auto;
-            text-align: left;
         }
-        form label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .contact-info a {
+            color: #0056b3;
             font-weight: bold;
+            text-decoration: none;
         }
-        form input, form textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        form button:hover {
-            background-color: #0056b3;
+        .contact-info a:hover {
+            text-decoration: underline;
         }
         footer {
             background: #333;
@@ -122,22 +105,11 @@
     </header>
 
     <!-- Contenuto -->
-    <section>
-        <h2>Come Posso Aiutarti?</h2>
-        <p>Se hai domande, richieste o vuoi discutere una possibile collaborazione, non esitare a contattarmi!</p>
-        <form action="mailto:info@matchanalysispro.online" method="post" enctype="text/plain">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Messaggio:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Invia</button>
-        </form>
-        <p>Oppure contattami via email: <a href="mailto:info@matchanalysispro.online">info@matchanalysispro.online</a></p>
+    <section class="contact-info">
+        <h2>Collaboriamo</h2>
+        <p>Se ti interessa APES (scouting) o ICS (metodologia U8–U17), possiamo iniziare da una consulenza breve o un progetto pilota, anche a distanza.</p>
+        <p>Email: <a href="mailto:mirkotornani@gmail.com">mirkotornani@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank">/in/mirkotornani</a></p>
     </section>
 
     <!-- Footer -->
@@ -146,5 +118,3 @@
     </footer>
 </body>
 </html>
-
-
