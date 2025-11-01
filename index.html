@@ -3,201 +3,695 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match Analysis Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f4f4f4, #eaeaea);
-            color: #333;
-            line-height: 1.6;
-        }
-        .language-switch {
-            text-align: right;
-            padding: 1rem;
-        }
-        .language-switch a {
-            background-color: #007BFF;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .language-switch a:hover {
-            background-color: #0056b3;
-        }
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            background: #0056b3;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s ease, text-decoration 0.3s ease;
-        }
-        nav a:hover {
-            color: #ffd700;
-            text-decoration: underline;
-        }
-        nav a.active {
-            color: #ffd700;
-            font-weight: bold;
-        }
-        header {
-            background: linear-gradient(135deg, #007BFF, #0056b3);
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        section {
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 1rem 0;
-        }
-        .intro {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .intro img {
-            width: 200px;
-            border-radius: 50%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .cta {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .cta:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        footer a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav a {
-                margin: 0.5rem 0;
-            }
-        }
-    </style>
+    <title>Match Analysis Pro | Sistema di Intelligence Calcistica</title>
+    <meta name="description" content="OB1 + LOOM: Sistema di intelligence che trova talenti calcistici prima che i mercati li notino. Scouting remoto, pattern recognition, insights azionabili.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 </head>
 <body>
-    <!-- Language Switch Button -->
+    <!-- Language Switch -->
     <div class="language-switch">
-        <a href="/en/index.html">Switch to English</a>
+        <a href="/" class="lang-btn active">🇮🇹 IT</a>
+        <a href="/en/" class="lang-btn">🇬🇧 EN</a>
     </div>
 
-    <!-- Navbar -->
-    <nav>
-        <a href="#chi-sono">Chi Sono</a>
-        <a href="#servizi">Servizi</a>
-        <a href="#innovazione">Innovazione</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contatti">Contatti</a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">⚽ Match Analysis Pro</div>
+        <div class="nav-links">
+            <a href="#sistema">Il Sistema</a>
+            <a href="#proof">Risultati</a>
+            <a href="#come-funziona">Come Funziona</a>
+            <a href="#prezzi">Prezzi</a>
+            <a href="#contatti">Contatti</a>
+        </div>
     </nav>
 
-    <!-- Header -->
-    <header>
-        <h1>Match Analysis Pro</h1>
-        <p>Analisi, tecnologia e coaching per il calcio del futuro.</p>
-    </header>
-
-    <!-- Sezione Chi Sono -->
-    <section id="chi-sono">
-        <h2>Chi Sono</h2>
-        <div class="intro">
-            <img src="images/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani">
-            <p>Sono Mirko Tornani, collaboratore tecnico per il Rimini FC e tecnico UEFA B per SP Cailungo. Con oltre 13 anni di esperienza, unisco passione per il calcio e tecnologia per creare soluzioni innovative e personalizzate per allenatori e squadre.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Ho Costruito un Sistema di Intelligence<br>
+                    Che Trova Talenti Calcistici<br>
+                    <span class="gradient-text">Prima Che i Mercati Li Notino</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Analista remoto. Pattern seeker. Problem solver.<br>
+                    13 anni di esperienza coaching → Ora costruisco strumenti che funzionano.
+                </p>
+                <div class="hero-cta">
+                    <a href="#sample" class="btn btn-primary">📊 Vedi Report Live</a>
+                    <a href="#contatti" class="btn btn-secondary">📅 Prenota 15min</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Segnali/Settimana</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Regioni Monitorate</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">€89</div>
+                        <div class="stat-label">Al Mese</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Sezione Servizi -->
-    <section id="servizi">
-        <h2>Servizi Offerti</h2>
-        <ul>
-            <li>✔️ <strong>Analisi tattica personalizzata</strong>: Report dettagliati e video analisi per migliorare le strategie.</li>
-            <li>✔️ <strong>Riprese video professionali</strong>: Drone e videocamere per catturare ogni dettaglio del gioco.</li>
-            <li>✔️ <strong>Consulenza per l’analisi dati</strong>: Soluzioni basate su statistiche e AI per decisioni tattiche migliori.</li>
-        </ul>
-        <a href="#contatti" class="cta">Contattami</a>
+    <!-- System Overview -->
+    <section id="sistema" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Il Sistema</h2>
+            <p class="section-intro">
+                Non un database. Non uno scraper. Una pipeline di intelligence completa che trasforma rumore in insights azionabili.
+            </p>
+            
+            <div class="system-flow">
+                <!-- OB1 Card -->
+                <div class="system-card">
+                    <div class="system-icon">🎯</div>
+                    <h3>OB1 Radar</h3>
+                    <p class="system-desc">
+                        Scraping di 300+ segnali settimanali su 6 regioni. Rilevamento anomalie con scoring automatico (0-100). 
+                        Ha trovato Mateo Silvetti prima del trasferimento da €4M.
+                    </p>
+                    <ul class="system-features">
+                        <li>✓ Monitoraggio multi-regione (SA, Africa, Asia, Europa, MLS)</li>
+                        <li>✓ Scoring automatico anomalie</li>
+                        <li>✓ Generazione alert in tempo reale</li>
+                    </ul>
+                </div>
+
+                <div class="system-arrow">→</div>
+
+                <!-- LOOM Card -->
+                <div class="system-card">
+                    <div class="system-icon">🧠</div>
+                    <h3>THE LOOM</h3>
+                    <p class="system-desc">
+                        Trasforma alert grezzi in intelligence narrativa. Analisi AI con filtraggio priorità. 
+                        Ti dà raccomandazioni azionabili, non solo dati.
+                    </p>
+                    <ul class="system-features">
+                        <li>✓ Sistema priorità (HIGH/MEDIUM/LOW/NOISE)</li>
+                        <li>✓ Profiling giocatori + analisi performance</li>
+                        <li>✓ Raccomandazioni scout con stime tempo</li>
+                    </ul>
+                </div>
+
+                <div class="system-arrow">→</div>
+
+                <!-- Output Card -->
+                <div class="system-card">
+                    <div class="system-icon">📊</div>
+                    <h3>Report Settimanali</h3>
+                    <p class="system-desc">
+                        Narrative markdown pronte per il tuo staff. Include nomi giocatori, analisi AI, checklist azioni, 
+                        e link diretti per verifica fonti.
+                    </p>
+                    <ul class="system-features">
+                        <li>✓ Consegna email ogni martedì</li>
+                        <li>✓ File markdown condivisibili</li>
+                        <li>✓ Stime investimento tempo incluse</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Value Proposition Grid -->
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h4>Intelligence Layer</h4>
+                    <p>Filtra rumore mediatico, evidenzia segnali reali</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h4>Early Warning</h4>
+                    <p>Individua talenti emergenti prima copertura mainstream</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h4>Copertura Globale</h4>
+                    <p>6 regioni monitorate simultaneamente</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h4>Pattern Recognition</h4>
+                    <p>Identifica indicatori breakthrough tra mercati</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Sezione Innovazione -->
-    <section id="innovazione">
-        <h2>Innovazione</h2>
-        <p>Sto sviluppando <strong>APES</strong>, un sistema automatizzato di analisi video basato su principi scientifici, per portare l’analisi calcistica a un nuovo livello.</p>
+    <!-- Proof Section -->
+    <section id="proof" class="section">
+        <div class="container">
+            <h2 class="section-title">Non Teoria. Tracking Reale.</h2>
+            <p class="section-intro">
+                Non sono mock-up o predizioni. Sono casi documentati dal sistema.
+            </p>
+
+            <!-- Success Cases -->
+            <div class="cases-grid">
+                <!-- Case 1: Silvetti -->
+                <div class="case-card">
+                    <div class="case-flag">🇦🇷</div>
+                    <h3 class="case-title">Mateo Silvetti → Inter Miami</h3>
+                    <div class="case-details">
+                        <div class="case-detail">
+                            <span class="detail-label">Profilo:</span>
+                            <span class="detail-value">Internazionale Argentina U20</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Trasferimento:</span>
+                            <span class="detail-value">€4M (Set 2025)</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Contesto:</span>
+                            <span class="detail-value">4 mesi infortunato, zero partite da maggio</span>
+                        </div>
+                    </div>
+                    <div class="case-insight">
+                        <div class="insight-label">💡 Insight OB1:</div>
+                        <p>I club intelligenti scommettono sul potenziale di recupero, non solo sulla forma attuale. Tracciato durante infortunio quando altri hanno distolto lo sguardo.</p>
+                    </div>
+                </div>
+
+                <!-- Case 2: Obando -->
+                <div class="case-card">
+                    <div class="case-flag">🇨🇷</div>
+                    <h3 class="case-title">Allen Obando → Inter Miami</h3>
+                    <div class="case-details">
+                        <div class="case-detail">
+                            <span class="detail-label">Origine:</span>
+                            <span class="detail-value">Centro America</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Lega:</span>
+                            <span class="detail-value">MLS</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value">Trasferimento ufficiale confermato</span>
+                        </div>
+                    </div>
+                    <div class="case-insight">
+                        <div class="insight-label">💡 Insight OB1:</div>
+                        <p>Rilevamento precoce pattern movimenti MLS. Pipeline Centro America → MLS sempre più importante.</p>
+                    </div>
+                </div>
+
+                <!-- Case 3: Flamengo -->
+                <div class="case-card">
+                    <div class="case-flag">🇧🇷</div>
+                    <h3 class="case-title">Flamengo U20 - Bicampeão</h3>
+                    <div class="case-details">
+                        <div class="case-detail">
+                            <span class="detail-label">Risultato:</span>
+                            <span class="detail-value">Campioni Brasiliani U20 (2x)</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Monitoraggio:</span>
+                            <span class="detail-value">Copertura stagione completa</span>
+                        </div>
+                        <div class="case-detail">
+                            <span class="detail-label">Academy:</span>
+                            <span class="detail-value">Fucina talenti élite</span>
+                        </div>
+                    </div>
+                    <div class="case-insight">
+                        <div class="insight-label">💡 Insight OB1:</div>
+                        <p>Il monitoraggio sistematico academy rivela pattern breakthrough. Tracciati multipli giocatori durante percorso campionato.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geographic Coverage -->
+            <div class="coverage-section">
+                <h3 class="coverage-title">🌍 Copertura Geografica</h3>
+                <div class="coverage-grid">
+                    <div class="coverage-card">
+                        <h4>🌍 Africa</h4>
+                        <ul>
+                            <li>Kenya U20 - Debutto AFCON</li>
+                            <li>Senegal U20 - Convocazioni CAN</li>
+                            <li>Sierra Leone U20 tracking</li>
+                            <li>Tunisia U20 - Match vs Francia</li>
+                        </ul>
+                    </div>
+                    <div class="coverage-card">
+                        <h4>🌎 Sud America</h4>
+                        <ul>
+                            <li>Copertura CONMEBOL U20</li>
+                            <li>Academy Flamengo</li>
+                            <li>Collegamenti Newell's</li>
+                            <li>Colombia U20 debut</li>
+                        </ul>
+                    </div>
+                    <div class="coverage-card">
+                        <h4>🌏 Asia & Globale</h4>
+                        <ul>
+                            <li>Campionato AFC U20</li>
+                            <li>Academy J-League</li>
+                            <li>Tracking youth K-League</li>
+                            <li>Movimenti talenti MLS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Showcase Link -->
+            <div class="showcase-cta">
+                <a href="success_stories_it.html" class="btn btn-outline" target="_blank">
+                    📈 Vedi Casi Studio Completi & Analisi ROI
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- Sezione Portfolio -->
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <p>Alcuni esempi di progetti recenti:</p>
-        <ul>
-            <li>📊 Collaborazione tecnica con Rimini FC Under 14: Aumento dell’efficienza e precisione nel lavoro.</li>
-            <li>🎥 Referente Under 8 SP Cailungo: Crescita tecnica attraverso formazione continua.</li>
-            <li>🤖 Sviluppo del sistema APES per analisi automatizzata.</li>
-        </ul>
+    <!-- How It Works -->
+    <section id="come-funziona" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Come Funziona</h2>
+            <p class="section-intro">Workflow settimanale semplice. Nessuna dashboard complicata. Solo intelligence consegnata.</p>
+
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Lunedì Mattina</h3>
+                        <p>OB1 scansiona 6 regioni durante la notte. 300+ segnali processati. Anomalie scored 0-100.</p>
+                    </div>
+                </div>
+                <div class="workflow-arrow">↓</div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Lunedì Pomeriggio</h3>
+                        <p>LOOM processa alert. AI genera narrative. Filtraggio priorità applicato (HIGH/MEDIUM/LOW/NOISE).</p>
+                    </div>
+                </div>
+                <div class="workflow-arrow">↓</div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Martedì</h3>
+                        <p>Ricevi report settimanale via email. File markdown inclusi. Checklist azioni pronte.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What You Get -->
+            <div class="deliverables">
+                <h3 class="deliverables-title">📦 Cosa Ricevi Ogni Settimana</h3>
+                <div class="deliverables-grid">
+                    <div class="deliverable-card">
+                        <h4>📧 Report Email</h4>
+                        <ul>
+                            <li>Alert priorità HIGH (investiga ora)</li>
+                            <li>Alert MEDIUM (vale 30min oggi)</li>
+                            <li>Alert LOW (monitora)</li>
+                            <li>NOISE filtrato automaticamente</li>
+                        </ul>
+                    </div>
+                    <div class="deliverable-card">
+                        <h4>📁 File Markdown</h4>
+                        <ul>
+                            <li>Nomi giocatori estratti</li>
+                            <li>Analisi performance AI</li>
+                            <li>Raccomandazioni scout + checklist</li>
+                            <li>Link diretti verifica fonti</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Savings -->
+            <div class="roi-box">
+                <h3>⏱️ Tempo Risparmiato</h3>
+                <div class="roi-content">
+                    <div class="roi-stat">
+                        <div class="roi-number">15h</div>
+                        <div class="roi-label">Bandwidth scout risparmiata settimanalmente</div>
+                    </div>
+                    <div class="roi-breakdown">
+                        <p><strong>Senza OB1:</strong> 20h/settimana monitoraggio U20 globale</p>
+                        <p><strong>Con OB1:</strong> 5h/settimana revisione segnali filtrati</p>
+                        <p><strong>Valore annuo:</strong> €50.000-80.000 in tempo scout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Sezione Contatti -->
-    <section id="contatti">
-        <h2>Contattami</h2>
-        <form action="mailto:info@matchanalysispro.online" method="post" enctype="text/plain">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-            <label for="message">Messaggio:</label>
-            <textarea id="message" name="message" rows="5" required></textarea><br>
-            <button type="submit" class="cta">Invia</button>
-        </form>
+    <!-- Sample Report -->
+    <section id="sample" class="section">
+        <div class="container">
+            <h2 class="section-title">Report Settimana Esempio</h2>
+            <p class="section-intro">Vedi com'è una settimana reale. Clicca alert per esplorare.</p>
+
+            <div class="sample-tabs">
+                <button class="tab-btn active" data-tab="medium">MEDIUM (1)</button>
+                <button class="tab-btn" data-tab="low">LOW (2)</button>
+                <button class="tab-btn" data-tab="noise">NOISE (12)</button>
+            </div>
+
+            <div class="sample-content">
+                <!-- MEDIUM Tab -->
+                <div class="tab-panel active" id="tab-medium">
+                    <div class="alert-card alert-medium">
+                        <div class="alert-header">
+                            <span class="alert-score">77/100</span>
+                            <span class="alert-priority">MEDIUM</span>
+                            <span class="alert-date">18 Ago 2025</span>
+                        </div>
+                        <h3>Weekend awards: Best win, goal, match and more</h3>
+                        <div class="alert-body">
+                            <p><strong>⚡ Burst significativo sopra rumore normale.</strong> Performance notevole o debut sorprendente.</p>
+                            <p><strong>Fonte:</strong> Premier League (Europa)</p>
+                        </div>
+                        <div class="alert-action">
+                            <h4>🎯 Azione Raccomandata:</h4>
+                            <ul>
+                                <li>✓ Identifica giocatore/team principale (10min)</li>
+                                <li>✓ Quick highlights review</li>
+                                <li>✓ Check stats base (Transfermarkt/Sofascore)</li>
+                                <li>✓ Schedule deep dive se promettente (48h)</li>
+                            </ul>
+                            <p><strong>Investimento tempo:</strong> 30 minuti oggi</p>
+                            <p><strong>Probabilità opportunità genuina:</strong> ~35-45%</p>
+                        </div>
+                        <a href="https://www.premierleague.com/en/news/4379909" class="alert-link" target="_blank">🔗 Vedi Fonte</a>
+                    </div>
+                </div>
+
+                <!-- LOW Tab -->
+                <div class="tab-panel" id="tab-low">
+                    <div class="alert-card alert-low">
+                        <div class="alert-header">
+                            <span class="alert-score">61/100</span>
+                            <span class="alert-priority">LOW</span>
+                            <span class="alert-date">19 Feb 2025</span>
+                        </div>
+                        <h3>LA Galaxy Acquire Brazilian Youth International Forward</h3>
+                        <div class="alert-body">
+                            <p><strong>📊 Anomalia moderata.</strong> Potrebbe essere pattern interessante o lucky moment.</p>
+                            <p><strong>Giocatore:</strong> Matheus Nascimento (prestito da Botafogo)</p>
+                        </div>
+                        <div class="alert-action">
+                            <h4>🎯 Azione Raccomandata:</h4>
+                            <ul>
+                                <li>✓ Quick scan articolo (5min)</li>
+                                <li>✓ Bookmark giocatore per tracking</li>
+                                <li>✓ Rivedi se score aumenta prossime settimane</li>
+                            </ul>
+                            <p><strong>Investimento tempo:</strong> 10 minuti quando libero</p>
+                            <p><strong>Probabilità opportunità genuina:</strong> ~20-30%</p>
+                        </div>
+                        <a href="https://www.lagalaxy.com/news/la-galaxy-acquire-brazilian-youth-international-forward-matheus-nascimento-on-loan-from-botafogo" class="alert-link" target="_blank">🔗 Vedi Fonte</a>
+                    </div>
+
+                    <div class="alert-card alert-low">
+                        <div class="alert-header">
+                            <span class="alert-score">59/100</span>
+                            <span class="alert-priority">LOW</span>
+                            <span class="alert-date">Recente</span>
+                        </div>
+                        <h3>Chido Obi-Martin: Arsenal look away now</h3>
+                        <div class="alert-body">
+                            <p><strong>📊 Anomalia moderata.</strong> Ex-youth Arsenal che fa rumore altrove.</p>
+                        </div>
+                        <div class="alert-action">
+                            <h4>🎯 Azione Raccomandata:</h4>
+                            <p><strong>MONITOR</strong> - Quick check sufficiente per ora.</p>
+                        </div>
+                        <a href="https://au.sports.yahoo.com/chido-obi-martin-arsenal-look-121127790.html" class="alert-link" target="_blank">🔗 Vedi Fonte</a>
+                    </div>
+                </div>
+
+                <!-- NOISE Tab -->
+                <div class="tab-panel" id="tab-noise">
+                    <div class="noise-summary">
+                        <p><strong>12 alert filtrati come NOISE</strong> (scores 26-54/100)</p>
+                        <p>Questi segnali sono sotto soglia rilevanza. Archiviati automaticamente per risparmiare tempo.</p>
+                        <details class="noise-list">
+                            <summary>Vedi alert filtrati (clicca per espandere)</summary>
+                            <ul>
+                                <li>Everton's pursuit of Liam Delap (54)</li>
+                                <li>Min-hyeok Yang - firma Tottenham (54)</li>
+                                <li>Lista giocatori africani sconosciuti 2025 (52.5)</li>
+                                <li>Lennart Karl - teen Bayern (44.5)</li>
+                                <li>Yotaro Nakajima - premio J.League (42)</li>
+                                <li>Lista giocatori FIFA U-20 World Cup (41)</li>
+                                <li>Daejeon Hana Citizen K League (37.5)</li>
+                                <li>Mason Melia farewell (37)</li>
+                                <li>Debut Cile U20 World Cup (36.5)</li>
+                                <li>Wonderkids uruguaiani 2025 (36.5)</li>
+                                <li>Prossimo breakthrough Barcelona (35.5)</li>
+                                <li>Lista trasferimenti asiatici in Europa (26)</li>
+                            </ul>
+                        </details>
+                        <p class="noise-note">💡 <strong>Questo filtraggio ti risparmia ~2-3 ore settimanali</strong> rimuovendo noise basso segnale.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Full Report CTA -->
+            <div class="sample-cta">
+                <a href="26-10-25_weekly_report.html" class="btn btn-primary" target="_blank">
+                    📥 Scarica Report Settimana Completo (HTML)
+                </a>
+                <p class="sample-note">Include tutti alert, analisi AI e link fonti</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What It's NOT -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Cosa NON È</h2>
+            <div class="not-grid">
+                <div class="not-card">
+                    <div class="not-icon">❌</div>
+                    <h3>NON un clone Transfermarkt</h3>
+                    <p>Non duplichiamo database esistenti. Troviamo segnali <em>prima</em> che appaiano lì.</p>
+                </div>
+                <div class="not-card">
+                    <div class="not-icon">❌</div>
+                    <h3>NON un sostituto scout</h3>
+                    <p>Aumentiamo intuizione umana con pattern recognition macchina. Complementare, non competitivo.</p>
+                </div>
+                <div class="not-card">
+                    <div class="not-icon">❌</div>
+                    <h3>NON solo statistiche</h3>
+                    <p>Tracciamo contesto, narrativa e pattern breakthrough. I numeri contano, ma le storie contano di più.</p>
+                </div>
+            </div>
+            <div class="is-box">
+                <h3>✓ È invece:</h3>
+                <p>Uno strumento di intelligence complementare che risparmia tempo scout, espande copertura geografica e fornisce early warning su pattern talenti emergenti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="prezzi" class="section">
+        <div class="container">
+            <h2 class="section-title">Prezzi</h2>
+            <p class="section-intro">Prezzi semplici e trasparenti. Nessun costo nascosto. Cancella quando vuoi.</p>
+
+            <div class="pricing-grid">
+                <!-- Individual Scout -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">Più Popolare</div>
+                    <h3>Scout Individuale</h3>
+                    <div class="pricing-price">
+                        <span class="price-currency">€</span>
+                        <span class="price-amount">89</span>
+                        <span class="price-period">/mese</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Report intelligence settimanali</li>
+                        <li>✓ Copertura completa 6 regioni</li>
+                        <li>✓ Consegna email (martedì mattina)</li>
+                        <li>✓ File markdown condivisibili</li>
+                        <li>✓ Filtraggio priorità (HIGH/MEDIUM/LOW)</li>
+                        <li>✓ Analisi narrative AI</li>
+                        <li>✓ Link diretti fonti</li>
+                    </ul>
+                    <a href="#contatti" class="btn btn-primary">Inizia</a>
+                </div>
+
+                <!-- Club Package -->
+                <div class="pricing-card pricing-featured">
+                    <div class="pricing-badge">Miglior Valore</div>
+                    <h3>Pacchetto Club</h3>
+                    <div class="pricing-price">
+                        <span class="price-currency">€</span>
+                        <span class="price-amount">500</span>
+                        <span class="price-period">/mese</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Tutto in Individuale</li>
+                        <li>✓ Canale priorità Slack/WhatsApp</li>
+                        <li>✓ Focus regionale custom</li>
+                        <li>✓ Call consultazione mensile (30min)</li>
+                        <li>✓ Alert urgenti (turnaround 48h)</li>
+                        <li>✓ Accesso multi-utente</li>
+                        <li>✓ Formato report custom</li>
+                    </ul>
+                    <a href="#contatti" class="btn btn-primary">Contatta per Dettagli</a>
+                </div>
+
+                <!-- Free Sample -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">Prova</div>
+                    <h3>Settimana Esempio</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">GRATIS</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 1 report settimana completa</li>
+                        <li>✓ Vedi sistema in azione</li>
+                        <li>✓ Tutti livelli priorità inclusi</li>
+                        <li>✓ Nessuna carta credito richiesta</li>
+                        <li>✓ Nessun obbligo</li>
+                    </ul>
+                    <a href="#contatti" class="btn btn-outline">Richiedi Esempio</a>
+                </div>
+            </div>
+
+            <div class="pricing-note">
+                <p>💡 <strong>Calcolo ROI:</strong> Se OB1 risparmia al tuo scout senior 15h/settimana, sono ~€50-80K annui in valore tempo. Break-even a <strong>~1 ora risparmiata a settimana</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="chi-sono" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Chi Ha Costruito Questo</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/FotoMT_IdeaCalcio.PNG" alt="Mirko Tornani" class="profile-img">
+                </div>
+                <div class="about-text">
+                    <h3>Mirko Tornani</h3>
+                    <p class="about-role">Tactical Analyst & Methodology Designer</p>
+                    <div class="about-bio">
+                        <p>13 anni coaching (UEFA B). Rimini, San Marino, FSGC.</p>
+                        <p>Poi ho capito: i problemi si ripetono. Le soluzioni no.</p>
+                        <p><strong>OB1</strong> l'ho costruito perché mi serviva un radar che non esiste sul mercato.<br>
+                        <strong>LOOM</strong> l'ho costruito perché alert senza narrative sono solo rumore.</p>
+                        <p>Ora funzionano. Altri li usano.</p>
+                        <p class="about-traits">Pattern seeker. Bassa tolleranza per bullshit marketing.<br>
+                        <em>(Profilo Peterson: Openness 71°, Politeness 2°)</em></p>
+                    </div>
+                    <div class="about-links">
+                        <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank" class="social-link">LinkedIn</a>
+                        <a href="mailto:info@matchanalysispro.online" class="social-link">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contatti" class="section">
+        <div class="container">
+            <h2 class="section-title">Inizia</h2>
+            <div class="contact-options">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>Contatto diretto. Nessun form.</p>
+                    <a href="mailto:info@matchanalysispro.online" class="contact-link">info@matchanalysispro.online</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>Network professionale.</p>
+                    <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank" class="contact-link">Connetti su LinkedIn</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📊</div>
+                    <h3>Esempio Gratuito</h3>
+                    <p>Vedi prima in azione.</p>
+                    <a href="mailto:info@matchanalysispro.online?subject=Richiesta%20Settimana%20Esempio%20Gratuita" class="contact-link">Richiedi Settimana Esempio</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>© 2024 Match Analysis Pro. Tutti i diritti riservati.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">⚽ Match Analysis Pro</div>
+                    <p>Sistema di Intelligence Calcistica</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Prodotto</h4>
+                        <a href="#sistema">Il Sistema</a>
+                        <a href="#proof">Storie di Successo</a>
+                        <a href="#come-funziona">Come Funziona</a>
+                        <a href="#prezzi">Prezzi</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Risorse</h4>
+                        <a href="success_stories_it.html" target="_blank">Casi Studio Completi</a>
+                        <a href="26-10-25_weekly_report.html" target="_blank">Report Esempio</a>
+                        <a href="26-10-25_ob1_with_loom.html" target="_blank">Overview Tecnico</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contatti</h4>
+                        <a href="mailto:info@matchanalysispro.online">Email</a>
+                        <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank">LinkedIn</a>
+                        <a href="/en/">🇬🇧 English Version</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Match Analysis Pro. Tutti i diritti riservati.</p>
+                <p>Costruito da qualcuno che lo usa davvero. Versione 1.0</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById(`tab-${tab}`).classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
