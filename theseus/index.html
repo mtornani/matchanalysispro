@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ship of Theseus Protocol | Strategic Intelligence</title>
+    
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:title" content="The Ship of Theseus Protocol | Level 1">
+    <meta property="og:description" content="Extracting Asymmetric Alpha through Adversarial Multi-Agent Systems. Validato empiricamente nello scouting calcistico.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.matchanalysispro.online/theseus">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Ship of Theseus Protocol">
+    <meta name="twitter:description" content="Il consenso produce mediocrità. L'attrito produce Alpha.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sys-black': '#0a0a0a',
+                        'sys-dark': '#111111',
+                        'sys-panel': '#1a1a1a',
+                        'sys-green': '#00ff41',
+                        'sys-red': '#ff3333',
+                        'sys-blue': '#3388ff',
+                        'sys-text': '#e0e0e0',
+                        'sys-muted': '#888888'
+                    },
+                    fontFamily: {
+                        mono: ['Courier New', 'Courier', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .chart-container { position: relative; width: 100%; height: 40vh; min-height: 250px; max-height: 400px; }
+        .nav-item.active { border-bottom: 2px solid #00ff41; color: #00ff41; }
+        .node-card { transition: all 0.3s ease; }
+        .node-card:hover { transform: translateY(-2px); border-color: #00ff41; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #00ff41; }
+        .prose-custom p { margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7; }
+        .prose-custom h3 { color: #fff; font-weight: 700; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose-custom h4 { color: #00ff41; font-weight: 700; font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-custom ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #cbd5e1; }
+        .prose-custom li { margin-bottom: 0.5rem; }
+        .prose-custom strong { color: #fff; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-sys-dark/95 backdrop-blur border-b border-sys-panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-sys-green font-mono text-xl font-bold tracking-tighter">> THESEUS_PROTOCOL</span>
+                    <span class="ml-2 text-xs text-sys-muted border border-sys-muted px-1 rounded">LEVEL 1</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <button onclick="nav('summary')" class="nav-item active text-sm font-medium hover:text-white px-1 pt-1">EXECUTIVE SUMMARY</button>
+                    <button onclick="nav('architecture')" class="nav-item text-sm font-medium hover:text-white px-1 pt-1">ARCHITETTURA & SCALA</button>
+                    <button onclick="nav('evidence')" class="nav-item text-sm font-medium hover:text-white px-1 pt-1">PROVE EMPIRICHE</button>
+                    <button onclick="nav('future')" class="nav-item text-sm font-medium hover:text-white px-1 pt-1">FUTURO & LIMITI</button>
+                </nav>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-sys-muted hover:text-white"><span class="text-2xl">&#9776;</span></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-sys-panel border-b border-sys-muted">
+            <button onclick="nav('summary')" class="block w-full text-left px-4 py-2 text-sm hover:bg-sys-dark">EXECUTIVE SUMMARY</button>
+            <button onclick="nav('architecture')" class="block w-full text-left px-4 py-2 text-sm hover:bg-sys-dark">ARCHITETTURA & SCALA</button>
+            <button onclick="nav('evidence')" class="block w-full text-left px-4 py-2 text-sm hover:bg-sys-dark">PROVE EMPIRICHE</button>
+            <button onclick="nav('future')" class="block w-full text-left px-4 py-2 text-sm hover:bg-sys-dark">FUTURO & LIMITI</button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- ==================== EXECUTIVE SUMMARY ==================== -->
+        <section id="summary" class="space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Estrarre <span class="text-sys-green">Alpha</span> tramite Sistemi Avversariali</h1>
+                    <p class="text-lg text-gray-400 mb-6 leading-relaxed">L'uso attuale degli LLM per il consenso è uno spreco di calcolo. Il vero valore risiede nell'<strong>attrito</strong>.</p>
+                    <div class="bg-sys-panel border-l-4 border-sys-green p-4 mb-6">
+                        <p class="text-sm font-mono text-sys-green mb-2">> LA TESI</p>
+                        <p class="text-gray-300">Un ecosistema di AI in conflitto (Alpha vs Beta vs Gamma), arbitrato da un Filtro Umano (Level 3), estrae segnale puro dal rumore con giorni o settimane di anticipo rispetto ai mercati istituzionali.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="nav('evidence')" class="bg-sys-green text-black font-bold py-3 px-6 rounded hover:bg-green-400 transition">Vedi le Prove Empiriche</button>
+                        <button onclick="nav('architecture')" class="border border-sys-muted text-gray-300 font-bold py-3 px-6 rounded hover:border-white transition">Analizza l'Architettura</button>
+                    </div>
+                </div>
+                <div class="bg-sys-panel rounded-lg p-6 border border-gray-800">
+                    <h3 class="text-center text-sys-muted mb-4 font-mono text-xs">FLUSSO LOGICO DEL PROTOCOLLO</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-sys-dark p-3 rounded border border-gray-700">
+                            <span class="text-blue-400 font-mono">Input Dati (Rumore)</span><span class="text-2xl">&#11015;</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-blue-900/20 border border-blue-800 p-2 rounded text-xs text-blue-400">NODO ALPHA<br>(Pattern)</div>
+                            <div class="bg-red-900/20 border border-red-800 p-2 rounded text-xs text-red-400">NODO BETA<br>(Scettico)</div>
+                            <div class="bg-purple-900/20 border border-purple-800 p-2 rounded text-xs text-purple-400">NODO GAMMA<br>(Caos)</div>
+                        </div>
+                        <div class="text-center text-2xl">&#11015;</div>
+                        <div class="bg-yellow-900/20 border border-yellow-700 p-3 rounded text-center">
+                            <span class="text-yellow-500 font-bold font-mono">STALLO LOGICO</span>
+                            <div class="text-xs text-yellow-700 mt-1">Conflitto Irrisolto</div>
+                        </div>
+                        <div class="text-center text-2xl">&#11015;</div>
+                        <div class="bg-sys-green/10 border border-sys-green p-3 rounded text-center">
+                            <span class="text-sys-green font-bold font-mono">FILTRO UMANO (LEVEL 3)</span>
+                            <div class="text-xs text-green-700 mt-1">Estrazione Segnale Operativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Text: Executive Summary -->
+            <div class="border border-gray-800 rounded-lg bg-sys-panel overflow-hidden">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer list-none p-4 text-sys-green hover:bg-sys-dark transition-colors border-b border-gray-800">
+                        <span class="font-mono text-sm">> LEGGI IL TESTO INTEGRALE: EXECUTIVE SUMMARY</span>
+                        <span class="transition group-open:rotate-180 text-xl text-gray-500">&#9660;</span>
+                    </summary>
+                    <div class="p-6 bg-sys-black prose-custom">
+                        <h3>EXECUTIVE SUMMARY</h3>
+                        <h4>L'Obiettivo: Oltre il Consenso Computazionale</h4>
+                        <p>La maggior parte delle istituzioni oggi utilizza i Large Language Models (LLM) come macchine da scrivere glorificate: per riassumere documenti, generare codice o produrre reportistica standardizzata. Questo è uno spreco netto di potenza di calcolo. Quando un'AI è programmata per fornire una singola risposta coerente, è forzata a convergere verso il consenso medio. Ma nei mercati complessi (finanza, geopolitica, scouting), il consenso istituzionale guarda sistematicamente nella direzione sbagliata, accecato da bias di brand, copertura mediatica o pregiudizi geografici. Il margine di profitto (Alpha) non si trova nell'accordo; si trova nell'asimmetria informativa. L'obiettivo di questo documento è dimostrare che il vero valore dell'Intelligenza Artificiale non risiede nella sintesi, ma nell'attrito.</p>
+                        <h4>La Tesi: Il Protocollo Avversariale</h4>
+                        <p>Un ecosistema di analisi dati, se processato attraverso un framework di intelligenza artificiale avversariale (dove agenti multipli sono programmati per distruggere reciprocamente le rispettive tesi), entra in stallo logico. Questo stallo elimina i bias cognitivi e istituzionali. Quando questo conflitto viene arbitrato da un filtro umano specializzato nel dominio specifico (Level 3), il sistema estrae segnale puro dal rumore di fondo. Il risultato è la capacità di identificare anomalie e pattern di rottura con giorni o settimane di anticipo rispetto ai media mainstream e ai mercati istituzionali.</p>
+                        <h4>La Prova: Il Laboratorio Empirico</h4>
+                        <p>Prima di formalizzare l'architettura per i capital allocators, il framework metodologico è stato testato e validato per mesi in un ambiente di collaudo estremo: lo scouting calcistico professionistico. Un mercato globale caratterizzato da irrazionalità pura, volatilità altissima, bias di brand estremi e un volume di dati spuri (rumore) insuperabile. I risultati documentati in questo whitepaper dimostrano che la logica di estrazione è innegabile e strutturalmente trasferibile.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ==================== ARCHITECTURE ==================== -->
+        <section id="architecture" class="hidden space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-3xl font-bold text-white">Dall'Artigianato all'Architettura</h2>
+                <p class="text-sys-muted mt-2">Formalizzare il metodo empirico in un sistema scalabile e replicabile.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-sys-panel p-6 rounded-lg border border-gray-700 opacity-70">
+                    <h3 class="text-xl font-bold text-gray-400 mb-4">La Genesi: OB1 Global (Artigianale)</h3>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li>&#8226; <strong class="text-gray-400">Livello 1:</strong> Scraping Python eterogeneo (300 segnali/settimana).</li>
+                        <li>&#8226; <strong class="text-gray-400">Livello 2:</strong> Filtraggio narrativo (LOOM).</li>
+                        <li>&#8226; <strong class="text-gray-400">Livello 3:</strong> Filtro Umano singolo (Collo di bottiglia).</li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-red-900/10 border border-red-900 rounded text-xs text-red-400">
+                        <strong>LIMITI:</strong> Dipendenza dall'operatore, Bias non contestato, Non trasferibilità.
+                    </div>
+                </div>
+                <div class="bg-sys-panel p-6 rounded-lg border border-sys-green shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+                    <h3 class="text-xl font-bold text-white mb-4">L'Evoluzione: Theseus Protocol</h3>
+                    <p class="text-sm text-gray-300 mb-4">Sostituire il consenso con il conflitto strutturato.</p>
+                    <div class="space-y-3">
+                        <div class="node-card bg-sys-dark p-3 rounded border border-blue-900">
+                            <div class="flex justify-between"><span class="font-mono text-blue-400 font-bold">NODO ALPHA</span><span class="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded">Ottimista</span></div>
+                            <p class="text-xs text-gray-500 mt-1">Pattern Extraction. Cerca anomalie positive e segnali deboli.</p>
+                        </div>
+                        <div class="node-card bg-sys-dark p-3 rounded border border-red-900">
+                            <div class="flex justify-between"><span class="font-mono text-red-400 font-bold">NODO BETA</span><span class="text-xs bg-red-900 text-red-300 px-2 py-0.5 rounded">Scettico</span></div>
+                            <p class="text-xs text-gray-500 mt-1">Stress-Test Statistico. Demolisce le tesi con dati storici.</p>
+                        </div>
+                        <div class="node-card bg-sys-dark p-3 rounded border border-purple-900">
+                            <div class="flex justify-between"><span class="font-mono text-purple-400 font-bold">NODO GAMMA</span><span class="text-xs bg-purple-900 text-purple-300 px-2 py-0.5 rounded">Caotico</span></div>
+                            <p class="text-xs text-gray-500 mt-1">Iniezione di Realtà. Contesta con dati real-time e macro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-sys-dark border border-gray-800 rounded-lg p-6">
+                <h3 class="text-lg font-bold text-white mb-2">Scalabilità: La Pipeline OB1 Serie C</h3>
+                <p class="text-sm text-gray-400 mb-4">L'architettura elabora dati sporchi in modo asincrono, senza infrastrutture costose.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-3 bg-sys-panel rounded border border-gray-700"><div class="text-2xl font-mono text-sys-green">0-5$</div><div class="text-xs text-gray-500">Costo/Mese</div></div>
+                    <div class="p-3 bg-sys-panel rounded border border-gray-700"><div class="text-2xl font-mono text-sys-green">JSON</div><div class="text-xs text-gray-500">File Based DB</div></div>
+                    <div class="p-3 bg-sys-panel rounded border border-gray-700"><div class="text-2xl font-mono text-sys-green">6h</div><div class="text-xs text-gray-500">Ciclo Cron</div></div>
+                    <div class="p-3 bg-sys-panel rounded border border-gray-700"><div class="text-2xl font-mono text-sys-green">Agnostic</div><div class="text-xs text-gray-500">Global & Local</div></div>
+                </div>
+            </div>
+
+            <!-- Full Text: Sections 1 & 3 -->
+            <div class="border border-gray-800 rounded-lg bg-sys-panel overflow-hidden">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer list-none p-4 text-sys-green hover:bg-sys-dark transition-colors border-b border-gray-800">
+                        <span class="font-mono text-sm">> LEGGI IL TESTO INTEGRALE: SEZIONI 1 & 3</span>
+                        <span class="transition group-open:rotate-180 text-xl text-gray-500">&#9660;</span>
+                    </summary>
+                    <div class="p-6 bg-sys-black prose-custom">
+                        <h3>SEZIONE 1: DALL'ARTIGIANATO ALL'ARCHITETTURA AVVERSARIALE</h3>
+                        <h4>1.1 La Genesi: Il Metodo Empirico</h4>
+                        <p>Il protocollo descritto in questo documento non è nato in un laboratorio. È nato dalla necessità operativa di un singolo analista di processare più informazioni di quante un essere umano possa gestire manualmente.</p>
+                        <p>Tra il 2024 e il 2025, il sistema OB1 Global ha operato come infrastruttura di intelligence per lo scouting calcistico giovanile, coprendo simultaneamente 6 regioni geografiche (Sud America, Africa, Asia, Europa, Nord America, area internazionale) e processando oltre 300 segnali a settimana in 7 lingue diverse.</p>
+                        <p>Il metodo era artigianale ma efficace. Funzionava su tre livelli:</p>
+                        <ul>
+                            <li><strong>Livello 1 — Acquisizione automatizzata.</strong> Script Python di scraping interrogavano quotidianamente fonti eterogenee (federazioni, portali di trasferimento, media regionali) in cerca di anomalie: debutti precoci, convocazioni inattese, movimenti di mercato non coperti dai media mainstream. Il sistema assegnava un punteggio numerico (0-100) a ogni segnale basandosi su parametri come freschezza, tipo di evento, età del giocatore e qualità della fonte.</li>
+                            <li><strong>Livello 2 — Filtraggio narrativo.</strong> I segnali grezzi venivano processati attraverso un layer di analisi assistita da AI (denominato "LOOM") che trasformava i dati in intelligence leggibile, assegnando priorità operative (HIGH/MEDIUM/LOW/NOISE) e generando raccomandazioni d'azione con stime di tempo di investimento.</li>
+                            <li><strong>Livello 3 — Il Filtro Umano.</strong> L'analista (l'autore di questo documento, con 13 anni di esperienza nel coaching e scouting calcistico) valutava i segnali filtrati, applicava conoscenza di dominio non digitalizzabile — pattern tattici, dinamiche di sviluppo giovanile, contesto culturale delle leghe regionali — e produceva i report finali pubblicati su Substack con timestamp pubblici.</li>
+                        </ul>
+                        <p>Questo metodo ha prodotto i risultati documentati nella Sezione 2: l'identificazione dell'inefficienza di mercato su Neiser Villarreal, il rilevamento precoce di Gilberto Mora, e la copertura sistematica di oltre 150 profili su 6 continenti. Il metodo funzionava. Ma aveva tre limiti strutturali.</p>
+                        <h4>1.2 I Tre Limiti del Metodo Artigianale</h4>
+                        <ul>
+                            <li><strong>Limite 1: Collo di bottiglia umano.</strong> Il Filtro Umano era un singolo individuo. Ogni segnale doveva passare attraverso lo stesso analista, che operava con vincoli di tempo significativi. La capacità di processamento era linearmente limitata dalla disponibilità fisica dell'operatore. Il sistema non poteva scalare oltre le ore disponibili.</li>
+                            <li><strong>Limite 2: Bias di conferma non contestato.</strong> Quando un singolo analista valuta un segnale, il suo giudizio è soggetto ai propri bias cognitivi. Se l'analista ha una preferenza inconscia per un certo asset, nessun meccanismo interno corregge quella distorsione. Il sistema produceva output di qualità, ma non aveva un meccanismo di stress-test integrato.</li>
+                            <li><strong>Limite 3: Non trasferibilità.</strong> Il metodo dipendeva interamente dalla competenza di dominio dell'analista. Se l'indagine veniva sostituita con un altro dominio (finanza, geopolitica, HR), il Livello 1 (scraping) e il Livello 2 (filtraggio AI) potevano essere adattati, ma il Livello 3 richiedeva un esperto completamente diverso. Il metodo non era un protocollo — era un processo personale.</li>
+                        </ul>
+                        <h4>1.3 L'Evoluzione: Il Protocollo Avversariale</h4>
+                        <p>Il <em>Ship of Theseus Protocol</em> nasce per risolvere questi tre limiti, formalizzando il metodo artigianale in un'architettura replicabile. Il principio fondamentale è semplice: sostituire il consenso con il conflitto strutturato.</p>
+                        <p>Nella maggior parte delle implementazioni AI attuali, un singolo modello riceve un prompt e produce una risposta. Quella risposta è intrinsecamente conservativa: il modello converge verso l'output più probabile dato il suo training. Questo è utile per la scrittura o la programmazione. È controproducente per l'intelligence, dove il valore si trova nelle anomalie, non nelle regolarità.</p>
+                        <p>Il protocollo introduce tre nodi in opposizione:</p>
+                        <ul>
+                            <li><strong>Nodo Alpha (Pattern Extraction).</strong> Un agente AI programmato per cercare anomalie positive — segnali deboli, correlazioni improbabili, pattern emergenti. Questo nodo è ottimista per design: il suo compito è generare ipotesi di rottura.</li>
+                            <li><strong>Nodo Beta (Stress-Test Statistico).</strong> Un agente AI programmato per demolire le ipotesi del Nodo Alpha usando dati storici, tassi di fallimento e analisi di regressione. Questo nodo è scettico per design: il suo compito è distruggere le tesi deboli.</li>
+                            <li><strong>Nodo Gamma (Iniezione di Realtà).</strong> Un agente AI con accesso a dati in tempo reale (sentiment social, flussi di notizie, segnali non strutturati) programmato per contestare sia Alpha che Beta con informazioni macro che nessuno dei due ha considerato. Questo nodo è caotico per design: il suo compito è introdurre l'imprevedibilità del mercato reale.</li>
+                        </ul>
+                        <p>Quando i tre nodi convergono su un segnale, la probabilità che quel segnale sia genuino è elevata. Quando divergono, lo stallo risultante è informativo: indica che l'asset richiede l'arbitraggio del Filtro Umano (Level 3).</p>
+                        <p>Il Filtro Umano non scompare nel protocollo — cambia ruolo. Nel metodo artigianale, l'analista doveva processare ogni segnale. Nel protocollo, l'analista interviene solo quando il sistema produce uno stallo, concentrando la sua competenza di dominio sui casi ad alta ambiguità dove il suo valore aggiunto (e il suo prezzo sul mercato) è massimo.</p>
+                        <h4>1.4 Il Ponte: Dalla Prova alla Scala</h4>
+                        <p>La relazione tra il metodo artigianale (OB1) e il protocollo formale (Ship of Theseus) non è di sostituzione ma di evoluzione:</p>
+                        <ul>
+                            <li>I risultati empirici (Sezione 2) dimostrano che il principio funziona: l'attrito tra dati automatizzati e giudizio umano estrae valore innegabile.</li>
+                            <li>L'architettura avversariale (questo protocollo) formalizza quel principio in un sistema dove l'attrito è ingegnerizzato e strutturale, non accidentale.</li>
+                            <li>La trasferibilità (Sezione 4) diventa possibile perché il protocollo non dipende più dalla competenza di un singolo esperto su un singolo dominio, ma da un'architettura che può accogliere esperti diversi su domini diversi.</li>
+                        </ul>
+                        <p class="font-bold text-white italic">Il calcio è stato il laboratorio. Il protocollo è il prodotto.</p>
+                        <hr class="border-gray-800 my-8">
+                        <h3>SEZIONE 3: PILASTRO 2 — SCALABILITÀ E AUTOMAZIONE (PRESENTE)</h3>
+                        <p>La Sezione 2 ha dimostrato che il principio di estrazione funziona: un sistema di data-mining combinato con un filtro umano identifica inefficienze di mercato prima dei database mainstream. Ma un principio che funziona solo quando un singolo operatore lo gestisce manualmente non è un protocollo. È un talento personale.</p>
+                        <p>La prova che il metodo è ingegnerizzabile — e non dipendente dall'individuo — viene da un secondo sistema, costruito su un ecosistema dati diverso, con un'architettura completamente automatizzata.</p>
+                        <h4>3.1 Pipeline Asincrona a Costo Zero (MVP)</h4>
+                        <p>OB1 Serie C è un sistema live di intelligence sul mercato calcistico italiano di terza e quarta divisione (Serie C e Serie D). A differenza di OB1 Global (che copriva talento U20 worldwide), OB1 Serie C opera in un mercato domestico caratterizzato da dati sporchi, fonti frammentate e copertura mediatica quasi inesistente.</p>
+                        <p>Il sistema MVP è progettato con un'architettura "offline-first" e "file-based" che elimina la necessità di infrastrutture cloud complesse:</p>
+                        <ul>
+                            <li>Scraping automatizzato via GitHub Actions, eseguito ogni 6 ore (00:00, 06:00, 12:00, 18:00 UTC).</li>
+                            <li>Database JSON su file system, versionato con Git. Nessun database SQL in cloud.</li>
+                            <li>Analisi e scoring via API LLM (con RAG su File Search).</li>
+                            <li>Interfaccia utente: PWA statica deployata su GitHub Pages. Zero costi di hosting.</li>
+                            <li>Notifiche: Bot Telegram per alert in tempo reale su svincolati, trasferimenti e segnali ad alta priorità.</li>
+                        </ul>
+                        <p>Il costo operativo mensile per questo setup dimostrativo è compreso tra $0 e $5 (sfruttando i free-tier delle API). Scalare questo modello a volumi istituzionali richiederà budget API standard, ma l'architettura base dimostra il punto focale: un ecosistema di intelligence letale non richiede infrastrutture legacy da milioni di dollari. Il vincolo non è il budget — è la competenza architetturale.</p>
+                        <h4>3.2 Esecuzione in Dominio Vincolato (Dati Sporchi)</h4>
+                        <p>OB1 Serie C opera in un ambiente dove i dati sono strutturalmente peggiori rispetto al mercato globale. Le leghe inferiori non hanno la copertura internazionale, i profili sono incompleti, e le fonti sono blog locali o comunicati societari criptici. È l'ambiente più ostile possibile per un'automazione.</p>
+                        <p>Nonostante questo, il sistema ha prodotto un "Signal Detection" verificabile a livello locale:</p>
+                        <ul>
+                            <li><strong>Identificazione di Asset Oculati:</strong> Il sistema flagga in tempo reale rescissioni contrattuali di Lega Pro, giocatori svincolati fuori radar e movimenti di mercato anomali prima che vengano aggregati dai portali sportivi nazionali.</li>
+                            <li><strong>Copertura sistematica:</strong> Nei primi mesi di operatività, il sistema ha processato e filtrato centinaia di profili di terza divisione, isolando le vere opportunità operative (prestiti strategici, parametri zero) con un tasso di falsi positivi estremamente basso per la categoria.</li>
+                        </ul>
+                        <h4>3.3 La Prova di Trasferibilità (Dataset-Agnostic)</h4>
+                        <p>L'esistenza stessa di due sistemi OB1 — uno globale e uno domestico/locale — dimostra che il protocollo è <em>dataset-agnostic</em>. Non è legato alla qualità di un singolo feed.</p>
+                        <p>I due sistemi condividono la stessa architettura logica: scraping → scoring → filtraggio → output narrativo. Ma operano su input opposti:</p>
+                        <ul>
+                            <li><strong>OB1 Global:</strong> Alta visibilità, dati abbondanti ma rumorosi, bias di brand dominante. Segnali: anticipazione macro.</li>
+                            <li><strong>OB1 Serie C:</strong> Bassa visibilità, dati scarsi e frammentati, bias locale. Segnali: opportunità tattiche immediate.</li>
+                        </ul>
+                        <p>Se la medesima architettura produce segnale su due ecosistemi di dati con caratteristiche opposte, il metodo supera il vincolo strutturale dei database sportivi e si prepara all'astrazione totale.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ==================== EVIDENCE ==================== -->
+        <section id="evidence" class="hidden space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-3xl font-bold text-white">Prove Empiriche (Il Passato)</h2>
+                <p class="text-sys-muted mt-2">Documentazione di inefficienze di mercato rilevate tramite timestamp pubblici.</p>
+            </div>
+            <div class="space-y-12">
+                <!-- VILLARREAL -->
+                <div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6">
+                        <div><h3 class="text-2xl font-bold text-sys-green mb-1">2.1 L'Anomalia Villarreal</h3><p class="text-sm text-gray-400">Bias di Brand vs Performance Reale. (Report #004, 17 Set 2025)</p></div>
+                        <div class="mt-4 md:mt-0 px-3 py-1 bg-gray-800 rounded text-xs text-gray-300 font-mono">STATUS: VALIDATO (Gen 2026)</div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+                        <div class="bg-sys-panel p-4 rounded-lg border border-gray-800 flex flex-col items-center">
+                            <h4 class="text-sm font-bold text-gray-300 w-full text-center mb-4">Bias di Brand: Performance vs Prezzo</h4>
+                            <div class="chart-container bg-sys-black rounded border border-gray-800 p-2 w-full"><canvas id="biasChart"></canvas></div>
+                            <p class="text-xs text-center text-gray-500 mt-3 w-full">Echeverri (River) vs Villarreal (Millonarios). Stesso torneo.</p>
+                        </div>
+                        <div class="bg-sys-panel p-4 rounded-lg border border-gray-800 flex flex-col items-center">
+                            <h4 class="text-sm font-bold text-gray-300 w-full text-center mb-4">Latenza di Mercato & Finestra Alpha</h4>
+                            <div class="chart-container bg-sys-black rounded border border-gray-800 p-2 w-full"><canvas id="latencyChart"></canvas></div>
+                            <p class="text-xs text-center text-gray-500 mt-3 w-full">Il mercato mainstream ha ignorato l'asset per 7 mesi post-breakout.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-sys-dark border-l-4 border-sys-green"><div class="text-xs text-gray-500 mb-1">VALUTAZIONE TRANSFERMARKT</div><div class="text-xl font-mono text-white">&#8364;1.8M</div><div class="text-xs text-red-400 mt-1">Latenza istituzionale (Feb 26)</div></div>
+                        <div class="p-4 bg-sys-dark border-l-4 border-sys-green"><div class="text-xs text-gray-500 mb-1">CLAUSOLA CRUZEIRO</div><div class="text-xl font-mono text-sys-green">&#8364;51.0M</div><div class="text-xs text-gray-400 mt-1">Valore reale di mercato</div></div>
+                        <div class="p-4 bg-sys-dark border-l-4 border-sys-green"><div class="text-xs text-gray-500 mb-1">DIFFERENZIALE ALPHA</div><div class="text-xl font-mono text-white">>28x</div><div class="text-xs text-gray-400 mt-1">Asimmetria estratta dal sistema</div></div>
+                    </div>
+                </div>
+                <!-- MORA -->
+                <div class="pt-8 border-t border-gray-800">
+                    <h3 class="text-xl font-bold text-white mb-2">2.2 Signal Detection: Gilberto Mora</h3>
+                    <p class="text-sm text-gray-400 mb-4 max-w-3xl">Il sistema ha flaggato Mora (Settembre 2025) isolandolo come priorità assoluta durante la fase iniziale di repricing, prima che l'inflazione mediatica globale ne saturasse il valore.</p>
+                    <div class="bg-sys-dark p-4 rounded border border-dashed border-gray-700 font-mono text-xs text-sys-green">
+                        <span class="text-gray-500">> SYSTEM LOG: ID_MORA_08 detected.</span><br>
+                        <span class="text-gray-500">> METRIC: Youngest Scorer Liga MX.</span><br>
+                        <span class="text-sys-green">> ACTION: Flagged HIGH_PRIORITY. Asset in early repricing phase.</span><br>
+                        <span class="text-sys-green">> NOTE: Signal detection on underpriced asset, pre-institutional coverage.</span><br>
+                        <span class="text-gray-500">> STATUS: Signal Validated.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Text: Section 2 -->
+            <div class="border border-gray-800 rounded-lg bg-sys-panel overflow-hidden">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer list-none p-4 text-sys-green hover:bg-sys-dark transition-colors border-b border-gray-800">
+                        <span class="font-mono text-sm">> LEGGI IL TESTO INTEGRALE: SEZIONE 2</span>
+                        <span class="transition group-open:rotate-180 text-xl text-gray-500">&#9660;</span>
+                    </summary>
+                    <div class="p-6 bg-sys-black prose-custom">
+                        <h3>SEZIONE 2: PILASTRO 1 - LA PROVA EMPIRICA (PASSATO)</h3>
+                        <p>Il sistema OB1 Global ha funzionato come primo laboratorio empirico per l'estrazione di Alpha. L'obiettivo non era sostituire gli scout umani, ma identificare il ritardo strutturale (latenza) tra l'esplosione di un asset e la sua prezzatura da parte del mercato mainstream. Le prove che seguono sono documentate tramite timestamp pubblici e verificabili.</p>
+                        <h4>2.1 L'Anomalia Villarreal (Il Caso Studio Principale)</h4>
+                        <p>Il 17 settembre 2025, il sistema OB1 ha isolato un segnale anomalo, a partire dal quale il Filtro Umano ha analizzato e steso il <em>Report #004: The Villarreal Timeline</em>. Il report documentava l'esatta dinamica con cui i mercati istituzionali e i media mainstream ignorano sistematicamente asset ad alto rendimento a causa del "Bias di Brand".</p>
+                        <p><strong>I Fatti Base (Rilevamento al 17/09/2025)</strong></p>
+                        <ul>
+                            <li><strong>Asset:</strong> Neiser Villarreal, 19 anni, Colombia.</li>
+                            <li><strong>Performance:</strong> 8 gol al Campionato Sudamericano U20 (Top Scorer del torneo, svoltosi a Gennaio-Febbraio 2025).</li>
+                            <li><strong>Trigger di sistema:</strong> Pubblicazione di un articolo su Olympics.com intitolato <em>"Who is Neiser Villarreal?"</em>.</li>
+                        </ul>
+                        <p><strong>Il Confronto Asimmetrico (Il Bias di Mercato)</strong><br>Il sistema ha immediatamente isolato una discrepanza di valutazione macroscopica confrontando Villarreal con Claudio Echeverri (Argentina). Nello stesso torneo, Echeverri ha segnato 6 gol. Il Manchester City ha finalizzato un accordo per Echeverri per un costo complessivo superiore ai &#8364;15M. Villarreal ha segnato 8 gol (superando Echeverri), ma la sua valutazione stimata era inferiore a &#8364;3M. La differenza non risiedeva nei fondamentali tecnici, ma nell'esposizione mediatica: Echeverri giocava nel River Plate (brand globale, massima copertura), Villarreal nei Millonarios (brand regionale, copertura limitata). Il mercato stava premiando la visibilità, non il talento puro.</p>
+                        <p><strong>La Latenza e la Finestra di Opportunità</strong><br>La forza di questo caso non risiede nell'anticipazione dell'esplosione sportiva (avvenuta mesi prima), ma nella documentazione di un'inefficienza di mercato macroscopica e persistente: sette mesi dopo aver dominato il torneo, a settembre 2025, il mercato mainstream (Transfermarkt) prezzava ancora Villarreal sotto i &#8364;3M.</p>
+                        <p>Il sistema ha classificato Villarreal in "Fase 2" di un pattern predittivo ripetibile:</p>
+                        <ul>
+                            <li><em>Fase 1 (Pre-Breakout):</em> Debutto in prima squadra, zero gol. Valore &lt;&#8364;500K.</li>
+                            <li><em>Fase 2 (Validazione):</em> Esplosione in torneo internazionale U20 (8 gol). Valore &#8364;2-3M. <strong>(Finestra di latenza identificata da OB1).</strong></li>
+                            <li><em>Fase 3 (Inflazione):</em> Attivazione degli scout istituzionali europei. Il prezzo si allinea al mercato globale (&#8364;8-15M+).</li>
+                        </ul>
+                        <p><strong>La Validazione Empirica (Stato dell'Asset a Febbraio 2026)</strong><br>La tesi formulata dal filtro umano nel Report #004 è stata brutalmente validata:</p>
+                        <ul>
+                            <li><strong>L'Interesse:</strong> Fonti specializzate hanno riportato l'invio di scout di primo livello (Chelsea) a Bogotà.</li>
+                            <li><strong>L'Esecuzione:</strong> A Gennaio 2026, Villarreal firma per il Cruzeiro.</li>
+                            <li><strong>L'Estrazione del Valore:</strong> Clausola rescissoria fissata a <strong>&#8364;51.000.000</strong> per i club europei.</li>
+                            <li><strong>La Latenza del Database:</strong> A febbraio 2026, Transfermarkt stima ancora il valore a soli <strong>&#8364;1.8M</strong>.</li>
+                        </ul>
+                        <p><strong>Conclusione del Caso Studio:</strong> Il mercato lineare istituzionale ha un ritardo fisiologico nella prezzatura degli eventi non lineari. Il protocollo ha isolato l'inefficienza generata dal brand, confermando l'opportunità di acquisire un potenziale asset da &#8364;51M mentre i database globali lo valutavano a frazioni minime di quel prezzo.</p>
+                        <h4>2.2 Il Rilevamento Precoce e la Signal Detection (Il Caso Gilberto Mora)</h4>
+                        <p>A inizio settembre 2025, il sistema di scraping automatizzato di OB1 ha flaggato Gilberto Mora (messicano, classe 2008) includendolo tra le opportunità ad altissima priorità (Timestamp verificabile: post pubblico LinkedIn <em>"Oggi OB1 ha individuato Gilberto Mora"</em>).</p>
+                        <p>In quel momento specifico, Mora non era uno "sconosciuto" in termini assoluti: aveva appena debuttato come il più giovane marcatore della storia della Liga MX ed era stato protagonista con la nazionale maggiore alla Gold Cup. Tuttavia, la sua valutazione sui database centralizzati mainstream non si era ancora aggiustata per riflettere la gravità statistica delle sue performance.</p>
+                        <p>Il sistema non ha "scoperto" il giocatore dal nulla, ma ha svolto la sua funzione primaria: <strong>ha identificato l'asset nella fase iniziale della sua traiettoria di repricing</strong>, isolandolo tempestivamente prima che i flussi di informazione globali e istituzionali ne gonfiassero artificialmente la visibilità e il valore d'asta. (Questo medesimo pattern ha permesso di individuare profili come Mateo Silvetti ben 8 settimane prima del suo trasferimento da &#8364;4M in MLS).</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ==================== FUTURE & LIMITS ==================== -->
+        <section id="future" class="hidden space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-3xl font-bold text-white">Futuro & Trasferibilità</h2>
+                <p class="text-sys-muted mt-2">Dallo Scouting Calcio alla Corporate Intelligence. Il protocollo è dataset-agnostic.</p>
+            </div>
+            <div class="space-y-8">
+                <!-- Translator -->
+                <div class="bg-sys-panel rounded-lg border border-gray-700 overflow-hidden">
+                    <div class="bg-sys-dark p-4 flex justify-between items-center border-b border-gray-700">
+                        <h3 class="text-lg font-bold text-white">Mappatura Strutturale</h3>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs text-gray-400">MODE:</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="domainToggle" class="sr-only peer" onchange="toggleDomain()">
+                                <div class="relative w-11 h-6 bg-gray-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sys-blue"></div>
+                                <span id="domainLabel" class="ms-3 text-sm font-medium text-white">CALCIO</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-sm text-gray-400 mb-6">Le dinamiche del mercato calcistico sono strutturalmente identiche ai mercati complessi:</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start"><span class="text-sys-green mr-2">&#10148;</span><div><strong class="text-white block text-sm">Target</strong><span id="txt-target" class="text-gray-400 text-sm">Scouting di Asset (Giocatori U20)</span></div></li>
+                                    <li class="flex items-start"><span class="text-sys-green mr-2">&#10148;</span><div><strong class="text-white block text-sm">Database di Riferimento</strong><span id="txt-db" class="text-gray-400 text-sm">Transfermarkt (Dati Pubblici)</span></div></li>
+                                    <li class="flex items-start"><span class="text-sys-green mr-2">&#10148;</span><div><strong class="text-white block text-sm">Bias Principale</strong><span id="txt-bias" class="text-gray-400 text-sm">Bias di Brand (River Plate vs Regionali)</span></div></li>
+                                    <li class="flex items-start"><span class="text-sys-green mr-2">&#10148;</span><div><strong class="text-white block text-sm">Filtro Umano (Level 3)</strong><span id="txt-filter" class="text-gray-400 text-sm">Scout Esperto (UEFA B / PFSA)</span></div></li>
+                                </ul>
+                            </div>
+                            <div class="bg-sys-dark p-4 rounded border border-gray-800 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-4xl mb-2">&#9889;</div>
+                                    <h4 class="font-bold text-white">Invito al Red Teaming</h4>
+                                    <p class="text-xs text-gray-500 mt-2 max-w-xs mx-auto">Cerchiamo partner istituzionali (Family Office, Strategy Unit) per eseguire un pilot su dati reali nel nuovo dominio.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Limits -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-white">Limiti e Rischi del Sistema</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 border border-red-900/50 bg-red-900/10 rounded"><h4 class="text-red-400 font-bold text-sm mb-1">False Positive Rate</h4><p class="text-xs text-gray-400">I modelli LLM allucinano. Tasso fisiologico &lt;15% su dati calcistici. Aumenta se la qualità OSINT degrada.</p></div>
+                        <div class="p-4 border border-red-900/50 bg-red-900/10 rounded"><h4 class="text-red-400 font-bold text-sm mb-1">Dipendenza Level 3</h4><p class="text-xs text-gray-400">Senza il Filtro Umano, lo "Stallo Logico" porta alla paralisi. Il sistema non produce ordini esecutivi autonomi.</p></div>
+                        <div class="p-4 border border-red-900/50 bg-red-900/10 rounded"><h4 class="text-red-400 font-bold text-sm mb-1">Latenza Temporale</h4><p class="text-xs text-gray-400">Progettato per Intelligence Strategica (giorni/settimane), non per High-Frequency Trading (millisecondi).</p></div>
+                        <div class="p-4 border border-red-900/50 bg-red-900/10 rounded"><h4 class="text-red-400 font-bold text-sm mb-1">Soglia Critica di Dati</h4><p class="text-xs text-gray-400">Nei "black swan" totali o in mercati sottoposti a censura, l'informazione open-source scarseggia, degradando l'output.</p></div>
+                    </div>
+                </div>
+                <!-- CTA -->
+                <div class="bg-gradient-to-r from-sys-green/20 to-transparent p-8 rounded-lg border-l-4 border-sys-green mt-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">Livelli di Accesso</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                        <div><strong class="text-sys-green block">LEVEL 1 (Open Core)</strong><p class="text-xs text-gray-400 mt-1">Architettura pubblica. BYOK (Bring Your Own Key). Auditabile su GitHub.</p></div>
+                        <div><strong class="text-sys-green block">LEVEL 2 (Docs)</strong><p class="text-xs text-gray-400 mt-1">Prompt pattern, specifiche di implementazione e calibrazione.</p></div>
+                        <div><strong class="text-white block">LEVEL 3 (Istituzionale)</strong><p class="text-xs text-gray-300 mt-1">Implementazione completa con Filtro Umano e Dataset Proprietari. Per Capital Allocators.</p></div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <p class="text-sm font-mono text-gray-300">Contatto diretto: <span class="text-sys-green">info@matchanalysispro.online</span></p>
+                        <p class="text-xs text-gray-500 mt-1">Mirko Tornani | San Marino</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Text: Sections 4 & 5 -->
+            <div class="border border-gray-800 rounded-lg bg-sys-panel overflow-hidden">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer list-none p-4 text-sys-green hover:bg-sys-dark transition-colors border-b border-gray-800">
+                        <span class="font-mono text-sm">> LEGGI IL TESTO INTEGRALE: SEZIONI 4 & 5</span>
+                        <span class="transition group-open:rotate-180 text-xl text-gray-500">&#9660;</span>
+                    </summary>
+                    <div class="p-6 bg-sys-black prose-custom">
+                        <h3>SEZIONE 4: PILASTRO 3 — TRASFERIBILITÀ DEL PROTOCOLLO (FUTURO)</h3>
+                        <p>Questa sezione è esplicitamente speculativa. Non contiene prove empiriche proprie. Contiene un'ipotesi strutturata, fondata sulla logica dei sistemi e sull'evidenza dell'astrazione logica del protocollo.</p>
+                        <h4>4.1 Decostruzione Strutturale del Dominio</h4>
+                        <p>Il mercato calcistico possiede le seguenti proprietà sistemiche: alta volatilità, asimmetria informativa, bias cognitivi (il "Bias di brand" distorce i prezzi), e decisioni irrazionali (gli operatori comprano per pressioni esterne, non algoritmi perfetti).</p>
+                        <p>Queste non sono dinamiche esclusive del calcio. Sono le proprietà strutturali di <strong>qualsiasi mercato complesso</strong> dove esseri umani prendono decisioni con informazioni incomplete.</p>
+                        <p>L'ipotesi fondante è che lo stesso motore che identifica un asset sportivo underpriced possa, cambiando esclusivamente l'input e il Filtro Umano, identificare un rischio macroeconomico sottovalutato o un'opportunità di Private Equity invisibile ai radar tradizionali.</p>
+                        <h4>4.2 Come Si Testerebbe</h4>
+                        <p>Il protocollo applicato a un dominio esterno richiederebbe tre adattamenti:</p>
+                        <ul>
+                            <li><strong>Sostituzione del Livello 1 (Scraping):</strong> Fonti calcistiche sostituite da fonti OSINT (SEC filings, database brevettuali, sentiment social, dati logistici marittimi).</li>
+                            <li><strong>Adattamento del Livello 2 (Avversariale):</strong> I nodi Alpha, Beta e Gamma ricalibrati sui tassi di fallimento del nuovo dominio.</li>
+                            <li><strong>Nuovo Filtro Umano (Level 3):</strong> L'esperto non è più uno scout, ma un analista macro o un executive recruiter. L'architettura software resta identica.</li>
+                        </ul>
+                        <p>Questa è un'ipotesi formale. L'invito è aperto: si valutano partnership con istituzioni (family office, unità di corporate strategy) disposte a eseguire un <em>pilot</em> su dati reali nel loro dominio, utilizzando l'infrastruttura di Level 1 e inserendo il proprio Filtro Umano Level 3.</p>
+                        <hr class="border-gray-800 my-8">
+                        <h3>SEZIONE 5: LIMITI E RISCHI DEL SISTEMA</h3>
+                        <p>Qualsiasi sistema ingegneristico che non dichiara i propri limiti di tolleranza è marketing, non ingegneria. Questa sezione documenta le condizioni in cui il protocollo degrada o fallisce.</p>
+                        <ul>
+                            <li><strong>False Positive Rate:</strong> I modelli LLM hanno un tasso intrinseco di "allucinazione". Su dati molto sporchi, il sistema può generare ipotesi plausibili ma false. Nel dominio calcistico, il tasso di falsi positivi è stato marginale (&lt;15%), ma l'errore aumenta se la qualità dell'OSINT si deteriora.</li>
+                            <li><strong>Soglia critica di dati:</strong> Il sistema necessita di un volume minimo di input. Nei "black swan" totali o in mercati sottoposti a pesante censura governativa, l'efficacia decade.</li>
+                            <li><strong>Latenza Temporale:</strong> Progettato per l'Intelligence Strategica (giorni/settimane), non per l'High-Frequency Trading.</li>
+                            <li><strong>Dipendenza dal Filtro Umano (Level 3):</strong> Senza il Level 3, il sistema è un magnifico generatore di dubbi, ma non produce execute-orders sicuri.</li>
+                        </ul>
+                        <hr class="border-gray-800 my-8">
+                        <h3>CONCLUSIONE E CALL TO ACTION</h3>
+                        <h4>Sintesi</h4>
+                        <p>Questo documento ha presentato tre livelli di evidenza:</p>
+                        <ul>
+                            <li><strong>Il principio funziona (Sezione 2):</strong> L'attrito tra data-mining e giudizio umano specializzato estrae valore innegabile (clausola da &#8364;51M vs valutazione istituzionale a &#8364;1.8M).</li>
+                            <li><strong>Il metodo scala (Sezione 3):</strong> L'architettura ha operato sia a livello globale che locale (dati sporchi, Serie C), confermando l'astrazione dai vincoli del dataset.</li>
+                            <li><strong>Il protocollo è formale (Sezione 1):</strong> L'architettura avversariale a 3 nodi codifica in software ciò che prima richiedeva ore di lavoro manuale.</li>
+                        </ul>
+                        <h4>Livelli di Accesso</h4>
+                        <ul>
+                            <li><strong>Level 1 (Open Core):</strong> Architettura del protocollo e principi cardine. BYOK sui propri dati.</li>
+                            <li><strong>Level 2 (Documentazione):</strong> Specifiche di implementazione, prompt pattern e calibrazione.</li>
+                            <li><strong>Level 3 (Implementazione Istituzionale):</strong> Il Filtro Umano, calibrato su dataset proprietari, converte l'asimmetria in segnale operativo.</li>
+                        </ul>
+                        <p><strong>Contatto</strong><br>Il protocollo è aperto. Le prove sono verificabili. I limiti sono dichiarati.<br>Per audit tecnici, red-teaming dei vostri portafogli, o implementazioni istituzionali di Level 3:<br><br><strong>Mirko Tornani</strong><br>Email: info@matchanalysispro.online<br>LinkedIn: linkedin.com/in/mirkotornani</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const sections = ['summary', 'architecture', 'evidence', 'future'];
+        
+        function nav(sectionId) {
+            sections.forEach(id => document.getElementById(id).classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            const btn = document.querySelector(`button[onclick="nav('${sectionId}')"]`);
+            if(btn && btn.classList.contains('nav-item')) btn.classList.add('active');
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0,0);
+            if(sectionId === 'evidence') renderCharts();
+        }
+
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+        function toggleDomain() {
+            const isFinance = document.getElementById('domainToggle').checked;
+            const label = document.getElementById('domainLabel');
+            if (isFinance) {
+                label.innerText = "FINANZA";
+                label.className = "ms-3 text-sm font-medium text-sys-blue";
+                document.getElementById('txt-target').innerText = "OSINT su Asset (Aziende / Macro-trend)";
+                document.getElementById('txt-db').innerText = "Bloomberg / Reuters (Database Istituzionale)";
+                document.getElementById('txt-bias').innerText = "Bias di Brand (Fortune 500 vs Mid-Cap)";
+                document.getElementById('txt-filter').innerText = "Analista Macro / Executive Recruiter";
+            } else {
+                label.innerText = "CALCIO";
+                label.className = "ms-3 text-sm font-medium text-white";
+                document.getElementById('txt-target').innerText = "Scouting di Asset (Giocatori U20)";
+                document.getElementById('txt-db').innerText = "Transfermarkt (Dati Pubblici)";
+                document.getElementById('txt-bias').innerText = "Bias di Brand (River Plate vs Regionali)";
+                document.getElementById('txt-filter').innerText = "Scout Esperto (UEFA B / PFSA)";
+            }
+        }
+
+        let biasChartInstance = null;
+        let latencyChartInstance = null;
+
+        function renderCharts() {
+            const ctxBias = document.getElementById('biasChart');
+            if (biasChartInstance) biasChartInstance.destroy();
+            if(ctxBias) {
+                biasChartInstance = new Chart(ctxBias, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Neiser Villarreal', 'Claudio Echeverri'],
+                        datasets: [
+                            { label: 'Goal U20 (Performance)', data: [8, 6], backgroundColor: '#00ff41', yAxisID: 'y' },
+                            { label: 'Prezzo Mercato Mainstream (M)', data: [1.8, 15.0], backgroundColor: '#3388ff', yAxisID: 'y1' }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#aaa' } },
+                            tooltip: { callbacks: { afterBody: function(ctx) { if(ctx[0].label === 'Neiser Villarreal') return 'Clausola Reale: 51M'; return ''; } } }
+                        },
+                        scales: {
+                            y: { type: 'linear', position: 'left', grid: { color: '#333' }, ticks: { color: '#aaa' }, title: { display: true, text: 'Goal Scored', color: '#00ff41' } },
+                            y1: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { color: '#aaa', callback: v => v + 'M' }, title: { display: true, text: 'Market Price', color: '#3388ff' } },
+                            x: { ticks: { color: '#fff' } }
+                        }
+                    }
+                });
+            }
+
+            const ctxLatency = document.getElementById('latencyChart');
+            if (latencyChartInstance) latencyChartInstance.destroy();
+            if(ctxLatency) {
+                latencyChartInstance = new Chart(ctxLatency, {
+                    type: 'line',
+                    data: {
+                        labels: ['Gen 25 (Torneo)', 'Set 25 (Report OB1)', 'Gen 26 (Transfer)', 'Feb 26 (Oggi)'],
+                        datasets: [
+                            { label: 'Valutazione Transfermarkt', data: [0.5, 2.5, 1.8, 1.8], borderColor: '#ff3333', borderDash: [5, 5], backgroundColor: 'transparent', tension: 0.1 },
+                            { label: 'Clausola Reale (Cruzeiro)', data: [null, null, 51.0, 51.0], borderColor: '#00ff41', backgroundColor: 'rgba(0,255,65,0.1)', fill: false, tension: 0, spanGaps: true }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { color: '#aaa' } } },
+                        scales: {
+                            y: { grid: { color: '#333' }, ticks: { color: '#aaa', callback: v => v + 'M' } },
+                            x: { ticks: { color: '#aaa' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { renderCharts(); });
+    </script>
+</body>
+</html>
