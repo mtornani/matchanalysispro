@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add index.html en/index.html)",
+      "Bash(git commit:*)",
+      "Bash(git add theseus/index.html)",
+      "Bash(git push)",
+      "WebFetch(domain:mtornani.github.io)",
+      "Bash(git add index.html en/index.html theseus/index.html sitemap.xml)",
+      "Bash(ls -la \"D:\\\\AI\\\\ob1-serie-c-dev\\\\docs\"\" && echo \"==== DATA FILES ====\" && ls -la \"D:AIob1-serie-c-devdocsdata.json\" 2>/dev/null || echo \"data.json not found \")",
+      "Bash(ls -la D:/AI/ob1-serie-c-dev/*.json)",
+      "Bash(git add docs/index.html docs/css/style.css docs/js/app.js docs/manifest.json docs/icons/icon-192.svg)",
+      "Bash(git pull --rebase)",
+      "Bash(git stash)",
+      "Bash(git stash pop)",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''docs/data.json'',''r'',encoding=''utf-8''\\)\\); print\\(''Keys:'', list\\(d.keys\\(\\)\\)\\); print\\(''Last update:'', d.get\\(''last_update''\\)\\); opps=d.get\\(''opportunities'',[]\\); print\\(''Total:'', len\\(opps\\)\\); print\\(''Sample keys:'', list\\(opps[0].keys\\(\\)\\) if opps else ''none''\\); print\\(''---''\\); [print\\(json.dumps\\({k:v for k,v in o.items\\(\\) if k in [''player_name'',''age'',''ob1_score'',''opportunity_type'',''market_value'',''role'',''role_name'',''current_club'',''recommendation'',''id'']}, ensure_ascii=False\\)\\) for o in opps[:3]]\")",
+      "Bash(node -e \"const d=require\\(''./docs/data.json''\\); console.log\\(''Keys:'', Object.keys\\(d\\)\\); console.log\\(''Last update:'', d.last_update\\); const o=d.opportunities||[]; console.log\\(''Total:'', o.length\\); if\\(o[0]\\) console.log\\(''Sample keys:'', Object.keys\\(o[0]\\)\\); o.slice\\(0,5\\).forEach\\(x=>console.log\\(JSON.stringify\\({name:x.player_name,age:x.age,score:x.ob1_score,type:x.opportunity_type,value:x.market_value,role:x.role,role_name:x.role_name,club:x.current_club}\\)\\)\\)\")",
+      "Bash(git add docs/index.html docs/js/app.js docs/css/style.css)",
+      "Bash(python3 -c \"import json; data = json.load\\(open\\(''docs/data.json''\\)\\); print\\(json.dumps\\(data[''opportunities''][0], indent=2\\)\\)\")",
+      "Bash(git add docs/index.html docs/js/app.js docs/css/style.css .github/workflows/ingest.yml)",
+      "Bash(git add scripts/ouroboros_run.py docs/index.html docs/js/app.js docs/css/style.css .github/workflows/ingest.yml)",
+      "Bash(gh api -X POST repos/mtornani/ob1-serie-c/actions/workflows/211659214/dispatches -f ref=main)",
+      "Bash(gh run list --limit 3 --json status,conclusion,displayTitle,createdAt --jq '.[] | \"\"\\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\) | \\\\\\(.createdAt\\)\"\"')",
+      "Bash(gh run list --limit 5 --json status,conclusion,displayTitle,createdAt,headBranch --jq '.[] | \"\"\\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\) | \\\\\\(.createdAt\\)\"\"')",
+      "Bash(gh run list --limit 5 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion\\)\"\"')",
+      "Bash(gh run view 22639095531 --log-failed)",
+      "Bash(python -c \"import sys; from pathlib import Path; sys.path.insert\\(0, str\\(Path\\(''scripts/ouroboros_run.py''\\).resolve\\(\\).parent.parent\\)\\); from src.scraper_global import GlobalScraper; print\\(''OK: src.scraper_global''\\)\")",
+      "Bash(py -3 -c \":*)",
+      "Bash(git add scripts/ouroboros_run.py)",
+      "Bash(gh run list --limit 3 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\)\"\"')",
+      "Bash(gh run list --limit 5 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\)\"\"')"
+    ]
+  }
+}
