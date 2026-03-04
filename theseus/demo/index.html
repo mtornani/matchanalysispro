@@ -197,7 +197,7 @@
 </head>
 
 <body class="min-h-screen flex flex-col selection:bg-sys-green selection:text-sys-black"
-    style="--theme-color: #3b82f6; --theme-color-light: rgba(59, 130, 246, 0.2);">
+    style="--theme-color: #00ff41; --theme-color-light: rgba(0, 255, 65, 0.15);">
 
     <!-- HEADER -->
     <header class="border-b border-sys-border bg-sys-black/80 backdrop-blur-md sticky top-0 z-50">
@@ -209,12 +209,12 @@
                 </a>
                 <span
                     class="text-[10px] font-mono border border-sys-border-high px-1.5 py-0.5 rounded text-sys-muted uppercase tracking-widest hidden sm:inline-block">
-                    Operational Demo v2.0
+                    Operational Demo v3.0
                 </span>
             </div>
             <div class="flex items-center space-x-6">
-                <!-- DOMAIN SELECTOR -->
-                <div class="flex items-center space-x-3 bg-sys-dark border border-sys-border px-3 py-1.5 rounded-full">
+                <!-- DOMAIN SELECTOR (hidden by default — reveal for cross-domain demo) -->
+                <div id="domain-toggle-container" class="hidden items-center space-x-3 bg-sys-dark border border-sys-border px-3 py-1.5 rounded-full">
                     <span
                         class="text-[10px] font-mono text-sys-muted uppercase tracking-wider hidden sm:block">SPORTS</span>
                     <label for="domain-toggle" class="flex items-center cursor-pointer">
@@ -229,13 +229,12 @@
                     <span
                         class="text-[10px] font-mono text-sys-muted uppercase tracking-wider hidden sm:block">MACRO</span>
                     <span id="domain-badge"
-                        class="ml-2 text-[10px] font-mono px-2 py-0.5 rounded bg-sys-blue text-white uppercase tracking-wider">GLOBAL</span>
+                        class="ml-2 text-[10px] font-mono px-2 py-0.5 rounded bg-sys-green text-black uppercase tracking-wider">SPORTS</span>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-2">
                     <span class="w-2 h-2 rounded-full dynamic-bg pulse-indicator"></span>
-                    <span class="text-[10px] font-mono text-sys-muted uppercase" id="system-status">System Live: MACRO
-                        Focus</span>
+                    <span class="text-[10px] font-mono text-sys-muted uppercase" id="system-status">System Live: Scanning Sports Assets</span>
                 </div>
             </div>
         </div>
@@ -252,8 +251,17 @@
             <p class="text-sys-muted text-sm md:text-base leading-relaxed">
                 This tool demonstrates the core methodology of the Ship of Theseus Protocol: identifying the delta
                 between <span class="text-white">Real Performance Output</span> and <span
-                    class="text-white">Institutional Market Valuation</span>. The architecture is dataset-agnostic.
+                    class="text-white">Institutional Market Valuation</span>. Data sourced from OB1 Global Radar pipeline.
             </p>
+            <!-- SYSTEM META BAR — real operational stats -->
+            <div id="system-meta-bar" class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[10px] font-mono text-sys-muted uppercase tracking-wider">
+                <span>LAST SCAN: <span id="meta-last-scan" class="text-white">--</span></span>
+                <span>ASSETS MONITORED: <span id="meta-assets" class="text-white">--</span></span>
+                <span>ANOMALIES ACTIVE: <span id="meta-anomalies" class="text-white">--</span></span>
+                <span>TRACKED: <span id="meta-tracked" class="text-white">--</span></span>
+                <span>CONFIRMED: <span id="meta-confirmed" class="text-sys-green">--</span></span>
+                <span>HIT RATE: <span id="meta-hitrate" class="text-sys-green">--</span></span>
+            </div>
         </section>
 
         <!-- TOOL INTERFACE -->
@@ -278,11 +286,18 @@
                         <div>
                             <h3 id="display-name" class="text-xl font-bold text-white mb-1">---</h3>
                             <p id="display-entityGroup" class="text-sm text-sys-muted font-mono">---</p>
+                            <p id="display-detected" class="text-[10px] text-sys-muted font-mono mt-1 hidden">Detected: --</p>
                         </div>
-                        <span id="display-status"
-                            class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-sys-border-high text-sys-muted uppercase tracking-wider">
-                            ---
-                        </span>
+                        <div class="flex flex-col items-end gap-1">
+                            <span id="display-status"
+                                class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-sys-border-high text-sys-muted uppercase tracking-wider">
+                                ---
+                            </span>
+                            <span id="wearable-badge"
+                                class="hidden px-2 py-0.5 rounded text-[9px] font-mono bg-yellow-500/20 text-yellow-400 uppercase tracking-wider whitespace-nowrap">
+                                PENDING WEARABLE DATA
+                            </span>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 py-4 border-y border-sys-border">
@@ -382,8 +397,8 @@
                                     Latency</span>
                             </div>
                         </div>
-                        <div class="text-[10px] font-mono text-sys-muted hidden sm:block">
-                            CONFIDENCE: 94.2%
+                        <div id="chart-stats" class="text-[10px] font-mono text-sys-muted hidden sm:block">
+                            SOURCE: OB1 PIPELINE
                         </div>
                     </div>
                 </div>
@@ -404,12 +419,18 @@
                                 ---
                             </p>
                         </div>
-                        <div class="mt-4 flex space-x-2">
-                            <div class="h-1 flex-grow bg-sys-border rounded overflow-hidden">
-                                <div class="h-full dynamic-bg w-3/4"></div>
+                        <div class="mt-4 space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] font-mono text-sys-muted w-20">SIGNAL</span>
+                                <div class="h-1 flex-grow bg-sys-border rounded overflow-hidden">
+                                    <div id="bar-signal" class="h-full dynamic-bg transition-all duration-500" style="width: 0%"></div>
+                                </div>
                             </div>
-                            <div class="h-1 flex-grow bg-sys-border rounded overflow-hidden">
-                                <div class="h-full dynamic-bg w-1/2"></div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] font-mono text-sys-muted w-20">MKT COVERAGE</span>
+                                <div class="h-1 flex-grow bg-sys-border rounded overflow-hidden">
+                                    <div id="bar-market" class="h-full bg-sys-muted transition-all duration-500" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

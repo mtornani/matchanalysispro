@@ -1,5 +1,10 @@
+// ============================================================
+// THESEUS PROTOCOL — Scanner Logic (v3.0)
+// Reads ASSET_DATA + SYSTEM_META from data.js
+// ============================================================
+
 let currentChart = null;
-let activeDomain = "macro"; // "macro" or "sports"
+let activeDomain = "sports"; // Default: sports (for Marcolini demo)
 
 function rgba(hex, alpha) {
     let c = hex.substring(1).split('');
@@ -10,20 +15,34 @@ function rgba(hex, alpha) {
     return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
 }
 
+// ── SYSTEM META ──────────────────────────────────────────────
+function updateSystemMeta() {
+    if (typeof SYSTEM_META === 'undefined') return;
+    const m = SYSTEM_META;
+    const el = (id) => document.getElementById(id);
+    if (el('meta-last-scan')) el('meta-last-scan').textContent = m.lastScanLabel;
+    if (el('meta-assets')) el('meta-assets').textContent = m.assetsMonitored;
+    if (el('meta-anomalies')) el('meta-anomalies').textContent = m.anomaliesActive;
+    if (el('meta-tracked')) el('meta-tracked').textContent = m.tracked;
+    if (el('meta-confirmed')) el('meta-confirmed').textContent = m.confirmed;
+    if (el('meta-hitrate')) el('meta-hitrate').textContent = m.hitRate;
+}
+
+// ── THEME ────────────────────────────────────────────────────
 function updateTheme() {
     const domainData = ASSET_DATA[activeDomain];
     const baseColor = domainData.color;
-    const lightColor = rgba(baseColor, 0.15); // Used for gradients, backgrounds, lines
+    const lightColor = rgba(baseColor, 0.15);
 
     document.body.style.setProperty('--theme-color', baseColor);
     document.body.style.setProperty('--theme-color-light', lightColor);
 
-    // Update static labels based on domain
+    // Update labels
     document.getElementById('lbl-metric-primary').textContent = domainData.metrics.primary + ":";
     document.getElementById('lbl-metric-secondary').textContent = domainData.metrics.secondary + ":";
     document.getElementById('lbl-metric-context').textContent = domainData.metrics.context + ":";
 
-    // Update badge / status text
+    // Update badge
     document.getElementById('domain-badge').textContent = domainData.domainLabel;
 
     const sysStatus = document.getElementById('system-status');
@@ -36,19 +55,19 @@ function updateTheme() {
     populateSelector();
 }
 
+// ── SELECTOR ─────────────────────────────────────────────────
 function populateSelector() {
     const selector = document.getElementById('entity-selector');
-    selector.innerHTML = ""; // Clear existing
+    selector.innerHTML = "";
 
     const items = ASSET_DATA[activeDomain].items;
-
-    // Sort by Asymmetry Score (desc)
     const sortedItems = [...items].sort((a, b) => b.asymmetryScore - a.asymmetryScore);
 
     sortedItems.forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
-        option.textContent = `[Score: ${item.asymmetryScore}] ${item.name}`;
+        const statusTag = item.status === 'GHOST' ? ' [GHOST]' : item.status === 'CONFIRMED' ? ' [CONFIRMED]' : '';
+        option.textContent = `[${item.asymmetryScore}] ${item.name}${statusTag}`;
         selector.appendChild(option);
     });
 
@@ -57,6 +76,7 @@ function populateSelector() {
     }
 }
 
+// ── MAIN UI UPDATE ───────────────────────────────────────────
 function updateUI(entityId) {
     const items = ASSET_DATA[activeDomain].items;
     const entity = items.find(p => p.id === entityId);
@@ -68,22 +88,42 @@ function updateUI(entityId) {
     document.getElementById('display-scale').textContent = entity.scale;
     document.getElementById('display-region').textContent = entity.region;
 
+    // Detection date
+    const detectedEl = document.getElementById('display-detected');
+    if (detectedEl && entity.detectedAt) {
+        detectedEl.textContent = "Detected: " + entity.detectedAt;
+        detectedEl.classList.remove('hidden');
+    } else if (detectedEl) {
+        detectedEl.classList.add('hidden');
+    }
+
     // Score Animation
     animateScore(entity.asymmetryScore);
 
     // Status Badge
     const statusEl = document.getElementById('display-status');
     statusEl.textContent = entity.status;
-    statusEl.className = `px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider`;
+    statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider';
 
     if (entity.status === 'GHOST') {
         statusEl.classList.add('bg-purple-600', 'text-white');
-    } else if (entity.status === 'TRACKING') {
+    } else if (entity.status === 'TRACKING' || entity.status === 'MONITORING') {
         statusEl.classList.add('bg-yellow-500', 'text-black');
-    } else if (entity.status === 'CONFIRMED') {
-        statusEl.classList.add('bg-sys-border-high', 'text-white');
+    } else if (entity.status === 'CONFIRMED' || entity.status === 'COMPLETED') {
+        statusEl.classList.add('bg-green-600', 'text-white');
     } else {
         statusEl.classList.add('bg-gray-600', 'text-white');
+    }
+
+    // Wearable Badge
+    const wearableEl = document.getElementById('wearable-badge');
+    if (wearableEl) {
+        if (entity.needsWearable) {
+            wearableEl.classList.remove('hidden');
+            wearableEl.textContent = "VALIDATION: PENDING WEARABLE DATA";
+        } else {
+            wearableEl.classList.add('hidden');
+        }
     }
 
     // Metrics
@@ -91,25 +131,55 @@ function updateUI(entityId) {
     document.getElementById('metric-secondary').textContent = entity.metrics.secondary;
     document.getElementById('metric-context').textContent = entity.metrics.context;
 
-    // Valuation
-    document.getElementById('val-institutional').textContent = `${entity.valuation.institutional} ${entity.valuation.unit}`;
-    document.getElementById('val-real').textContent = `${entity.valuation.real} ${entity.valuation.unit}`;
+    // Valuation — handle "?" for unknown real values
+    document.getElementById('val-institutional').textContent =
+        `${entity.valuation.institutional} ${entity.valuation.unit}`;
 
-    // Validation
+    const realVal = entity.valuation.real;
+    const realEl = document.getElementById('val-real');
+    if (realVal === "?" || realVal === null || realVal === undefined) {
+        realEl.textContent = "SIGNAL: UNDERPRICED";
+        realEl.style.fontSize = "1rem"; // smaller for text
+    } else {
+        realEl.textContent = `${realVal} ${entity.valuation.unit}`;
+        realEl.style.fontSize = ""; // reset to default (text-2xl from class)
+    }
+
+    // Validation text
     document.getElementById('display-validation').textContent = entity.validation;
 
-    // Render Chart
+    // Dynamic progress bars
+    updateProgressBars(entity);
+
+    // Chart
     renderAsymmetryChart(entity);
 
     // Cross-Domain Proof
     updateCrossDomainAnalog(entity);
 }
 
+// ── PROGRESS BARS ────────────────────────────────────────────
+function updateProgressBars(entity) {
+    const barSignal = document.getElementById('bar-signal');
+    const barMarket = document.getElementById('bar-market');
+    if (!barSignal || !barMarket) return;
+
+    // Signal bar = asymmetry score (how strong the signal is)
+    barSignal.style.width = entity.asymmetryScore + '%';
+
+    // Market bar = inverse of asymmetry (how much the market has priced in)
+    // CONFIRMED with low score = market caught up. GHOST = market at 0.
+    let marketCoverage = 100 - entity.asymmetryScore;
+    if (entity.status === 'GHOST') marketCoverage = 2;
+    if (entity.status === 'CONFIRMED' && entity.asymmetryScore < 50) marketCoverage = 90;
+    barMarket.style.width = Math.max(2, marketCoverage) + '%';
+}
+
+// ── CROSS-DOMAIN ANALOG ─────────────────────────────────────
 function updateCrossDomainAnalog(entity) {
     const oppDomain = activeDomain === 'macro' ? 'sports' : 'macro';
     const oppItems = ASSET_DATA[oppDomain].items;
 
-    // Find closest score
     let closest = oppItems[0];
     let minDiff = 999;
     oppItems.forEach(item => {
@@ -129,10 +199,8 @@ function updateCrossDomainAnalog(entity) {
     } else {
         reason = `Identical pattern found in ${closest.region} ${closest.entityGroup}.`;
     }
-
     document.getElementById('analog-expl').textContent = reason;
 
-    // Quick flash effect
     const card = document.getElementById('cross-domain-card');
     if (card) {
         card.style.borderColor = 'white';
@@ -140,6 +208,7 @@ function updateCrossDomainAnalog(entity) {
     }
 }
 
+// ── SCORE ANIMATION ──────────────────────────────────────────
 function animateScore(targetScore) {
     const el = document.getElementById('display-score');
     let iterations = 0;
@@ -154,6 +223,7 @@ function animateScore(targetScore) {
     }, 25);
 }
 
+// ── SIGNAL FEED ──────────────────────────────────────────────
 let feedInterval = null;
 let feedIndex = 0;
 
@@ -165,21 +235,25 @@ function initSignalFeed() {
     feedContainer.innerHTML = '';
     feedIndex = 0;
 
-    const colors = ["#00ff41", "#3b82f6"]; // Alternate conceptually
-
     feedInterval = setInterval(() => {
         const msg = SIGNAL_FEED_MESSAGES[feedIndex];
         const div = document.createElement('div');
         div.className = 'feed-msg';
 
         const time = new Date().toISOString().substring(11, 19);
-        const col = (feedIndex % 2 === 0) ? colors[0] : colors[1];
 
-        div.innerHTML = `<span class="text-sys-muted">[${time}]</span> <span style="color:${col};" class="font-bold">${msg.type}</span> <span class="text-sys-muted">//</span> <span class="text-gray-300">${msg.text}</span>`;
+        // Color by step type
+        let col = '#00ff41'; // default green
+        if (msg.type === 'SCRAPE') col = '#64748b';
+        else if (msg.type === 'ANALYZE') col = '#3b82f6';
+        else if (msg.type === 'DETECT') col = '#fbbf24';
+        else if (msg.type === 'REPORT') col = '#00ff41';
+        else if (msg.type === 'VALIDATE') col = '#a855f7';
+        else if (msg.type === 'CALIBRATE') col = '#64748b';
+
+        div.innerHTML = `<span class="text-sys-muted">[${time}]</span> <span style="color:${col};" class="font-bold">${msg.type.padEnd(9)}</span> <span class="text-sys-muted">//</span> <span class="text-gray-300">${msg.text}</span>`;
 
         feedContainer.appendChild(div);
-
-        // Auto scroll
         feedContainer.scrollTop = feedContainer.scrollHeight;
 
         feedIndex = (feedIndex + 1) % SIGNAL_FEED_MESSAGES.length;
@@ -190,6 +264,7 @@ function initSignalFeed() {
     }, 2500);
 }
 
+// ── CHART ────────────────────────────────────────────────────
 function renderAsymmetryChart(entity) {
     const ctx = document.getElementById('asymmetryChart').getContext('2d');
 
@@ -211,7 +286,7 @@ function renderAsymmetryChart(entity) {
             labels: labels,
             datasets: [
                 {
-                    label: 'True Output (Signal)',
+                    label: 'OB1 Signal Score',
                     data: performanceData,
                     borderColor: themeColor,
                     backgroundColor: themeLight,
@@ -220,11 +295,11 @@ function renderAsymmetryChart(entity) {
                     fill: true,
                     pointBackgroundColor: themeColor,
                     pointBorderColor: '#0a0a0a',
-                    pointRadius: 4,
-                    pointHoverRadius: 6
+                    pointRadius: 5,
+                    pointHoverRadius: 7
                 },
                 {
-                    label: 'Market Pricing Latency',
+                    label: 'Market Pricing',
                     data: marketData,
                     borderColor: '#64748b',
                     borderDash: [5, 5],
@@ -243,7 +318,7 @@ function renderAsymmetryChart(entity) {
                 mode: 'index',
             },
             plugins: {
-                legend: { display: false }, // Handled via HTML
+                legend: { display: false },
                 tooltip: {
                     backgroundColor: '#111',
                     titleColor: themeColor,
@@ -256,12 +331,8 @@ function renderAsymmetryChart(entity) {
                     callbacks: {
                         label: function (context) {
                             let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed.y !== null) {
-                                label += context.parsed.y;
-                            }
+                            if (label) label += ': ';
+                            if (context.parsed.y !== null) label += context.parsed.y;
                             return label;
                         }
                     }
@@ -270,7 +341,7 @@ function renderAsymmetryChart(entity) {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 100, // Normalized 0-100 scale for visual simplicity
+                    max: 100,
                     grid: { color: '#222' },
                     ticks: {
                         color: '#64748b',
@@ -289,6 +360,7 @@ function renderAsymmetryChart(entity) {
         }
     });
 
+    // Asymmetry window indicator
     const lastPerf = performanceData[performanceData.length - 1];
     const lastMarket = marketData[marketData.length - 1];
     const windowEl = document.getElementById('asymmetry-window-indicator');
@@ -303,15 +375,22 @@ function renderAsymmetryChart(entity) {
     }
 }
 
+// ── INIT ─────────────────────────────────────────────────────
 function init() {
     const selector = document.getElementById('entity-selector');
     const toggle = document.getElementById('domain-toggle');
 
-    // Default state: Macro/Checked
-    toggle.checked = true;
-    activeDomain = "macro";
+    // Default: Sports (unchecked)
+    toggle.checked = false;
+    activeDomain = "sports";
+
+    // Populate system meta bar
+    updateSystemMeta();
+
+    // Render initial state
     updateTheme();
 
+    // Toggle listener (hidden but functional)
     toggle.addEventListener('change', (e) => {
         activeDomain = e.target.checked ? "macro" : "sports";
         updateTheme();
