@@ -438,7 +438,7 @@ const ASSET_DATA = {
                 "name": "Neiser Villarreal",
                 "entityGroup": "Cruzeiro (ex Millonarios)",
                 "scale": "Age: 19",
-                "region": "Brazil",
+                "region": "Colombia",
                 "status": "CONFIRMED",
                 "asymmetryScore": 92,
                 "needsWearable": false,
