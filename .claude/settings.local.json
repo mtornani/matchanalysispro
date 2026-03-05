@@ -28,7 +28,25 @@
       "Bash(py -3 -c \":*)",
       "Bash(git add scripts/ouroboros_run.py)",
       "Bash(gh run list --limit 3 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\)\"\"')",
-      "Bash(gh run list --limit 5 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\)\"\"')"
+      "Bash(gh run list --limit 5 --json databaseId,displayTitle,status,conclusion --jq '.[] | \"\"\\\\\\(.databaseId\\) | \\\\\\(.displayTitle\\) | \\\\\\(.status\\) | \\\\\\(.conclusion // \"\"running\"\"\\)\"\"')",
+      "Bash(cat /d/AI/ob1-serie-c-dev/.github/workflows/*.yml)",
+      "Bash(cat /d/AI/ob1-scout/.github/workflows/*.yml)",
+      "Bash(xargs ls -lh)",
+      "Bash(ls -la /d/AI/theseus-protocol/matchanalysispro/*.py)",
+      "Bash(python3 -c \":*)",
+      "Bash(where python)",
+      "Bash(where py)",
+      "Bash(where python3)",
+      "Bash(\"C:\\\\Users\\\\Mirko\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -c \":*)",
+      "Bash(python -m http.server 8899 --bind 127.0.0.1)",
+      "Bash(\"C:\\\\Users\\\\Mirko\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -m http.server 8899 --bind 127.0.0.1 --directory \"D:\\\\AI\\\\theseus-protocol\\\\matchanalysispro\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8899/theseus/demo/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8899/theseus/demo/data.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8899/theseus/demo/scanner.js)",
+      "Bash(node -c \"D:\\\\AI\\\\theseus-protocol\\\\matchanalysispro\\\\theseus\\\\demo\\\\data.js\")",
+      "Bash(node -c \"D:\\\\AI\\\\theseus-protocol\\\\matchanalysispro\\\\theseus\\\\demo\\\\scanner.js\")",
+      "Bash(node -e \":*)",
+      "Bash(git status -u)"
     ]
   }
 }

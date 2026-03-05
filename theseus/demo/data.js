@@ -228,8 +228,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: 80/100",
+                    "secondary": "RAG Signal: High",
                     "context": "Brazil"
                 },
                 "valuation": {
@@ -238,11 +238,11 @@ const ASSET_DATA = {
                     "unit": "M€"
                 },
                 "trajectory": {
-                    "performance": [0, 80.0, 85.0],
-                    "market": [0, 5, 5],
+                    "performance": [0, 80.0, 83.0],
+                    "market": [0, 5, 8],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 80.0. High asymmetry detected in Brazil market. Institutional pricing lagging."
+                "validation": "OB1 Score: 80. Brazilian market. Detected via Gemini RAG cross-referencing local media sources not indexed by major platforms."
             },
             {
                 "id": "mateus-romero",
@@ -255,8 +255,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: 75/100",
+                    "secondary": "Coverage: Ghost",
                     "context": "Brazil"
                 },
                 "valuation": {
@@ -265,11 +265,11 @@ const ASSET_DATA = {
                     "unit": "M€"
                 },
                 "trajectory": {
-                    "performance": [0, 75.0, 80.0],
-                    "market": [0, 5, 5],
+                    "performance": [0, 75.0, 78.0],
+                    "market": [0, 5, 7],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 75.0. High asymmetry detected in Brazil market. Institutional pricing lagging."
+                "validation": "OB1 Score: 75. Identified in Brazil Regional leagues. Valuation lag detected due to lack of scouting presence in the interior states."
             },
             {
                 "id": "saviolo",
@@ -282,8 +282,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: 82/100",
+                    "secondary": "Primeira Liga Latency",
                     "context": "Portugal"
                 },
                 "valuation": {
@@ -292,11 +292,11 @@ const ASSET_DATA = {
                     "unit": "M€"
                 },
                 "trajectory": {
-                    "performance": [0, 82.0, 87.0],
-                    "market": [0, 5, 5],
+                    "performance": [0, 82.0, 84.0],
+                    "market": [0, 5, 12],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 82.0. High asymmetry detected in Portugal market. Institutional pricing lagging."
+                "validation": "OB1 Score: 82. Primeira Liga prospect. League latency factor 0.70 — market structurally slow to export talent to top-5 leagues."
             },
             {
                 "id": "ryan-evaristo",
@@ -309,8 +309,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: Peak Signal",
+                    "secondary": "Coverage: Ghost",
                     "context": "Brazil"
                 },
                 "valuation": {
@@ -323,7 +323,7 @@ const ASSET_DATA = {
                     "market": [0, 5, 5],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 100.0. High asymmetry detected in Brazil market. Institutional pricing lagging."
+                "validation": "OB1 Score: 100. Peak signal. Under-17 forward in São Paulo state league. Zero coverage from European scouts. Ghost status: no institutional tracking detected."
             },
             {
                 "id": "andre-maia",
@@ -336,8 +336,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: 95/100",
+                    "secondary": "Zero Press Coverage",
                     "context": "Brazil"
                 },
                 "valuation": {
@@ -346,11 +346,11 @@ const ASSET_DATA = {
                     "unit": "M€"
                 },
                 "trajectory": {
-                    "performance": [0, 95.0, 100.0],
-                    "market": [0, 5, 5],
+                    "performance": [0, 95.0, 96.0],
+                    "market": [0, 5, 10],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 95.0. High asymmetry detected in Brazil market. Institutional pricing lagging."
+                "validation": "OB1 Score: 95. High-intensity midfielder detected in Brazilian youth tiers. Signal strength derived from cross-domain performance analytics vs market cap."
             },
             {
                 "id": "kauan-toledo",
@@ -363,8 +363,8 @@ const ASSET_DATA = {
                 "needsWearable": true,
                 "detectedAt": "2026-03-01",
                 "metrics": {
-                    "primary": "Signal Detected",
-                    "secondary": "Monitoring",
+                    "primary": "OB1: 75/100",
+                    "secondary": "Monitoring: Low Latency",
                     "context": "Brazil"
                 },
                 "valuation": {
@@ -373,17 +373,17 @@ const ASSET_DATA = {
                     "unit": "M€"
                 },
                 "trajectory": {
-                    "performance": [0, 75.0, 80.0],
-                    "market": [0, 5, 5],
+                    "performance": [0, 75.0, 76.0],
+                    "market": [0, 5, 15],
                     "labels": ["Pre-OB1", "Detection", "Current"]
                 },
-                "validation": "OB1 Score: 75.0. High asymmetry detected in Brazil market. Institutional pricing lagging."
+                "validation": "OB1 Score: 75. Tactical profile matches high-growth European standards. Market pricing in Brazil remains at institutional baseline."
             },
             {
                 "id": "opp-opp_be2008a5",
                 "name": "Pietro Saio",
                 "entityGroup": "Benevento (Serie C)",
-                "scale": "Age: None",
+                "scale": "Prospect",
                 "region": "Italy",
                 "status": "TRACKING",
                 "asymmetryScore": 69,

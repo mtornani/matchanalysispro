@@ -375,6 +375,31 @@ function renderAsymmetryChart(entity) {
     }
 }
 
+// ── K-SPORT TOGGLE ───────────────────────────────────────────
+function initKSportToggle() {
+    const toggle = document.getElementById('ksport-toggle');
+    const content = document.getElementById('ksport-content');
+    const chevron = document.getElementById('ksport-chevron');
+    if (!toggle || !content || !chevron) return;
+
+    // Desktop: expanded by default | Mobile: collapsed
+    if (window.innerWidth >= 768) {
+        content.classList.remove('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+    }
+
+    toggle.addEventListener('click', () => {
+        const isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+            content.classList.remove('hidden');
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            content.classList.add('hidden');
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    });
+}
+
 // ── INIT ─────────────────────────────────────────────────────
 function init() {
     const selector = document.getElementById('entity-selector');
@@ -401,6 +426,7 @@ function init() {
     });
 
     initSignalFeed();
+    initKSportToggle();
 }
 
 document.addEventListener('DOMContentLoaded', init);
