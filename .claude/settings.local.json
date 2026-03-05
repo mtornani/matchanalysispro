@@ -46,7 +46,8 @@
       "Bash(node -c \"D:\\\\AI\\\\theseus-protocol\\\\matchanalysispro\\\\theseus\\\\demo\\\\data.js\")",
       "Bash(node -c \"D:\\\\AI\\\\theseus-protocol\\\\matchanalysispro\\\\theseus\\\\demo\\\\scanner.js\")",
       "Bash(node -e \":*)",
-      "Bash(git status -u)"
+      "Bash(git status -u)",
+      "WebFetch(domain:www.matchanalysispro.online)"
     ]
   }
 }

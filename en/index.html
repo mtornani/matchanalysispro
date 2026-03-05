@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Analysis Pro | Mirko Tornani</title>
-    <meta name="description" content="Ouroboros Protocol: football intelligence systems that find talent before markets do. OB1 Global Radar, adversarial multi-agent analysis. Built by Mirko Tornani, San Marino.">
+    <meta name="description"
+        content="Ouroboros Protocol: football intelligence systems that find talent before markets do. OB1 Global Radar, adversarial multi-agent analysis. Built by Mirko Tornani, San Marino.">
     <meta property="og:title" content="Match Analysis Pro | Mirko Tornani">
-    <meta property="og:description" content="I build systems that find talent before markets do. Football intelligence, adversarial multi-agent systems.">
+    <meta property="og:description"
+        content="I build systems that find talent before markets do. Football intelligence, adversarial multi-agent systems.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.matchanalysispro.online/en/">
     <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://www.matchanalysispro.online/en/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
+    <link rel="alternate" hreflang="it" href="https://www.matchanalysispro.online/">
+    <link rel="alternate" hreflang="en" href="https://www.matchanalysispro.online/en/">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: #0a0a0a;
             color: #e2e8f0;
@@ -23,19 +39,26 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        a { color: inherit; }
+
+        a {
+            color: inherit;
+        }
+
         .mono {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
         }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+
         section {
             padding: 5rem 0;
             border-bottom: 1px solid #222;
         }
+
         .section-title {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-weight: 700;
@@ -55,12 +78,14 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid #222;
         }
+
         .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.875rem 0;
         }
+
         .nav-logo {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-weight: 700;
@@ -69,16 +94,19 @@
             text-decoration: none;
             white-space: nowrap;
         }
+
         .nav-right {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
+
         .nav-links {
             display: none;
             gap: 1.25rem;
             list-style: none;
         }
+
         .nav-links a {
             color: #64748b;
             text-decoration: none;
@@ -88,11 +116,16 @@
             letter-spacing: 0.05em;
             transition: color 0.2s;
         }
-        .nav-links a:hover { color: #e2e8f0; }
+
+        .nav-links a:hover {
+            color: #e2e8f0;
+        }
+
         .lang-switch {
             display: flex;
             gap: 0.25rem;
         }
+
         .lang-switch a {
             color: #64748b;
             text-decoration: none;
@@ -103,13 +136,21 @@
             border-radius: 3px;
             transition: all 0.2s;
         }
+
         .lang-switch a.active {
             color: #00ff41;
             border-color: #00ff41;
         }
-        .lang-switch a:hover:not(.active) { border-color: #64748b; color: #e2e8f0; }
+
+        .lang-switch a:hover:not(.active) {
+            border-color: #64748b;
+            color: #e2e8f0;
+        }
+
         @media (min-width: 768px) {
-            .nav-links { display: flex; }
+            .nav-links {
+                display: flex;
+            }
         }
 
         /* Hero */
@@ -117,21 +158,36 @@
             padding: 5rem 0 4rem;
             border-bottom: 1px solid #222;
         }
+
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
         }
-        .hero-text { order: 2; }
-        .hero-loop { order: 1; }
+
+        .hero-text {
+            order: 2;
+        }
+
+        .hero-loop {
+            order: 1;
+        }
+
         @media (min-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .hero-text { order: 1; }
-            .hero-loop { order: 2; }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-loop {
+                order: 2;
+            }
         }
+
         .hero h1 {
             font-weight: 700;
             font-size: 1.75rem;
@@ -139,9 +195,13 @@
             color: #fff;
             margin-bottom: 1rem;
         }
+
         @media (min-width: 768px) {
-            .hero h1 { font-size: 2.25rem; }
+            .hero h1 {
+                font-size: 2.25rem;
+            }
         }
+
         .hero-sub {
             color: #64748b;
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
@@ -149,6 +209,7 @@
             margin-bottom: 2rem;
             line-height: 1.5;
         }
+
         .btn {
             display: inline-block;
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
@@ -162,14 +223,17 @@
             border-radius: 4px;
             transition: all 0.2s;
         }
+
         .btn:hover {
             background: #00ff41;
             color: #0a0a0a;
         }
+
         .btn-filled {
             background: #00ff41;
             color: #0a0a0a;
         }
+
         .btn-filled:hover {
             background: #00cc33;
             border-color: #00cc33;
@@ -180,17 +244,47 @@
             max-width: 380px;
             margin: 0 auto;
         }
-        .loop-container svg { width: 100%; height: auto; }
-        @keyframes nodeGlow {
-            0%, 100% { opacity: 0.55; }
-            50% { opacity: 1; }
+
+        .loop-container svg {
+            width: 100%;
+            height: auto;
         }
-        .node-dot { animation: nodeGlow 3s ease-in-out infinite; }
-        .node-dot:nth-child(2) { animation-delay: 0.5s; }
-        .node-dot:nth-child(3) { animation-delay: 1s; }
-        .node-dot:nth-child(4) { animation-delay: 1.5s; }
-        .node-dot:nth-child(5) { animation-delay: 2s; }
-        .node-dot:nth-child(6) { animation-delay: 2.5s; }
+
+        @keyframes nodeGlow {
+
+            0%,
+            100% {
+                opacity: 0.55;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .node-dot {
+            animation: nodeGlow 3s ease-in-out infinite;
+        }
+
+        .node-dot:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .node-dot:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .node-dot:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .node-dot:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        .node-dot:nth-child(6) {
+            animation-delay: 2.5s;
+        }
 
         /* Cards */
         .cards-grid {
@@ -198,9 +292,13 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
+
         @media (min-width: 768px) {
-            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
+
         .card {
             background: #111;
             border: 1px solid #333;
@@ -208,7 +306,11 @@
             padding: 1.5rem;
             transition: border-color 0.2s;
         }
-        .card:hover { border-color: #00ff41; }
+
+        .card:hover {
+            border-color: #00ff41;
+        }
+
         .card-title {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-weight: 700;
@@ -216,18 +318,21 @@
             color: #fff;
             margin-bottom: 0.25rem;
         }
+
         .card-sub {
             color: #64748b;
             font-size: 0.8rem;
             font-style: italic;
             margin-bottom: 0.75rem;
         }
+
         .card-body {
             color: #94a3b8;
             font-size: 0.85rem;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
+
         .badge {
             display: inline-block;
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
@@ -238,9 +343,22 @@
             font-weight: 700;
             letter-spacing: 0.03em;
         }
-        .badge-green { background: #00ff41; color: #0a0a0a; }
-        .badge-yellow { background: #fbbf24; color: #0a0a0a; }
-        .badge-blue { background: #3b82f6; color: #fff; }
+
+        .badge-green {
+            background: #00ff41;
+            color: #0a0a0a;
+        }
+
+        .badge-yellow {
+            background: #fbbf24;
+            color: #0a0a0a;
+        }
+
+        .badge-blue {
+            background: #3b82f6;
+            color: #fff;
+        }
+
         .card-stats {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-size: 0.65rem;
@@ -248,6 +366,7 @@
             margin-top: 1rem;
             line-height: 1.6;
         }
+
         .card-link {
             display: inline-block;
             color: #00ff41;
@@ -257,7 +376,10 @@
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             transition: opacity 0.2s;
         }
-        .card-link:hover { opacity: 0.7; }
+
+        .card-link:hover {
+            opacity: 0.7;
+        }
 
         /* Evidence table */
         .table-wrap {
@@ -265,12 +387,14 @@
             -webkit-overflow-scrolling: touch;
             margin-bottom: 1.5rem;
         }
+
         .ev-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.85rem;
             min-width: 500px;
         }
+
         .ev-table th {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             text-transform: uppercase;
@@ -281,14 +405,33 @@
             padding: 0.65rem 0.75rem;
             border-bottom: 1px solid #333;
         }
+
         .ev-table td {
             padding: 0.65rem 0.75rem;
             border-bottom: 1px solid #1a1a1a;
         }
-        .ev-table tr:hover { background: #111; }
-        .ev-table .player { font-weight: 700; color: #fff; }
-        .score-green { color: #00ff41; font-weight: 700; font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace; }
-        .score-yellow { color: #fbbf24; font-weight: 700; font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace; }
+
+        .ev-table tr:hover {
+            background: #111;
+        }
+
+        .ev-table .player {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .score-green {
+            color: #00ff41;
+            font-weight: 700;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        .score-yellow {
+            color: #fbbf24;
+            font-weight: 700;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        }
+
         .ev-link {
             color: #00ff41;
             text-decoration: none;
@@ -296,7 +439,11 @@
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             transition: opacity 0.2s;
         }
-        .ev-link:hover { opacity: 0.7; }
+
+        .ev-link:hover {
+            opacity: 0.7;
+        }
+
         .ev-summary {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-size: 0.7rem;
@@ -313,6 +460,7 @@
             gap: 0.4rem;
             margin-bottom: 2rem;
         }
+
         .flow-step {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -322,11 +470,13 @@
             font-size: 0.7rem;
             color: #00ff41;
         }
+
         .flow-arrow {
             color: #64748b;
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-size: 0.75rem;
         }
+
         .method-text {
             max-width: 720px;
             color: #94a3b8;
@@ -339,12 +489,17 @@
             font-size: 0.9rem;
             margin-bottom: 0.6rem;
         }
+
         .contact-line a {
             color: #00ff41;
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .contact-line a:hover { opacity: 0.7; }
+
+        .contact-line a:hover {
+            opacity: 0.7;
+        }
+
         .contact-label {
             color: #64748b;
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
@@ -352,6 +507,7 @@
             display: inline-block;
             width: 5rem;
         }
+
         .contact-note {
             color: #64748b;
             font-size: 0.85rem;
@@ -363,6 +519,7 @@
         footer {
             padding: 3rem 0 2rem;
         }
+
         .footer-brand {
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-weight: 700;
@@ -370,30 +527,38 @@
             font-size: 0.85rem;
             margin-bottom: 0.4rem;
         }
+
         .footer-info {
             color: #64748b;
             font-size: 0.8rem;
             margin-bottom: 1.25rem;
         }
+
         .footer-nav {
             display: flex;
             flex-wrap: wrap;
             gap: 1.25rem;
             margin-bottom: 1.25rem;
         }
+
         .footer-nav a {
             color: #64748b;
             text-decoration: none;
             font-size: 0.8rem;
             transition: color 0.2s;
         }
-        .footer-nav a:hover { color: #e2e8f0; }
+
+        .footer-nav a:hover {
+            color: #e2e8f0;
+        }
+
         .footer-note {
             color: #333;
             font-size: 0.7rem;
             margin-top: 1.25rem;
             line-height: 1.5;
         }
+
         .footer-bottom {
             display: flex;
             flex-wrap: wrap;
@@ -404,6 +569,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Nav -->
@@ -438,77 +604,96 @@
                 </div>
                 <div class="hero-loop">
                     <div class="loop-container">
-                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="Ouroboros Protocol: SCRAPE, ANALYZE, DETECT, REPORT, VALIDATE, CALIBRATE">
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Ouroboros Protocol: SCRAPE, ANALYZE, DETECT, REPORT, VALIDATE, CALIBRATE">
                             <defs>
                                 <filter id="glow">
-                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
                                     <feMerge>
-                                        <feMergeNode in="blur"/>
-                                        <feMergeNode in="SourceGraphic"/>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
                                     </feMerge>
                                 </filter>
                                 <filter id="glowSmall">
-                                    <feGaussianBlur stdDeviation="2" result="blur"/>
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
                                     <feMerge>
-                                        <feMergeNode in="blur"/>
-                                        <feMergeNode in="SourceGraphic"/>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
                                     </feMerge>
                                 </filter>
-                                <path id="motionPath" d="M 200,60 A 140,140 0 1,1 200,340 A 140,140 0 1,1 200,60" fill="none"/>
+                                <path id="motionPath" d="M 200,60 A 140,140 0 1,1 200,340 A 140,140 0 1,1 200,60"
+                                    fill="none" />
                             </defs>
 
                             <!-- Circle track -->
-                            <circle cx="200" cy="200" r="140" fill="none" stroke="#222" stroke-width="1"/>
-                            <circle cx="200" cy="200" r="140" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4 8"/>
+                            <circle cx="200" cy="200" r="140" fill="none" stroke="#222" stroke-width="1" />
+                            <circle cx="200" cy="200" r="140" fill="none" stroke="#333" stroke-width="1"
+                                stroke-dasharray="4 8" />
 
                             <!-- Node: SCRAPE (0deg, top) -->
-                            <circle class="node-dot" cx="200" cy="60" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="200" y="38" fill="#64748b" font-size="9" text-anchor="middle" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">SCRAPE</text>
+                            <circle class="node-dot" cx="200" cy="60" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="200" y="38" fill="#64748b" font-size="9" text-anchor="middle"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">SCRAPE</text>
 
                             <!-- Node: ANALYZE (60deg) -->
-                            <circle class="node-dot" cx="321" cy="130" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="338" y="126" fill="#64748b" font-size="9" text-anchor="start" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">ANALYZE</text>
+                            <circle class="node-dot" cx="321" cy="130" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="338" y="126" fill="#64748b" font-size="9" text-anchor="start"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">ANALYZE</text>
 
                             <!-- Node: DETECT (120deg) -->
-                            <circle class="node-dot" cx="321" cy="270" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="338" y="274" fill="#64748b" font-size="9" text-anchor="start" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">DETECT</text>
+                            <circle class="node-dot" cx="321" cy="270" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="338" y="274" fill="#64748b" font-size="9" text-anchor="start"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">DETECT</text>
 
                             <!-- Node: REPORT (180deg, bottom) -->
-                            <circle class="node-dot" cx="200" cy="340" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="200" y="368" fill="#64748b" font-size="9" text-anchor="middle" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">REPORT</text>
+                            <circle class="node-dot" cx="200" cy="340" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="200" y="368" fill="#64748b" font-size="9" text-anchor="middle"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">REPORT</text>
 
                             <!-- Node: VALIDATE (240deg) -->
-                            <circle class="node-dot" cx="79" cy="270" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="62" y="274" fill="#64748b" font-size="9" text-anchor="end" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">VALIDATE</text>
+                            <circle class="node-dot" cx="79" cy="270" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="62" y="274" fill="#64748b" font-size="9" text-anchor="end"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">VALIDATE</text>
 
                             <!-- Node: CALIBRATE (300deg) -->
-                            <circle class="node-dot" cx="79" cy="130" r="6" fill="#00ff41" filter="url(#glow)"/>
-                            <text x="62" y="126" fill="#64748b" font-size="9" text-anchor="end" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">CALIBRATE</text>
+                            <circle class="node-dot" cx="79" cy="130" r="6" fill="#00ff41" filter="url(#glow)" />
+                            <text x="62" y="126" fill="#64748b" font-size="9" text-anchor="end"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">CALIBRATE</text>
 
                             <!-- Animated dots traveling the path -->
                             <circle r="3" fill="#00ff41" opacity="0.9" filter="url(#glowSmall)">
                                 <animateMotion dur="12s" repeatCount="indefinite" begin="0s">
-                                    <mpath href="#motionPath"/>
+                                    <mpath href="#motionPath" />
                                 </animateMotion>
                             </circle>
                             <circle r="3" fill="#00ff41" opacity="0.9" filter="url(#glowSmall)">
                                 <animateMotion dur="12s" repeatCount="indefinite" begin="-4s">
-                                    <mpath href="#motionPath"/>
+                                    <mpath href="#motionPath" />
                                 </animateMotion>
                             </circle>
                             <circle r="3" fill="#00ff41" opacity="0.9" filter="url(#glowSmall)">
                                 <animateMotion dur="12s" repeatCount="indefinite" begin="-8s">
-                                    <mpath href="#motionPath"/>
+                                    <mpath href="#motionPath" />
                                 </animateMotion>
                             </circle>
 
                             <!-- Faint inner ring for depth -->
-                            <circle cx="200" cy="200" r="120" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
-                            <circle cx="200" cy="200" r="160" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+                            <circle cx="200" cy="200" r="120" fill="none" stroke="#1a1a1a" stroke-width="0.5" />
+                            <circle cx="200" cy="200" r="160" fill="none" stroke="#1a1a1a" stroke-width="0.5" />
 
                             <!-- Center label -->
-                            <text x="200" y="195" fill="#00ff41" font-size="11" text-anchor="middle" font-family="'SF Mono','Fira Code','Consolas',monospace" font-weight="700" letter-spacing="2" opacity="0.6">OUROBOROS</text>
-                            <text x="200" y="210" fill="#64748b" font-size="8" text-anchor="middle" font-family="'SF Mono','Fira Code','Consolas',monospace" letter-spacing="1">PROTOCOL</text>
+                            <text x="200" y="195" fill="#00ff41" font-size="11" text-anchor="middle"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace" font-weight="700"
+                                letter-spacing="2" opacity="0.6">OUROBOROS</text>
+                            <text x="200" y="210" fill="#64748b" font-size="8" text-anchor="middle"
+                                font-family="'SF Mono','Fira Code','Consolas',monospace"
+                                letter-spacing="1">PROTOCOL</text>
                         </svg>
                     </div>
                 </div>
@@ -526,28 +711,34 @@
                 <div class="card">
                     <div class="card-title">OB1 GLOBAL RADAR</div>
                     <div class="card-sub">Asymmetric talent intelligence</div>
-                    <p class="card-body">Scans low-visibility sources every 6h. Identifies players the market hasn't priced yet.</p>
+                    <p class="card-body">Scans low-visibility sources every 6h. Identifies players the market hasn't
+                        priced yet.</p>
                     <span class="badge badge-green">OPERATIONAL</span>
                     <div class="card-stats">100+ players monitored | $0-5/month cost | 6h scan cycle</div>
-                    <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener" class="card-link">Open the radar &#8594;</a>
-                    <a href="/theseus/" class="card-link" style="color:#64748b; margin-left:1rem;">Whitepaper &#8594;</a>
+                    <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener"
+                        class="card-link">Open the radar &#8594;</a>
+                    <a href="/theseus/" class="card-link" style="color:#64748b; margin-left:1rem;">Whitepaper
+                        &#8594;</a>
                 </div>
 
                 <!-- OB1 Serie C -->
                 <div class="card">
                     <div class="card-title">OB1 SERIE C SCOUT</div>
                     <div class="card-sub">Lega Pro Radar</div>
-                    <p class="card-body">Targeted intelligence on Italian lower divisions. Same pipeline, local focus. Finds anomalies where nobody looks.</p>
+                    <p class="card-body">Targeted intelligence on Italian lower divisions. Same pipeline, local focus.
+                        Finds anomalies where nobody looks.</p>
                     <span class="badge badge-green">OPERATIONAL</span>
                     <div class="card-stats">Serie C | async pipeline | 6h cycle | ~$0 cost</div>
-                    <a href="https://mtornani.github.io/ob1-serie-c/" target="_blank" rel="noopener" class="card-link">Open the radar &#8594;</a>
+                    <a href="https://mtornani.github.io/ob1-serie-c/" target="_blank" rel="noopener"
+                        class="card-link">Open the radar &#8594;</a>
                 </div>
 
                 <!-- The Field -->
                 <div class="card">
                     <div class="card-title">THE FIELD</div>
                     <div class="card-sub">15 years of youth coaching</div>
-                    <p class="card-body">U8 to U17. ICS methodology. Situational football. The systems come from the pitch, not from a desk.</p>
+                    <p class="card-body">U8 to U17. ICS methodology. Situational football. The systems come from the
+                        pitch, not from a desk.</p>
                     <span class="badge badge-blue">ONGOING</span>
                     <div class="card-stats">UEFA B | University of Bologna | FSGC</div>
                 </div>
@@ -593,7 +784,8 @@
                 </table>
             </div>
             <a href="/theseus/" class="ev-link">Full evidence log with methodology &#8594;</a>
-            <div class="ev-summary">Total anomalies tracked: 6 | Confirmed: 0 | Missed: 0 | System: OB1 Global Radar v3.2</div>
+            <div class="ev-summary">Total anomalies tracked: 6 | Confirmed: 0 | Missed: 0 | System: OB1 Global Radar
+                v3.2</div>
         </div>
     </section>
 
@@ -616,8 +808,13 @@
                 <span class="flow-arrow">&#8594;</span>
                 <span class="flow-step" style="border-color:#00ff41;">&#8635; LOOP</span>
             </div>
-            <p class="method-text">Most scouting tools give you data. This system gives you an adversarial process. Multiple AI agents argue about each anomaly before it reaches you. The consensus is challenged. The noise is filtered. What survives is signal.</p>
-            <p class="method-text" style="margin-top:1.5rem; color:#64748b; font-size:0.8rem; font-family:'SF Mono','Fira Code','Cascadia Code','Consolas',monospace;">This cycle is the Ouroboros Protocol. The system devours raw data to regenerate pure scouting intelligence.</p>
+            <p class="method-text">Most scouting tools give you data. This system gives you an adversarial process.
+                Multiple AI agents argue about each anomaly before it reaches you. The consensus is challenged. The
+                noise is filtered. What survives is signal.</p>
+            <p class="method-text"
+                style="margin-top:1.5rem; color:#64748b; font-size:0.8rem; font-family:'SF Mono','Fira Code','Cascadia Code','Consolas',monospace;">
+                This cycle is the Ouroboros Protocol. The system devours raw data to regenerate pure scouting
+                intelligence.</p>
         </div>
     </section>
 
@@ -631,7 +828,8 @@
             </div>
             <div class="contact-line">
                 <span class="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank" rel="noopener">linkedin.com/in/mirkotornani</a>
+                <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank"
+                    rel="noopener">linkedin.com/in/mirkotornani</a>
             </div>
             <p class="contact-note">I don't do sales calls. Send me a problem, I'll tell you if I can solve it.</p>
         </div>
@@ -662,12 +860,13 @@
 
     <!-- Minimal JS: smooth scroll (progressive enhancement) -->
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-            a.addEventListener('click', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+            a.addEventListener('click', function (e) {
                 var t = document.querySelector(this.getAttribute('href'));
                 if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
     </script>
 </body>
+
 </html>
