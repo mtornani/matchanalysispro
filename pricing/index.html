@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing — Mirko Tornani</title>
+    <meta name="description" content="Fixed price. Fixed scope. Fixed delivery date.">
+    <meta property="og:title" content="Services & Pricing — Mirko Tornani">
+    <meta property="og:description" content="Fixed price, fixed scope, fixed delivery date.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.matchanalysispro.online/pricing/">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://www.matchanalysispro.online/pricing/">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .mono {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .section-title {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #00ff41;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.875rem 0;
+        }
+
+        .nav-logo {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-weight: 700;
+            color: #00ff41;
+            font-size: 0.85rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 1.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e2e8f0;
+        }
+
+        .nav-links a.active {
+            color: #00ff41;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0 4rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+            font-size: 1.75rem;
+            line-height: 1.25;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .hero-sub {
+            color: #64748b;
+            font-size: 0.9rem;
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #00ff41;
+            color: #0a0a0a;
+        }
+
+        /* Verify box */
+        .verify-box {
+            background: #111;
+            border: 1px solid #333;
+            border-left: 3px solid #00ff41;
+            border-radius: 4px;
+            padding: 1.5rem;
+        }
+
+        .verify-box .card-title {
+            margin-bottom: 0.75rem;
+        }
+
+        .verify-box p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #00ff41;
+        }
+
+        .card.card-start {
+            border-color: #00ff41;
+        }
+
+        .card-title {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-sub {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-body {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .card ul li {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            padding-left: 1.1rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "\2022";
+            color: #00ff41;
+            position: absolute;
+            left: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            text-transform: uppercase;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-green {
+            background: #00ff41;
+            color: #0a0a0a;
+        }
+
+        .card-price {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: #00ff41;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card-price span {
+            color: #64748b;
+            font-weight: 400;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        /* How it works */
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-width: 640px;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .step-num {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            color: #00ff41;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            width: 1.5rem;
+        }
+
+        .step-text {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-weight: 700;
+            color: #00ff41;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-info {
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-nav a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: #e2e8f0;
+        }
+
+        .footer-note {
+            color: #333;
+            font-size: 0.7rem;
+            margin-top: 1.25rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="/" class="nav-logo">> MATCH_ANALYSIS_PRO</a>
+                <div class="nav-right">
+                    <div class="nav-links">
+                        <a href="/#systems">Systems</a>
+                        <a href="/#evidence">Evidence</a>
+                        <a href="/#method">Method</a>
+                        <a href="/#contact">Contact</a>
+                        <a href="/pricing/" class="active">Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="container">
+            <h1>Fixed price. Fixed scope. Fixed delivery date.</h1>
+            <p class="hero-sub">Four things I do. Each one has a number next to it and a date attached to it. No
+                discovery calls to establish whether there is a project — if you want to know how I work, buy the
+                smallest one.</p>
+        </div>
+    </section>
+
+    <!-- Verifiable -->
+    <section id="verifiable">
+        <div class="container">
+            <div class="verify-box">
+                <div class="card-title mono">Verifiable, not claimed</div>
+                <p>Every candidate flagged by the public radar is written to an append-only ledger and committed to a
+                    public repository. The commit timestamp is third-party proof of when the signal was recorded.
+                    Most recent: a player flagged on 6 July 2026 appeared in mainstream transfer news on 23 July — 17
+                    days of documented lead time. The record is auditable by anyone, including the misses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">> SERVICES</h2>
+            <div class="pricing-grid">
+
+                <!-- 1: Paid Diagnostic -->
+                <div class="card card-start">
+                    <span class="badge badge-green">Start here</span>
+                    <div class="card-title">Paid Diagnostic</div>
+                    <div class="card-sub">One hour, one written page, no pitch.</div>
+                    <div class="card-price">€150 flat <span>Delivery: 48 hours</span></div>
+                    <ul>
+                        <li>60-minute call on one concrete problem in your scouting or data workflow</li>
+                        <li>A one-page written memo within 48 hours: what I'd do, in what order, what it would cost
+                        </li>
+                        <li>If the memo says the honest answer is "you don't need me", it says that</li>
+                        <li>Deducted from any follow-on work</li>
+                    </ul>
+                </div>
+
+                <!-- 2: Lead-Time Audit -->
+                <div class="card">
+                    <div class="card-title">Lead-Time Audit</div>
+                    <div class="card-sub">How early were you, actually?</div>
+                    <div class="card-price">€390 per audit <span>Delivery: 7 days</span></div>
+                    <ul>
+                        <li>Send me up to 20 names from your current shortlist</li>
+                        <li>For each: the earliest public signal date I can evidence, with the source</li>
+                        <li>Plus 3 names you are not tracking that cleared threshold before mainstream coverage</li>
+                        <li>Delivered as a single self-contained HTML file — opens offline</li>
+                        <li>Not a valuation, not a recommendation to sign anyone</li>
+                    </ul>
+                </div>
+
+                <!-- 3: Offline Dashboard Sprint -->
+                <div class="card">
+                    <div class="card-title">Offline Dashboard Sprint</div>
+                    <div class="card-sub">Your data, one file, works on a plane.</div>
+                    <div class="card-price">€1.200 fixed <span>Delivery: 5 working days</span></div>
+                    <ul>
+                        <li>Single-file HTML dashboard built from your CSV, database or API</li>
+                        <li>Zero build step, zero CDN, zero dependencies — double-click to open</li>
+                        <li>Mobile-first: designed at 375px</li>
+                        <li>Source handed over, yours to modify</li>
+                        <li>Not a hosted SaaS, no ongoing maintenance included</li>
+                        <li>2 rounds of revisions included</li>
+                    </ul>
+                </div>
+
+                <!-- 4: Pipeline Rescue -->
+                <div class="card">
+                    <div class="card-title">Pipeline Rescue</div>
+                    <div class="card-sub">The scraper broke, or the data is a mess.</div>
+                    <div class="card-price">€600 fixed <span>Delivery: 3 working days</span></div>
+                    <ul>
+                        <li>Diagnosis of an existing broken or unreliable data pipeline</li>
+                        <li>Rebuilt as a documented Python pipeline with scheduling and failure alerts</li>
+                        <li>Silent-failure monitoring included — you get told when it dies, not three weeks later
+                        </li>
+                        <li>Handover notes written for whoever maintains it next</li>
+                        <li>Scope: one pipeline, one source</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+        <div class="container">
+            <h2 class="section-title">> HOW_IT_WORKS</h2>
+            <div class="steps-list">
+                <div class="step">
+                    <span class="step-num mono">1.</span>
+                    <span class="step-text">You pick one and say so. No proposal document, no procurement
+                        cycle.</span>
+                </div>
+                <div class="step">
+                    <span class="step-num mono">2.</span>
+                    <span class="step-text">I confirm the scope in writing in three lines, and the delivery
+                        date.</span>
+                </div>
+                <div class="step">
+                    <span class="step-num mono">3.</span>
+                    <span class="step-text">Payment link. Work starts when it clears.</span>
+                </div>
+                <div class="step">
+                    <span class="step-num mono">4.</span>
+                    <span class="step-text">Delivered on the date, or you don't pay for it. That is the whole
+                        guarantee.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">> MATCH_ANALYSIS_PRO</div>
+            <div class="footer-info">Mirko Tornani — UEFA B licence, Sports Science (Bologna), 15 years in youth
+                football, independent systems builder.</div>
+            <div class="footer-nav">
+                <a href="/">Home</a>
+                <a href="/theseus/">Theseus Protocol</a>
+                <a href="https://www.linkedin.com/in/mirkotornani/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:info@matchanalysispro.online">Email</a>
+            </div>
+            <div class="footer-note">Prices exclude any applicable tax. This site has no cookies, no tracking, no
+                analytics. Just information.</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
