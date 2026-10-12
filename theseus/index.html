@@ -590,21 +590,16 @@
                                 l'asset per 7 mesi post-breakout.</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="p-4 bg-sys-dark border-l-4 border-sys-green">
                             <div class="text-xs text-gray-500 mb-1">VALUTAZIONE TRANSFERMARKT</div>
                             <div class="text-xl font-mono text-white">&#8364;1.8M</div>
                             <div class="text-xs text-red-400 mt-1">Latenza istituzionale (Feb 26)</div>
                         </div>
                         <div class="p-4 bg-sys-dark border-l-4 border-sys-green">
-                            <div class="text-xs text-gray-500 mb-1">CLAUSOLA CRUZEIRO</div>
-                            <div class="text-xl font-mono text-sys-green">&#8364;51.0M</div>
-                            <div class="text-xs text-gray-400 mt-1">Valore reale di mercato</div>
-                        </div>
-                        <div class="p-4 bg-sys-dark border-l-4 border-sys-green">
-                            <div class="text-xs text-gray-500 mb-1">DIFFERENZIALE ALPHA</div>
-                            <div class="text-xl font-mono text-white">>28x</div>
-                            <div class="text-xs text-gray-400 mt-1">Asimmetria estratta dal sistema</div>
+                            <div class="text-xs text-gray-500 mb-1">MOVIMENTO</div>
+                            <div class="text-xl font-mono text-sys-green">Cruzeiro (gen 2026)</div>
+                            <div class="text-xs text-gray-400 mt-1">Trasferimento confermato; nessuna clausola citata qui</div>
                         </div>
                     </div>
                 </div>
@@ -684,17 +679,17 @@
                             <li><strong>L'Interesse:</strong> Fonti specializzate hanno riportato l'invio di scout di
                                 primo livello (Chelsea) a Bogotà.</li>
                             <li><strong>L'Esecuzione:</strong> A Gennaio 2026, Villarreal firma per il Cruzeiro.</li>
-                            <li><strong>L'Estrazione del Valore:</strong> Clausola rescissoria fissata a
-                                <strong>&#8364;51.000.000</strong> per i club europei.
+                            <li><strong>Il trasferimento:</strong> Cruzeiro completa l'operazione a gennaio 2026.
+                                Cifre di clausola non verificate qui: non le usiamo come prova.
                             </li>
                             <li><strong>La Latenza del Database:</strong> A febbraio 2026, Transfermarkt stima ancora il
                                 valore a soli <strong>&#8364;1.8M</strong>.</li>
                         </ul>
                         <p><strong>Conclusione del Caso Studio:</strong> Il mercato lineare istituzionale ha un ritardo
                             fisiologico nella prezzatura degli eventi non lineari. Il protocollo ha isolato
-                            l'inefficienza generata dal brand, confermando l'opportunità di acquisire un potenziale
-                            asset da &#8364;51M mentre i database globali lo valutavano a frazioni minime di quel
-                            prezzo.</p>
+                            l'inefficienza generata dal brand: a settembre 2025 l'asset era ancora sotto i &#8364;3M
+                            sui database mainstream, mesi dopo il breakout U20, e il trasferimento a Cruzeiro è
+                            arrivato a gennaio 2026. Nessuna clausola non verificabile viene usata come prova.</p>
                         <h4>2.2 Il Rilevamento Precoce e la Signal Detection (Il Caso Gilberto Mora)</h4>
                         <p>A inizio settembre 2025, il sistema di scraping automatizzato di OB1 ha flaggato Gilberto
                             Mora (messicano, classe 2008) includendolo tra le opportunità ad altissima priorità
@@ -1073,8 +1068,8 @@
                         <p>Questo documento ha presentato tre livelli di evidenza:</p>
                         <ul>
                             <li><strong>Il principio funziona (Sezione 2):</strong> L'attrito tra data-mining e giudizio
-                                umano specializzato estrae valore innegabile (clausola da &#8364;51M vs valutazione
-                                istituzionale a &#8364;1.8M).</li>
+                                umano specializzato isola asimmetrie di brand e latenza di mercato (es. Villarreal ancora
+                                sotto i &#8364;3M a settembre 2025, trasferimento Cruzeiro a gennaio 2026).</li>
                             <li><strong>Il metodo scala (Sezione 3):</strong> L'architettura ha operato sia a livello
                                 globale che locale (dati sporchi, Serie C), confermando l'astrazione dai vincoli del
                                 dataset.</li>
@@ -1194,7 +1189,7 @@
                         responsive: true, maintainAspectRatio: false,
                         plugins: {
                             legend: { position: 'bottom', labels: { color: '#aaa' } },
-                            tooltip: { callbacks: { afterBody: function (ctx) { if (ctx[0].label === 'Neiser Villarreal') return 'Clausola Reale: 51M'; return ''; } } }
+                            tooltip: { callbacks: { afterBody: function (ctx) { if (ctx[0].label === 'Neiser Villarreal') return 'Trasferimento Cruzeiro gen 2026 (no clause claim)'; return ''; } } }
                         },
                         scales: {
                             y: { type: 'linear', position: 'left', grid: { color: '#333' }, ticks: { color: '#aaa' }, title: { display: true, text: 'Goal Scored', color: '#00ff41' } },
