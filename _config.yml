@@ -1,0 +1,11 @@
+# GitHub Pages: copy static files as-is, but do not publish internal files.
+exclude:
+  - README.md
+  - ECOSYSTEM_BRIEFING.md
+  - generate_feed.py
+  - vercel.json
+  - 26-10-25_ob1_with_loom.html
+  - 26-10-25_weekly_report.html
+  - en/26-10-25_ob1_with_loom.html
+  - en/26-10-25_weekly_report.html
+  - theseus

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.matchanalysispro.online/</loc><lastmod>2026-03-05</lastmod></url>
-  <url><loc>https://www.matchanalysispro.online/en/</loc><lastmod>2026-03-05</lastmod></url>
-  <url><loc>https://www.matchanalysispro.online/theseus/</loc><lastmod>2026-03-05</lastmod></url>
-  <url><loc>https://www.matchanalysispro.online/theseus/demo/</loc><lastmod>2026-03-05</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.matchanalysispro.online/</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://www.matchanalysispro.online/en/"/></url>
+  <url><loc>https://www.matchanalysispro.online/en/</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="it" href="https://www.matchanalysispro.online/"/></url>
+  <url><loc>https://www.matchanalysispro.online/metodo/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.matchanalysispro.online/en/method/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.matchanalysispro.online/about/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.matchanalysispro.online/en/about/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.matchanalysispro.online/prodotti/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.matchanalysispro.online/en/products/</loc><lastmod>2026-10-14</lastmod></url>
   <url><loc>https://www.matchanalysispro.online/pricing/</loc><lastmod>2026-10-14</lastmod></url>
 </urlset>
