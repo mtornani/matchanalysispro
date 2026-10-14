@@ -5,7 +5,8 @@ body{background:var(--bg);color:var(--ink);font:18px/1.65 Georgia,"Times New Rom
 header.top{border-bottom:1px solid var(--line);font:15px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
 header.top .wrap{display:flex;justify-content:space-between;padding-top:20px;padding-bottom:20px}
 header.top a{color:var(--ink);text-decoration:none;margin-left:18px}
-header.top a:first-child{margin-left:0;font-weight:600}
+header.top .wrap>a{margin-left:0;font-weight:600}
+header.top a[aria-current=page]{text-decoration:underline;text-underline-offset:4px}
 h1{font-size:2.1rem;line-height:1.25;font-weight:normal;margin:72px 0 24px}
 h2{font:600 0.85rem/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:64px 0 18px}
 p{margin:0 0 16px}.lead{color:var(--muted);font-size:1.1rem}
