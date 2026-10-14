@@ -25,6 +25,21 @@
       "source": "/en/v2/",
       "destination": "/en/method/",
       "permanent": true
+    },
+    {
+      "source": "/theseus/demo/:path*",
+      "destination": "/metodo/",
+      "permanent": true
+    },
+    {
+      "source": "/theseus/:path*",
+      "destination": "/metodo/",
+      "permanent": true
+    },
+    {
+      "source": "/theseus",
+      "destination": "/metodo/",
+      "permanent": true
     }
   ]
 }
