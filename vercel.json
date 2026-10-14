@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "matchanalysispro.online" }],
+      "destination": "https://www.matchanalysispro.online/:path*",
+      "permanent": true
+    }
+  ]
+}
