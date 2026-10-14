@@ -40,6 +40,16 @@
       "source": "/theseus",
       "destination": "/metodo/",
       "permanent": true
+    },
+    {
+      "source": "/theseus/",
+      "destination": "/metodo/",
+      "permanent": true
+    },
+    {
+      "source": "/theseus/demo/",
+      "destination": "/metodo/",
+      "permanent": true
     }
   ]
 }
