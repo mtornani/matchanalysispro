@@ -1,0 +1,101 @@
+{
+  "id": "2026-10-girone-d",
+  "title": "Uscita 01",
+  "written": "2026-10-18",
+  "season": "2026/27",
+  "scope": {
+    "competition": "Serie D",
+    "group": "D"
+  },
+  "method_version": "v1",
+  "public": true,
+  "pool_csv": "release_01_table.csv",
+  "errata_csv": "release_01_errata_20261019.csv",
+  "note": "Gli id E01-001–E01-010 sono le scelte pubblicate il 18/10/2026. La colonna scelta della CSV del pool è il baselining numerico, non l’elenco delle scelte pubblicate.",
+  "checks": [
+    {
+      "date": "2026-11-24",
+      "approx": true
+    },
+    {
+      "date": "2027-01-31",
+      "approx": true
+    },
+    {
+      "date": "2027-05-03",
+      "approx": false
+    }
+  ],
+  "picks": [
+    {
+      "id": "E01-001",
+      "name": "Emanuele Occhipinti",
+      "club": "Oltrepò",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "E01-002",
+      "name": "Matteo Suatoni",
+      "club": "Solbiatese",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "E01-003",
+      "name": "Serafino Grandinetti",
+      "club": "Sant'Angelo",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "E01-004",
+      "name": "Lucas Serraglia",
+      "club": "Arconatese",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "E01-005",
+      "name": "Matteo Lecchi",
+      "club": "Pavia",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "E01-006",
+      "name": "Alessandro Diana",
+      "club": "Casatese Merate",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "E01-007",
+      "name": "Riccardo Geddo",
+      "club": "Casatese Merate",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "E01-008",
+      "name": "Davide Giorgi",
+      "club": "Lentigione",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "E01-009",
+      "name": "Jacopo Tirapelle",
+      "club": "Arconatese",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "E01-010",
+      "name": "Lorenzo Mori",
+      "club": "Pontedera",
+      "chosen": true,
+      "in_pool_csv": false
+    }
+  ]
+}
