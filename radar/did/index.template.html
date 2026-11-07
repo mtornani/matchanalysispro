@@ -54,7 +54,7 @@ button,input{font:inherit;color:inherit}
 .card .why{margin-top:8px;font-size:16px}
 .score{font:600 1.15rem/1 Georgia,serif;color:var(--accent);padding-top:4px}
 #stage{margin-bottom:24px}
-#canvas{width:100%;height:min(56vh,460px);min-height:360px;display:none;background:var(--card);border:1px solid var(--line);overflow:visible}
+#canvas{width:100%;height:min(64vh,540px);min-height:420px;display:none;background:var(--card);border:1px solid var(--line);overflow:hidden}
 body.is-map #canvas{display:block !important}
 #list[hidden],.legend[hidden],body.is-map #list,body.is-list #canvas,body.is-list .legend{display:none !important}
 body.is-map .legend{display:flex}
@@ -110,10 +110,14 @@ body.is-map .legend{display:flex}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
 footer a{color:var(--ink)}
 @media(max-width:600px){
+  .wordmark{font-size:1.4rem}
+  .back{white-space:nowrap;flex:none}
+  .top{align-items:flex-start}
   .hero h1{font-size:1.5rem}
   .card h3{font-size:1.15rem}
   .list button.card{grid-template-columns:2em minmax(0,1fr) auto;gap:8px}
   .score{padding-top:4px;font-size:1.05rem}
+  #canvas{height:min(70vh,560px);min-height:440px}
 }
 </style>
 </head>
@@ -159,7 +163,7 @@ footer a{color:var(--ink)}
 
   <div id="stage">
     <ol class="list" id="list"></ol>
-    <svg id="canvas" hidden viewBox="-48 -16 486 472" role="img" aria-label="Mappa delle scelte"></svg>
+    <svg id="canvas" hidden viewBox="-96 -64 592 560" role="img" aria-label="Mappa delle scelte"></svg>
     <p class="legend" hidden>
       <span><i style="background:#1f5a40"></i>Giocatore</span>
       <span><i style="background:#1e4a6d"></i>Club</span>
@@ -282,7 +286,7 @@ footer a{color:var(--ink)}
     const ordered = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
     ordered.forEach((p,i) => {
       const a = (-Math.PI/2) + (i * 2 * Math.PI / ordered.length);
-      positions[p.id] = {x: CX + Math.cos(a)*118, y: CY + Math.sin(a)*102};
+      positions[p.id] = {x: CX + Math.cos(a)*126, y: CY + Math.sin(a)*112};
     });
     clubs.forEach(c => {
       const ps = clubPlayers(c.id);
@@ -299,7 +303,7 @@ footer a{color:var(--ink)}
         const pt = positions[ps[0].id];
         ang = Math.atan2(pt.y-CY, pt.x-CX);
       } else ang = Math.atan2(sy, sx);
-      positions[c.id] = {x: CX + Math.cos(ang)*168, y: CY + Math.sin(ang)*148};
+      positions[c.id] = {x: CX + Math.cos(ang)*186, y: CY + Math.sin(ang)*166};
     });
     checks.forEach((c,i) => {
       const gap = 390 / (checks.length + 1);
@@ -307,8 +311,14 @@ footer a{color:var(--ink)}
     });
   }
   function lastName(label){
-    const parts = (label||"").split(" ");
+    const parts = (label||"").trim().split(/\s+/);
+    const particle = /^(de|di|del|della|dei|degli|lo|la|van|von|da)$/i;
+    if(parts.length >= 2 && particle.test(parts[parts.length-2])) return parts.slice(-2).join(" ");
     return parts[parts.length-1] || label;
+  }
+  function shortClub(label){
+    if(label === "Casatese Merate") return "Casatese";
+    return label;
   }
 
   let selected = null, view = "list", search = "";
@@ -361,13 +371,22 @@ footer a{color:var(--ink)}
       if(!positions[n.id]) return "";
       const p = positions[n.id];
       const on = !focus || focus.has(n.id);
-      const inner = inside ? ` style="fill:#f3eee4;stroke:none;font-size:10px"` : "";
-      const ty = inside ? p.y+4 : p.y+r+13;
+      if(inside){
+        return `<g class="node${on?(selected===n.id?" is-on":""):" is-dim"}" data-id="${n.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#f3eee4;stroke:none;font-size:10px">${label}</text></g>`;
+      }
+      const dx = p.x - CX, dy = p.y - CY;
+      const L = Math.hypot(dx, dy) || 1;
+      const extra = r + 15;
+      const tx = p.x + (dx / L) * extra;
+      const ty = p.y + (dy / L) * extra + 3;
+      const anchor = Math.abs(dx) < 28 ? "middle" : (dx > 0 ? "start" : "end");
       return `<g class="node${on?(selected===n.id?" is-on":""):" is-dim"}" data-id="${n.id}">
         <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
-        <text x="${p.x}" y="${ty}" text-anchor="middle"${inner}>${label}</text></g>`;
+        <text x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text></g>`;
     }
-    clubs.forEach(c => { markup += nodeMark(c, 9, "#1e4a6d", c.label); });
+    clubs.forEach(c => { markup += nodeMark(c, 9, "#1e4a6d", shortClub(c.label)); });
     players.forEach(p => { markup += nodeMark(p, 11, "#1f5a40", lastName(p.label)); });
     releases.forEach(r => { markup += nodeMark(r, 18, "#161310", "01", true); });
     checks.forEach(c => {
