@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.matchanalysispro.online/radar/schema/graph.schema.json",
+  "title": "Radar knowledge graph",
+  "type": "object",
+  "required": ["nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "generated": { "type": "string" },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["player", "pick", "club", "release", "method", "check", "evidence", "competition", "group"]
+          },
+          "label": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "target", "type"],
+        "properties": {
+          "source": { "type": "string" },
+          "target": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "generated": "2026-11-07",
+  "nodes": [
+    {
+      "id": "release:2026-10-girone-d",
+      "type": "release",
+      "label": "Uscita 01",
+      "release_id": "2026-10-girone-d",
+      "written": "2026-10-18",
+      "season": "2026/27",
+      "public": true
+    },
+    {
+      "id": "method:v1",
+      "type": "method",
+      "label": "Metodo v1",
+      "version": "v1"
+    },
+    {
+      "id": "competition:serie-d",
+      "type": "competition",
+      "label": "Serie D"
+    },
+    {
+      "id": "group:serie-d:d",
+      "type": "group",
+      "label": "Girone D",
+      "group": "D"
+    },
+    {
+      "id": "check:2026-10-girone-d:2026-11-24",
+      "type": "check",
+      "label": "2026-11-24",
+      "date": "2026-11-24",
+      "approx": true
+    },
+    {
+      "id": "check:2026-10-girone-d:2027-01-31",
+      "type": "check",
+      "label": "2027-01-31",
+      "date": "2027-01-31",
+      "approx": true
+    },
+    {
+      "id": "check:2026-10-girone-d:2027-05-03",
+      "type": "check",
+      "label": "2027-05-03",
+      "date": "2027-05-03",
+      "approx": false
+    },
+    {
+      "id": "pick:E01-001",
+      "type": "pick",
+      "label": "E01-001",
+      "pick_id": "E01-001",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "player:emanuele-occhipinti",
+      "type": "player",
+      "label": "Emanuele Occhipinti",
+      "name": "Emanuele Occhipinti",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:oltrepo",
+      "type": "club",
+      "label": "Oltrepò",
+      "name": "Oltrepò"
+    },
+    {
+      "id": "pick:E01-002",
+      "type": "pick",
+      "label": "E01-002",
+      "pick_id": "E01-002",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "player:matteo-suatoni",
+      "type": "player",
+      "label": "Matteo Suatoni",
+      "name": "Matteo Suatoni",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:solbiatese",
+      "type": "club",
+      "label": "Solbiatese",
+      "name": "Solbiatese"
+    },
+    {
+      "id": "pick:E01-003",
+      "type": "pick",
+      "label": "E01-003",
+      "pick_id": "E01-003",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "player:serafino-grandinetti",
+      "type": "player",
+      "label": "Serafino Grandinetti",
+      "name": "Serafino Grandinetti",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:sant-angelo",
+      "type": "club",
+      "label": "Sant'Angelo",
+      "name": "Sant'Angelo"
+    },
+    {
+      "id": "pick:E01-004",
+      "type": "pick",
+      "label": "E01-004",
+      "pick_id": "E01-004",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "player:lucas-serraglia",
+      "type": "player",
+      "label": "Lucas Serraglia",
+      "name": "Lucas Serraglia",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:arconatese",
+      "type": "club",
+      "label": "Arconatese",
+      "name": "Arconatese"
+    },
+    {
+      "id": "pick:E01-005",
+      "type": "pick",
+      "label": "E01-005",
+      "pick_id": "E01-005",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "player:matteo-lecchi",
+      "type": "player",
+      "label": "Matteo Lecchi",
+      "name": "Matteo Lecchi",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:pavia",
+      "type": "club",
+      "label": "Pavia",
+      "name": "Pavia"
+    },
+    {
+      "id": "pick:E01-006",
+      "type": "pick",
+      "label": "E01-006",
+      "pick_id": "E01-006",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "player:alessandro-diana",
+      "type": "player",
+      "label": "Alessandro Diana",
+      "name": "Alessandro Diana",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:casatese-merate",
+      "type": "club",
+      "label": "Casatese Merate",
+      "name": "Casatese Merate"
+    },
+    {
+      "id": "pick:E01-007",
+      "type": "pick",
+      "label": "E01-007",
+      "pick_id": "E01-007",
+      "chosen": true,
+      "in_pool_csv": true
+    },
+    {
+      "id": "player:riccardo-geddo",
+      "type": "player",
+      "label": "Riccardo Geddo",
+      "name": "Riccardo Geddo",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "pick:E01-008",
+      "type": "pick",
+      "label": "E01-008",
+      "pick_id": "E01-008",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "player:davide-giorgi",
+      "type": "player",
+      "label": "Davide Giorgi",
+      "name": "Davide Giorgi",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:lentigione",
+      "type": "club",
+      "label": "Lentigione",
+      "name": "Lentigione"
+    },
+    {
+      "id": "pick:E01-009",
+      "type": "pick",
+      "label": "E01-009",
+      "pick_id": "E01-009",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "player:jacopo-tirapelle",
+      "type": "player",
+      "label": "Jacopo Tirapelle",
+      "name": "Jacopo Tirapelle",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "pick:E01-010",
+      "type": "pick",
+      "label": "E01-010",
+      "pick_id": "E01-010",
+      "chosen": true,
+      "in_pool_csv": false
+    },
+    {
+      "id": "player:lorenzo-mori",
+      "type": "player",
+      "label": "Lorenzo Mori",
+      "name": "Lorenzo Mori",
+      "identity": "provisional-name"
+    },
+    {
+      "id": "club:pontedera",
+      "type": "club",
+      "label": "Pontedera",
+      "name": "Pontedera"
+    }
+  ],
+  "edges": [
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "method:v1",
+      "type": "uses_method"
+    },
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "competition:serie-d",
+      "type": "in_competition"
+    },
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "group:serie-d:d",
+      "type": "in_group"
+    },
+    {
+      "source": "group:serie-d:d",
+      "target": "competition:serie-d",
+      "type": "part_of"
+    },
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "check:2026-10-girone-d:2026-11-24",
+      "type": "has_check"
+    },
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "check:2026-10-girone-d:2027-01-31",
+      "type": "has_check"
+    },
+    {
+      "source": "release:2026-10-girone-d",
+      "target": "check:2026-10-girone-d:2027-05-03",
+      "type": "has_check"
+    },
+    {
+      "source": "pick:E01-001",
+      "target": "player:emanuele-occhipinti",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-001",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:emanuele-occhipinti",
+      "target": "club:oltrepo",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:emanuele-occhipinti",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-001"
+    },
+    {
+      "source": "pick:E01-002",
+      "target": "player:matteo-suatoni",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-002",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:matteo-suatoni",
+      "target": "club:solbiatese",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:matteo-suatoni",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-002"
+    },
+    {
+      "source": "pick:E01-003",
+      "target": "player:serafino-grandinetti",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-003",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:serafino-grandinetti",
+      "target": "club:sant-angelo",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:serafino-grandinetti",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-003"
+    },
+    {
+      "source": "pick:E01-004",
+      "target": "player:lucas-serraglia",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-004",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:lucas-serraglia",
+      "target": "club:arconatese",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:lucas-serraglia",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-004"
+    },
+    {
+      "source": "pick:E01-005",
+      "target": "player:matteo-lecchi",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-005",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:matteo-lecchi",
+      "target": "club:pavia",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:matteo-lecchi",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-005"
+    },
+    {
+      "source": "pick:E01-006",
+      "target": "player:alessandro-diana",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-006",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:alessandro-diana",
+      "target": "club:casatese-merate",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:alessandro-diana",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-006"
+    },
+    {
+      "source": "pick:E01-007",
+      "target": "player:riccardo-geddo",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-007",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:riccardo-geddo",
+      "target": "club:casatese-merate",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:riccardo-geddo",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-007"
+    },
+    {
+      "source": "pick:E01-008",
+      "target": "player:davide-giorgi",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-008",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:davide-giorgi",
+      "target": "club:lentigione",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:davide-giorgi",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-008"
+    },
+    {
+      "source": "pick:E01-009",
+      "target": "player:jacopo-tirapelle",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-009",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:jacopo-tirapelle",
+      "target": "club:arconatese",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:jacopo-tirapelle",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-009"
+    },
+    {
+      "source": "pick:E01-010",
+      "target": "player:lorenzo-mori",
+      "type": "identifies"
+    },
+    {
+      "source": "pick:E01-010",
+      "target": "release:2026-10-girone-d",
+      "type": "chosen_in"
+    },
+    {
+      "source": "player:lorenzo-mori",
+      "target": "club:pontedera",
+      "type": "plays_for",
+      "release": "2026-10-girone-d"
+    },
+    {
+      "source": "player:lorenzo-mori",
+      "target": "release:2026-10-girone-d",
+      "type": "selected_in",
+      "pick_id": "E01-010"
+    }
+  ]
+}

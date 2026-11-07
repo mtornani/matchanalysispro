@@ -36,3 +36,14 @@ Le prove stanno in `radar/evidence/` e usano `radar/schema/evidence.schema.json`
 ## Pagine pubbliche
 
 Questo mattone non rigenera `radar/index.html`. La prova di ottobre e la landing restano scritte a mano finché un passo successivo non collegherà il generatore alle pagine, senza cambiarne il contenuto visibile.
+
+
+## Grafo di conoscenza
+
+`python3 radar/build.py` scrive anche `radar/graph/graph.json` (tutto ciò che è nel repo) e `radar/graph/graph.public.json` (solo uscite con `"public": true`). Il mock di interfaccia legge il grafo pubblico.
+
+Nodi: giocatore, scelta (`E01-001`, …), club, uscita, metodo, verifica, prova, competizione, girone.
+
+Un giocatore è lo stesso nodo se il nome, dopo la normalizzazione (accenti e maiuscole), coincide. È un’identità provvisoria, la stessa idea del matching di ABoringBot ma senza data di nascita: non unire nomi diversi finché non c’è una conferma più forte. Gli id di scelta restano quelli pubblicati; se la stessa persona ricompare prende un nuovo id di scelta e si collega allo stesso nodo giocatore.
+
+La pagina `radar/did/` è il mock dell’interfaccia. Non modificare `radar/accesso/` né `radar/index.html` da questo flusso.
