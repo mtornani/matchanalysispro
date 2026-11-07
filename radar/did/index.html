@@ -5,106 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>D-id you know it? — Radar</title>
-<meta name="description" content="Grafo delle scelte Radar: giocatori, club, uscite e verifiche collegate.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231f5f4a'/><text x='16' y='22' font-family='Georgia' font-size='14' fill='white' text-anchor='middle'>D</text></svg>">
+<meta name="description" content="Dieci giovani di Serie D scritti il 18 ottobre 2026, con le fonti. Le scelte restano; gli errori si pubblicano.">
 <style>
 :root{
-  --ink:#1c1c1c;--muted:#5a5a5a;--line:#dcdcd6;--bg:#fafaf7;--paper:#fff;
-  --accent:#1f5f4a;--club:#3d4a6b;--check:#8a6a2f;--release:#1c1c1c;
+  --paper:#f3eee4;--ink:#161310;--muted:#5c564e;--line:#ddd4c6;--card:#fffdf8;
+  --accent:#8f2a1c;--accent-soft:#f3ddd6;--cite:#1e4a6d;--ok:#1f5a40;--mid:#8a6230;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
-a{color:var(--accent)}
+html,body{background:var(--paper);color:var(--ink);font:17px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+a{color:var(--cite)}
 button,input{font:inherit;color:inherit}
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
-.wordmark{font:normal 1.55rem/1.1 Georgia,"Times New Roman",serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 0 16px;border-bottom:1px solid var(--line)}
+.wordmark{font:normal 1.7rem/1.05 Georgia,"Times New Roman",serif}
 .wordmark em{font-style:normal;color:var(--accent)}
-.sub{display:block;margin-top:5px;font:600 11px/1.3 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.top-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.back{font:500 13px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
-.search{padding:12px 18px 0}
-.search input{width:100%;min-height:44px;border:1px solid var(--line);background:var(--paper);padding:10px 12px;border-radius:0}
+.sub{display:block;margin-top:6px;font:600 11px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.back{color:var(--ink);text-decoration:none;font:500 14px inherit;min-height:40px;display:inline-flex;align-items:center}
+.hero{padding:28px 0 8px}
+.hero h1{font:normal 1.85rem/1.22 Georgia,"Times New Roman",serif;margin:0 0 12px}
+.hero p{color:var(--muted);max-width:38em}
+.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.stamps span{border:1px solid var(--ink);padding:7px 11px;font:600 12px/1.2 inherit;letter-spacing:.03em}
+.trust{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:16px 18px;margin:22px 0}
+.trust h2{font:600 12px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.trust details{margin-top:10px}
+.trust summary{cursor:pointer;font:600 15px inherit;list-style:none}
+.trust summary::-webkit-details-marker{display:none}
+.trust summary:before{content:"+ ";color:var(--accent)}
+.trust details[open] summary:before{content:"− "}
+.trust li{margin:8px 0 0 18px;color:var(--muted)}
+.trust li strong{color:var(--ink);font-weight:600}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 14px}
+.search{flex:1;min-width:180px}
+.search input{width:100%;min-height:44px;border:1px solid var(--line);background:var(--card);padding:10px 12px}
 .search input:focus{outline:2px solid var(--accent);outline-offset:2px}
-.toolbar{display:block;padding:10px 18px 8px}
-.chips{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.chip,.seg button{flex:none;min-height:36px;padding:8px 12px;border:1px solid var(--ink);background:transparent;cursor:pointer}
-.chip[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.seg{display:flex;border:1px solid var(--ink);flex:none}
-.seg button{border:0;border-left:1px solid var(--ink)}
+.seg{display:flex;border:1px solid var(--ink)}
+.seg button{min-height:40px;padding:8px 14px;border:0;background:transparent;cursor:pointer;border-left:1px solid var(--ink)}
 .seg button:first-child{border-left:0}
-#stage{padding:0 8px}
-#canvas{width:100%;height:min(42vh,400px);display:block}
-#canvas[hidden],#list[hidden],.legend[hidden],
-body.is-list #canvas,body.is-list .legend{display:none !important}
-body.is-list #list{display:block !important}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.list{list-style:none}
+.list li{background:var(--card);border:1px solid var(--line);border-top:0}
+.list li:first-child{border-top:1px solid var(--line)}
+.list button.card{width:100%;text-align:left;background:none;border:0;padding:16px 16px 14px;cursor:pointer;min-height:72px;display:grid;grid-template-columns:2.2em 1fr auto;gap:10px;align-items:start}
+.num{font:600 14px/1.2 Georgia,serif;color:var(--muted);padding-top:4px}
+.card h3{font:normal 1.25rem/1.2 Georgia,serif}
+.card .meta{color:var(--muted);font-size:14px;margin-top:3px}
+.card .why{margin-top:8px;font-size:16px}
+.score{font:600 1.15rem/1 Georgia,serif;color:var(--accent);padding-top:4px}
+#stage{margin-bottom:24px}
+#canvas{width:100%;height:min(48vh,420px);display:block;background:var(--card);border:1px solid var(--line)}
+#canvas[hidden],#list[hidden],.legend[hidden],body.is-map #list,body.is-list #canvas,body.is-list .legend{display:none !important}
+body.is-map #list{display:none !important}
 .node{cursor:pointer}
-.node circle,.node rect{stroke:#fff;stroke-width:2}
-.node text{font:600 11px/1.15 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3px}
-.node.is-dim{opacity:.22}
-.node.is-on circle,.node.is-on rect{stroke:var(--ink);stroke-width:2.5}
-.edge{stroke:#c8c8c0;stroke-width:1.25;fill:none}
+.node circle{stroke:var(--paper);stroke-width:2}
+.node text{font:600 11px/1.15 inherit;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.node.is-dim{opacity:.2}
+.edge{stroke:#cfc6b8;stroke-width:1.2;fill:none}
 .edge.is-on{stroke:var(--ink);stroke-width:2}
 .edge.is-dim{opacity:.12}
-.legend{display:flex;flex-wrap:wrap;gap:10px 14px;padding:4px 18px 10px;font:12px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 14px;padding:10px 4px 0;font:12px inherit;color:var(--muted)}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.list{list-style:none;padding:0 18px 20px}
-.list li{border-top:1px solid var(--line)}
-.list button{width:100%;text-align:left;background:none;border:0;padding:14px 0;cursor:pointer;min-height:52px}
-.list b{display:block;font:normal 1.15rem/1.25 Georgia,serif}
-.list span{color:var(--muted);font-size:14px}
-.sheet{border-top:2px solid var(--ink);background:var(--paper);padding:16px 18px 28px;min-height:170px}
-.k{font:600 12px/1.3 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.sheet h2{font:normal 1.5rem/1.2 Georgia,"Times New Roman",serif;margin:6px 0 8px;color:var(--ink);text-transform:none;letter-spacing:0}
-.sheet p{margin:0 0 8px;color:var(--muted)}
-.sheet ul{margin:8px 0 0 18px}
-.sheet li{margin:0 0 4px}
+.sheet{background:var(--card);border:1px solid var(--line);padding:20px 18px 24px;margin:0 0 40px}
+.k{font:600 12px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sheet h2{font:normal 1.7rem/1.15 Georgia,serif;margin:6px 0 8px}
+.sheet .why{font-size:1.05rem;margin:0 0 14px}
+.facts{list-style:none;margin:0 0 16px}
+.facts li{border-top:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.facts p{margin:0;flex:1}
+.facts a{flex:none;font:600 13px inherit;white-space:nowrap}
+.conf{font-size:14px;color:var(--muted);margin:0 0 14px}
+.conf b.alta{color:var(--ok)}
+.conf b.media{color:var(--mid)}
+.caveat{border-left:3px solid var(--accent);padding:8px 0 8px 12px;margin:0 0 14px;color:var(--ink);background:var(--accent-soft)}
+.hook{border:1px dashed var(--line);padding:12px 14px;color:var(--muted);margin-top:8px}
 .hint{color:var(--muted)}
-.empty-ev{border-left:2px solid var(--accent);padding:2px 0 2px 12px;margin-top:10px}
-@media(min-width:800px){
-  .frame{max-width:980px;margin:0 auto}
-  #canvas{height:560px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
+footer a{color:var(--ink)}
+@media(max-width:600px){
+  .hero h1{font-size:1.5rem}
+  .card h3{font-size:1.15rem}
+  .list button.card{grid-template-columns:1.8em 1fr; }
+  .score{grid-column:2;padding-top:0}
 }
 </style>
 </head>
-<body>
-<div class="frame">
+<body class="is-list">
+<div class="wrap">
   <header class="top">
     <div>
       <div class="wordmark"><em>D-id</em> you know it?</div>
       <span class="sub">Radar · Serie D · 2026/27</span>
     </div>
-    <div class="top-right">
-      <div class="seg" role="group" aria-label="Vista">
-        <button data-view="graph" aria-pressed="true" type="button">Grafo</button>
-        <button data-view="list" aria-pressed="false" type="button">Elenco</button>
-      </div>
-      <a class="back" href="/radar/">Uscita 01</a>
-    </div>
+    <a class="back" href="/radar/">Pagina completa</a>
   </header>
-  <div class="search">
-    <label class="visually-hidden" for="q" style="position:absolute;left:-999px">Cerca</label>
-    <input id="q" type="search" placeholder="Cerca un giocatore o un club" autocomplete="off">
-  </div>
+
+  <section class="hero">
+    <h1>Dieci giovani scritti il 18 ottobre, ciascuno con le fonti. A maggio si vede chi era giusto.</h1>
+    <p>In Serie D i numeri ci sono, ma quasi nessuno li legge con un metodo che si possa controllare. Questa è una lista datata: le scelte non si riscrivono, gli errori si pubblicano, una clip si può agganciare dopo senza cambiare il nome.</p>
+    <div class="stamps">
+      <span>Scelte congelate</span>
+      <span>Due fonti, se possibile</span>
+      <span>Errori in chiaro</span>
+    </div>
+  </section>
+
+  <aside class="trust" id="trust">
+    <h2>Prima di fidarti</h2>
+    <p>Il metodo è del 17 e 18 ottobre, prima della classifica. Non esiste una fonte ufficiale dei minuti: se due fonti discordano, si prende il valore più cauto.</p>
+    <details>
+      <summary>Cosa può far storcere il naso</summary>
+      <ul id="caveats"></ul>
+    </details>
+  </aside>
+
   <div class="toolbar">
-    <div class="chips" role="toolbar" aria-label="Domande">
-      <button class="chip" data-q="all" aria-pressed="true" type="button">Tutti</button>
-      <button class="chip" data-q="same-club" aria-pressed="false" type="button">Stesso club</button>
-      <button class="chip" data-q="checks" aria-pressed="false" type="button">Verifiche</button>
+    <div class="search">
+      <label for="q" style="position:absolute;left:-999px">Cerca</label>
+      <input id="q" type="search" placeholder="Cerca un giocatore o un club" autocomplete="off">
+    </div>
+    <div class="seg" role="group" aria-label="Vista">
+      <button data-view="list" aria-pressed="true" type="button">Lista</button>
+      <button data-view="graph" aria-pressed="false" type="button">Mappa</button>
     </div>
   </div>
+
   <div id="stage">
-    <svg id="canvas" viewBox="0 0 390 430" role="img" aria-label="Grafo delle scelte"></svg>
-    <ul class="list" id="list" hidden></ul>
+    <ol class="list" id="list"></ol>
+    <svg id="canvas" hidden viewBox="0 0 390 430" role="img" aria-label="Mappa delle scelte"></svg>
+    <p class="legend" hidden>
+      <span><i style="background:#1f5a40"></i>Giocatore</span>
+      <span><i style="background:#1e4a6d"></i>Club</span>
+      <span><i style="background:#161310"></i>Uscita</span>
+      <span><i style="background:#8a6230"></i>Verifica</span>
+    </p>
   </div>
-  <p class="legend">
-    <span><i style="background:#1f5f4a"></i>Giocatore</span>
-    <span><i style="background:#3d4a6b"></i>Club</span>
-    <span><i style="background:#1c1c1c"></i>Uscita</span>
-    <span><i style="background:#8a6a2f"></i>Verifica</span>
-  </p>
+
   <aside class="sheet" id="sheet" aria-live="polite"></aside>
+
+  <footer>
+    <p>Mirko Tornani · Uscita 01 · girone D · numeri fino all’11 ottobre 2026 (7 giornate), scritta il 18 ottobre.</p>
+    <p><a href="/radar/">Metodo, registro ed errata sulla pagina pubblica</a></p>
+  </footer>
 </div>
-<script type="application/json" id="graph-data">{"generated": "2026-11-07", "nodes": [{"id": "release:2026-10-girone-d", "type": "release", "label": "Uscita 01", "release_id": "2026-10-girone-d", "written": "2026-10-18", "season": "2026/27", "public": true}, {"id": "method:v1", "type": "method", "label": "Metodo v1", "version": "v1"}, {"id": "competition:serie-d", "type": "competition", "label": "Serie D"}, {"id": "group:serie-d:d", "type": "group", "label": "Girone D", "group": "D"}, {"id": "check:2026-10-girone-d:2026-11-24", "type": "check", "label": "2026-11-24", "date": "2026-11-24", "approx": true}, {"id": "check:2026-10-girone-d:2027-01-31", "type": "check", "label": "2027-01-31", "date": "2027-01-31", "approx": true}, {"id": "check:2026-10-girone-d:2027-05-03", "type": "check", "label": "2027-05-03", "date": "2027-05-03", "approx": false}, {"id": "pick:E01-001", "type": "pick", "label": "E01-001", "pick_id": "E01-001", "chosen": true, "in_pool_csv": false}, {"id": "player:emanuele-occhipinti", "type": "player", "label": "Emanuele Occhipinti", "name": "Emanuele Occhipinti", "identity": "provisional-name"}, {"id": "club:oltrepo", "type": "club", "label": "Oltrepò", "name": "Oltrepò"}, {"id": "pick:E01-002", "type": "pick", "label": "E01-002", "pick_id": "E01-002", "chosen": true, "in_pool_csv": false}, {"id": "player:matteo-suatoni", "type": "player", "label": "Matteo Suatoni", "name": "Matteo Suatoni", "identity": "provisional-name"}, {"id": "club:solbiatese", "type": "club", "label": "Solbiatese", "name": "Solbiatese"}, {"id": "pick:E01-003", "type": "pick", "label": "E01-003", "pick_id": "E01-003", "chosen": true, "in_pool_csv": true}, {"id": "player:serafino-grandinetti", "type": "player", "label": "Serafino Grandinetti", "name": "Serafino Grandinetti", "identity": "provisional-name"}, {"id": "club:sant-angelo", "type": "club", "label": "Sant'Angelo", "name": "Sant'Angelo"}, {"id": "pick:E01-004", "type": "pick", "label": "E01-004", "pick_id": "E01-004", "chosen": true, "in_pool_csv": true}, {"id": "player:lucas-serraglia", "type": "player", "label": "Lucas Serraglia", "name": "Lucas Serraglia", "identity": "provisional-name"}, {"id": "club:arconatese", "type": "club", "label": "Arconatese", "name": "Arconatese"}, {"id": "pick:E01-005", "type": "pick", "label": "E01-005", "pick_id": "E01-005", "chosen": true, "in_pool_csv": true}, {"id": "player:matteo-lecchi", "type": "player", "label": "Matteo Lecchi", "name": "Matteo Lecchi", "identity": "provisional-name"}, {"id": "club:pavia", "type": "club", "label": "Pavia", "name": "Pavia"}, {"id": "pick:E01-006", "type": "pick", "label": "E01-006", "pick_id": "E01-006", "chosen": true, "in_pool_csv": true}, {"id": "player:alessandro-diana", "type": "player", "label": "Alessandro Diana", "name": "Alessandro Diana", "identity": "provisional-name"}, {"id": "club:casatese-merate", "type": "club", "label": "Casatese Merate", "name": "Casatese Merate"}, {"id": "pick:E01-007", "type": "pick", "label": "E01-007", "pick_id": "E01-007", "chosen": true, "in_pool_csv": true}, {"id": "player:riccardo-geddo", "type": "player", "label": "Riccardo Geddo", "name": "Riccardo Geddo", "identity": "provisional-name"}, {"id": "pick:E01-008", "type": "pick", "label": "E01-008", "pick_id": "E01-008", "chosen": true, "in_pool_csv": false}, {"id": "player:davide-giorgi", "type": "player", "label": "Davide Giorgi", "name": "Davide Giorgi", "identity": "provisional-name"}, {"id": "club:lentigione", "type": "club", "label": "Lentigione", "name": "Lentigione"}, {"id": "pick:E01-009", "type": "pick", "label": "E01-009", "pick_id": "E01-009", "chosen": true, "in_pool_csv": false}, {"id": "player:jacopo-tirapelle", "type": "player", "label": "Jacopo Tirapelle", "name": "Jacopo Tirapelle", "identity": "provisional-name"}, {"id": "pick:E01-010", "type": "pick", "label": "E01-010", "pick_id": "E01-010", "chosen": true, "in_pool_csv": false}, {"id": "player:lorenzo-mori", "type": "player", "label": "Lorenzo Mori", "name": "Lorenzo Mori", "identity": "provisional-name"}, {"id": "club:pontedera", "type": "club", "label": "Pontedera", "name": "Pontedera"}], "edges": [{"source": "release:2026-10-girone-d", "target": "method:v1", "type": "uses_method"}, {"source": "release:2026-10-girone-d", "target": "competition:serie-d", "type": "in_competition"}, {"source": "release:2026-10-girone-d", "target": "group:serie-d:d", "type": "in_group"}, {"source": "group:serie-d:d", "target": "competition:serie-d", "type": "part_of"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2026-11-24", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-01-31", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-05-03", "type": "has_check"}, {"source": "pick:E01-001", "target": "player:emanuele-occhipinti", "type": "identifies"}, {"source": "pick:E01-001", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:emanuele-occhipinti", "target": "club:oltrepo", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:emanuele-occhipinti", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-001"}, {"source": "pick:E01-002", "target": "player:matteo-suatoni", "type": "identifies"}, {"source": "pick:E01-002", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:matteo-suatoni", "target": "club:solbiatese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:matteo-suatoni", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-002"}, {"source": "pick:E01-003", "target": "player:serafino-grandinetti", "type": "identifies"}, {"source": "pick:E01-003", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:serafino-grandinetti", "target": "club:sant-angelo", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:serafino-grandinetti", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-003"}, {"source": "pick:E01-004", "target": "player:lucas-serraglia", "type": "identifies"}, {"source": "pick:E01-004", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:lucas-serraglia", "target": "club:arconatese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:lucas-serraglia", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-004"}, {"source": "pick:E01-005", "target": "player:matteo-lecchi", "type": "identifies"}, {"source": "pick:E01-005", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:matteo-lecchi", "target": "club:pavia", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:matteo-lecchi", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-005"}, {"source": "pick:E01-006", "target": "player:alessandro-diana", "type": "identifies"}, {"source": "pick:E01-006", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-diana", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-diana", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-006"}, {"source": "pick:E01-007", "target": "player:riccardo-geddo", "type": "identifies"}, {"source": "pick:E01-007", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:riccardo-geddo", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:riccardo-geddo", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-007"}, {"source": "pick:E01-008", "target": "player:davide-giorgi", "type": "identifies"}, {"source": "pick:E01-008", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:davide-giorgi", "target": "club:lentigione", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:davide-giorgi", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-008"}, {"source": "pick:E01-009", "target": "player:jacopo-tirapelle", "type": "identifies"}, {"source": "pick:E01-009", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:jacopo-tirapelle", "target": "club:arconatese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:jacopo-tirapelle", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-009"}, {"source": "pick:E01-010", "target": "player:lorenzo-mori", "type": "identifies"}, {"source": "pick:E01-010", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:lorenzo-mori", "target": "club:pontedera", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:lorenzo-mori", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "E01-010"}]}</script>
+<script type="application/json" id="graph-data">{"generated": "2026-11-07", "nodes": [{"id": "release:2026-10-girone-d", "type": "release", "label": "Uscita 01", "release_id": "2026-10-girone-d", "written": "2026-10-18", "season": "2026/27", "public": true, "caveats": [{"title": "Il metodo viene prima delle scelte", "text": "Le regole sono del 17 e 18 ottobre 2026, prima della classifica definitiva e prima di pubblicare l’uscita. Da allora ogni modifica crea una versione nuova e vale solo dopo."}, {"title": "I minuti non hanno una fonte ufficiale", "text": "In Serie D non esiste un tabellino ufficiale dei minuti. Si confrontano fonti pubbliche; se discordano si usa il valore più cauto. «Alta» vuol dire confermato partita per partita; «media» che due fonti concordano."}, {"title": "Un caso è già dichiarato", "text": "Il 19 ottobre una seconda lettura ha indicato che Jacopo Tirapelle avrebbe superato Andrea Arpini (60,8 contro 60,7). La scelta del 18 ottobre resta. Il caso sarà segnalato alla verifica del 24 novembre."}], "note": "Le dieci scelte pubbliche dell’Uscita 01, nell’ordine della pagina del 18/10/2026. Gli id sono U01-001–U01-010. Le voci E01 dell’errata del 19/10 sono correzioni sui dati, non l’elenco pubblicato."}, {"id": "method:v1", "type": "method", "label": "Metodo v1", "version": "v1"}, {"id": "competition:serie-d", "type": "competition", "label": "Serie D"}, {"id": "group:serie-d:d", "type": "group", "label": "Girone D", "group": "D"}, {"id": "check:2026-10-girone-d:2026-11-24", "type": "check", "label": "2026-11-24", "date": "2026-11-24", "approx": true}, {"id": "check:2026-10-girone-d:2027-01-31", "type": "check", "label": "2027-01-31", "date": "2027-01-31", "approx": true}, {"id": "check:2026-10-girone-d:2027-05-03", "type": "check", "label": "2027-05-03", "date": "2027-05-03", "approx": false}, {"id": "pick:U01-001", "type": "pick", "label": "U01-001", "pick_id": "U01-001", "chosen": true, "in_pool_csv": true, "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/usd-castellanzese-1921/leistungsdaten/verein/59916/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:mattia-valmori", "type": "player", "label": "Mattia Valmori", "name": "Mattia Valmori", "identity": "provisional-name", "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/usd-castellanzese-1921/leistungsdaten/verein/59916/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "club:castellanzese", "type": "club", "label": "Castellanzese", "name": "Castellanzese"}, {"id": "pick:U01-002", "type": "pick", "label": "U01-002", "pick_id": "U01-002", "chosen": true, "in_pool_csv": true, "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/us-pistoiese-1921/leistungsdaten/verein/1307/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/us-pistoiese-1921/leistungsdaten/verein/1307/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:tommaso-lagomarsino", "type": "player", "label": "Tommaso Lagomarsino", "name": "Tommaso Lagomarsino", "identity": "provisional-name", "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/us-pistoiese-1921/leistungsdaten/verein/1307/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/us-pistoiese-1921/leistungsdaten/verein/1307/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "club:pistoiese", "type": "club", "label": "Pistoiese", "name": "Pistoiese"}, {"id": "pick:U01-003", "type": "pick", "label": "U01-003", "pick_id": "U01-003", "chosen": true, "in_pool_csv": true, "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.soccerzz.com/player/giorgio-citterio/1014952", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/casatese/leistungsdaten/verein/58028/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:giorgio-citterio", "type": "player", "label": "Giorgio Citterio", "name": "Giorgio Citterio", "identity": "provisional-name", "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.soccerzz.com/player/giorgio-citterio/1014952", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/casatese/leistungsdaten/verein/58028/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:casatese-merate", "type": "club", "label": "Casatese Merate", "name": "Casatese Merate"}, {"id": "pick:U01-004", "type": "pick", "label": "U01-004", "pick_id": "U01-004", "chosen": true, "in_pool_csv": true, "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.zerozero.com.ar/jugador/alessandro-latini/2795954", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.zerozero.com.ar/jugador/alessandro-latini/2795954", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-latini", "type": "player", "label": "Alessandro Latini", "name": "Alessandro Latini", "identity": "provisional-name", "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.zerozero.com.ar/jugador/alessandro-latini/2795954", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.zerozero.com.ar/jugador/alessandro-latini/2795954", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:oltrepo", "type": "club", "label": "Oltrepò", "name": "Oltrepò"}, {"id": "pick:U01-005", "type": "pick", "label": "U01-005", "pick_id": "U01-005", "chosen": true, "in_pool_csv": true, "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.calciotel.it/calciatore/de-ponti-orso/133265/2025", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "player:orso-maria-de-ponti", "type": "player", "label": "Orso Maria De Ponti", "name": "Orso Maria De Ponti", "identity": "provisional-name", "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.calciotel.it/calciatore/de-ponti-orso/133265/2025", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "club:varese", "type": "club", "label": "Varese", "name": "Varese"}, {"id": "pick:U01-006", "type": "pick", "label": "U01-006", "pick_id": "U01-006", "chosen": true, "in_pool_csv": true, "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.soccerzz.com/player/andrea-arpini/1241592", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.soccerzz.com/player/andrea-arpini/1241592", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "player:andrea-arpini", "type": "player", "label": "Andrea Arpini", "name": "Andrea Arpini", "identity": "provisional-name", "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.soccerzz.com/player/andrea-arpini/1241592", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.soccerzz.com/player/andrea-arpini/1241592", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "club:crema", "type": "club", "label": "Crema", "name": "Crema"}, {"id": "pick:U01-007", "type": "pick", "label": "U01-007", "pick_id": "U01-007", "chosen": true, "in_pool_csv": true, "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.soccerzz.com/player/pietro-itraloni/2781507", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.soccerzz.com/player/pietro-itraloni/2781507", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:pietro-itraloni", "type": "player", "label": "Pietro Itraloni", "name": "Pietro Itraloni", "identity": "provisional-name", "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.soccerzz.com/player/pietro-itraloni/2781507", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.soccerzz.com/player/pietro-itraloni/2781507", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-008", "type": "pick", "label": "U01-008", "pick_id": "U01-008", "chosen": true, "in_pool_csv": true, "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/usd-castellanzese-1921/leistungsdaten/verein/59916/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:tommaso-matella", "type": "player", "label": "Tommaso Matella", "name": "Tommaso Matella", "identity": "provisional-name", "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/usd-castellanzese-1921/leistungsdaten/verein/59916/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "pick:U01-009", "type": "pick", "label": "U01-009", "pick_id": "U01-009", "chosen": true, "in_pool_csv": true, "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.soccerzz.com/player/alessandro-sassaro/1185097", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-sassaro", "type": "player", "label": "Alessandro Sassaro", "name": "Alessandro Sassaro", "identity": "provisional-name", "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.soccerzz.com/player/alessandro-sassaro/1185097", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-010", "type": "pick", "label": "U01-010", "pick_id": "U01-010", "chosen": true, "in_pool_csv": true, "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.casatesemerate.com/cittadella-modena-casatese-merate-0-1-citterio/", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/casatese/leistungsdaten/verein/58028/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}, {"id": "player:alessandro-diana", "type": "player", "label": "Alessandro Diana", "name": "Alessandro Diana", "identity": "provisional-name", "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.casatesemerate.com/cittadella-modena-casatese-merate-0-1-citterio/", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/casatese/leistungsdaten/verein/58028/plus/1?reldata=IT4D%262026", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}], "edges": [{"source": "release:2026-10-girone-d", "target": "method:v1", "type": "uses_method"}, {"source": "release:2026-10-girone-d", "target": "competition:serie-d", "type": "in_competition"}, {"source": "release:2026-10-girone-d", "target": "group:serie-d:d", "type": "in_group"}, {"source": "group:serie-d:d", "target": "competition:serie-d", "type": "part_of"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2026-11-24", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-01-31", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-05-03", "type": "has_check"}, {"source": "pick:U01-001", "target": "player:mattia-valmori", "type": "identifies"}, {"source": "pick:U01-001", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:mattia-valmori", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:mattia-valmori", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-001"}, {"source": "pick:U01-002", "target": "player:tommaso-lagomarsino", "type": "identifies"}, {"source": "pick:U01-002", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-lagomarsino", "target": "club:pistoiese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-lagomarsino", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-002"}, {"source": "pick:U01-003", "target": "player:giorgio-citterio", "type": "identifies"}, {"source": "pick:U01-003", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:giorgio-citterio", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:giorgio-citterio", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-003"}, {"source": "pick:U01-004", "target": "player:alessandro-latini", "type": "identifies"}, {"source": "pick:U01-004", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-latini", "target": "club:oltrepo", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-latini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-004"}, {"source": "pick:U01-005", "target": "player:orso-maria-de-ponti", "type": "identifies"}, {"source": "pick:U01-005", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:orso-maria-de-ponti", "target": "club:varese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:orso-maria-de-ponti", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-005"}, {"source": "pick:U01-006", "target": "player:andrea-arpini", "type": "identifies"}, {"source": "pick:U01-006", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:andrea-arpini", "target": "club:crema", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:andrea-arpini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-006"}, {"source": "pick:U01-007", "target": "player:pietro-itraloni", "type": "identifies"}, {"source": "pick:U01-007", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:pietro-itraloni", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:pietro-itraloni", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-007"}, {"source": "pick:U01-008", "target": "player:tommaso-matella", "type": "identifies"}, {"source": "pick:U01-008", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-matella", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-matella", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-008"}, {"source": "pick:U01-009", "target": "player:alessandro-sassaro", "type": "identifies"}, {"source": "pick:U01-009", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-sassaro", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-sassaro", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-009"}, {"source": "pick:U01-010", "target": "player:alessandro-diana", "type": "identifies"}, {"source": "pick:U01-010", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-diana", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-diana", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-010"}]}</script>
 <script>
 (function(){
   const data = JSON.parse(document.getElementById("graph-data").textContent);
@@ -115,22 +158,16 @@ body.is-list #list{display:block !important}
   const clubs = nodes.filter(n => n.type === "club");
   const releases = nodes.filter(n => n.type === "release");
   const checks = nodes.filter(n => n.type === "check");
-  const picks = nodes.filter(n => n.type === "pick");
 
   const neighbors = {};
   function link(a,b){ (neighbors[a] ||= new Set()).add(b); (neighbors[b] ||= new Set()).add(a); }
   edges.forEach(e => link(e.source, e.target));
 
   function picksFor(playerId){
-    return edges.filter(e => e.type === "identifies" && e.target === playerId)
-      .map(e => byId[e.source]).filter(Boolean);
+    return edges.filter(e => e.type === "identifies" && e.target === playerId).map(e => byId[e.source]).filter(Boolean);
   }
   function clubFor(playerId){
     const e = edges.find(x => x.type === "plays_for" && x.source === playerId);
-    return e ? byId[e.target] : null;
-  }
-  function releaseForPick(pickId){
-    const e = edges.find(x => x.type === "chosen_in" && x.source === pickId);
     return e ? byId[e.target] : null;
   }
   function clubPlayers(clubId){
@@ -142,6 +179,12 @@ body.is-list #list{display:block !important}
   function playerEvidence(playerId){
     return edges.filter(e => e.type === "has_evidence" && e.source === playerId).map(e => byId[e.target]);
   }
+  function pickOrder(p){
+    const pk = picksFor(p.id)[0];
+    const id = pk && pk.pick_id ? pk.pick_id : "";
+    const m = id.match(/(\d+)$/);
+    return m ? Number(m[1]) : 99;
+  }
 
   const MONTHS = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
   function niceDate(iso, approx){
@@ -150,37 +193,55 @@ body.is-list #list{display:block !important}
     const s = d + " " + MONTHS[m-1] + " " + y;
     return approx ? "intorno al " + s : s;
   }
+  function sourceName(url){
+    try{
+      const h = new URL(url).hostname.replace(/^www\./,"");
+      const map = {
+        "transfermarkt.it":"Transfermarkt","varesesport.com":"VareseSport",
+        "soccerzz.com":"Soccerzz","calciotel.it":"Calciotel","varesefc.com":"Varese FC",
+        "seried.it":"SerieD.it","castellanzese.com":"Castellanzese",
+        "casatesemerate.com":"Casatese Merate","comunicati.lnd.it":"Comunicato LND",
+        "oltrepofbc.it":"Oltrepò"
+      };
+      if(map[h]) return map[h];
+      if(h.includes("zerozero")) return "ZeroZero";
+      return h;
+    }catch(e){ return "Fonte"; }
+  }
+
+  const rel = releases[0] || {};
+  const caveatsEl = document.getElementById("caveats");
+  (rel.caveats || []).forEach(c => {
+    const li = document.createElement("li");
+    li.innerHTML = "<strong>"+c.title+".</strong> "+c.text;
+    caveatsEl.appendChild(li);
+  });
 
   const svg = document.getElementById("canvas");
-  const W = 390, H = 430, CX = 195, CY = 188;
+  const CX = 195, CY = 188;
   const positions = {};
-
   function layout(){
-    const rel = releases[0];
-    if(rel) positions[rel.id] = {x:CX, y:CY};
-    players.forEach((p,i) => {
-      const a = (-Math.PI/2) + (i * 2 * Math.PI / players.length);
+    if(rel.id) positions[rel.id] = {x:CX, y:CY};
+    const ordered = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
+    ordered.forEach((p,i) => {
+      const a = (-Math.PI/2) + (i * 2 * Math.PI / ordered.length);
       positions[p.id] = {x: CX + Math.cos(a)*118, y: CY + Math.sin(a)*102};
     });
     clubs.forEach(c => {
       const ps = clubPlayers(c.id);
       let sx=0, sy=0, n=0;
       ps.forEach(p => {
-        const pt = positions[p.id];
-        if(!pt) return;
-        const dx = pt.x-CX, dy = pt.y-CY;
-        const L = Math.hypot(dx,dy) || 1;
+        const pt = positions[p.id]; if(!pt) return;
+        const dx = pt.x-CX, dy = pt.y-CY, L = Math.hypot(dx,dy)||1;
         sx += dx/L; sy += dy/L; n++;
       });
-      if(!n){ positions[c.id] = {x:CX, y:CY}; return; }
+      if(!n){ positions[c.id] = {x:CX,y:CY}; return; }
       const mag = Math.hypot(sx,sy);
       let ang;
       if(mag < 0.35){
         const pt = positions[ps[0].id];
         ang = Math.atan2(pt.y-CY, pt.x-CX);
-      } else {
-        ang = Math.atan2(sy, sx);
-      }
+      } else ang = Math.atan2(sy, sx);
       positions[c.id] = {x: CX + Math.cos(ang)*168, y: CY + Math.sin(ang)*148};
     });
     checks.forEach((c,i) => {
@@ -188,51 +249,45 @@ body.is-list #list{display:block !important}
       positions[c.id] = {x: gap*(i+1), y: 392};
     });
   }
-
   function lastName(label){
     const parts = (label||"").split(" ");
     return parts[parts.length-1] || label;
   }
 
-  let selected = null;
-  let query = "all";
-  let view = "graph";
-  let search = "";
+  let selected = null, view = "list", search = "";
 
   function matchSearch(n){
     if(!search) return true;
-    const hay = (n.label+" "+(n.name||"")+" "+(n.pick_id||"")).toLowerCase();
+    const hay = (n.label+" "+(n.name||"")+" "+(n.why||"")+" "+((clubFor(n.id)||{}).label||"")).toLowerCase();
     return hay.includes(search);
+  }
+  function visiblePlayers(){
+    return players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b)).filter(matchSearch);
+  }
+
+  function renderList(){
+    document.getElementById("list").innerHTML = visiblePlayers().map(p => {
+      const c = clubFor(p.id);
+      const pk = picksFor(p.id)[0];
+      const n = pk && pk.pick_id ? pk.pick_id.slice(-2) : "";
+      const bits = [p.age_label, p.role, c && c.label].filter(Boolean).join(" · ");
+      return `<li><button class="card" type="button" data-id="${p.id}">
+        <span class="num">${n}</span>
+        <span><h3>${p.label}</h3><div class="meta">${bits}</div>${p.why?`<div class="why">${p.why}</div>`:""}</span>
+        <span class="score">${p.score||""}</span>
+      </button></li>`;
+    }).join("") || `<li style="padding:18px;color:#5c564e">Nessun nome coincide.</li>`;
+    document.getElementById("list").querySelectorAll("button[data-id]").forEach(b => {
+      b.addEventListener("click", () => select(b.getAttribute("data-id")));
+    });
   }
 
   function focusSet(){
-    const set = new Set();
-    if(selected){
-      set.add(selected);
-      (neighbors[selected]||[]).forEach(id => set.add(id));
-      return set;
-    }
-    if(search){
-      nodes.forEach(n => { if(matchSearch(n)) set.add(n.id); });
-      set.forEach(id => (neighbors[id]||[]).forEach(j => set.add(j)));
-      return set;
-    }
-    if(query === "same-club"){
-      clubs.forEach(c => {
-        const ps = clubPlayers(c.id);
-        if(ps.length > 1){ set.add(c.id); ps.forEach(p => set.add(p.id)); }
-      });
-      releases.forEach(r => set.add(r.id));
-      return set;
-    }
-    if(query === "checks"){
-      checks.forEach(c => set.add(c.id));
-      releases.forEach(r => set.add(r.id));
-      return set;
-    }
-    return null;
+    if(!selected) return null;
+    const set = new Set([selected]);
+    (neighbors[selected]||[]).forEach(id => set.add(id));
+    return set;
   }
-
   function draw(){
     const focus = focusSet();
     const visualEdges = edges.filter(e =>
@@ -245,90 +300,74 @@ body.is-list #list{display:block !important}
       const on = !focus || (focus.has(e.source) && focus.has(e.target));
       markup += `<line class="edge${on?(focus?" is-on":""):" is-dim"}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>`;
     });
-    function nodeMark(n, r, fill, label, shape, inside){
+    function nodeMark(n, r, fill, label, inside){
       if(!positions[n.id]) return "";
       const p = positions[n.id];
       const on = !focus || focus.has(n.id);
-      const cls = `node${on?(selected===n.id?" is-on":""):" is-dim"}`;
-      const shapeEl = shape === "sq"
-        ? `<rect x="${p.x-r}" y="${p.y-r}" width="${r*2}" height="${r*2}" fill="${fill}"></rect>`
-        : `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>`;
-      if(inside){
-        return `<g class="${cls}" data-id="${n.id}">${shapeEl}<text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#fafaf7;stroke:none;font-size:10px">${label}</text></g>`;
-      }
-      const dy = shape === "sq" ? r+14 : r+13;
-      return `<g class="${cls}" data-id="${n.id}">${shapeEl}<text x="${p.x}" y="${p.y+dy}" text-anchor="middle">${label}</text></g>`;
+      const inner = inside ? ` style="fill:#f3eee4;stroke:none;font-size:10px"` : "";
+      const ty = inside ? p.y+4 : p.y+r+13;
+      return `<g class="node${on?(selected===n.id?" is-on":""):" is-dim"}" data-id="${n.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
+        <text x="${p.x}" y="${ty}" text-anchor="middle"${inner}>${label}</text></g>`;
     }
-    clubs.forEach(c => { markup += nodeMark(c, 9, "#3d4a6b", c.label, "c"); });
-    players.forEach(p => { markup += nodeMark(p, 11, "#1f5f4a", lastName(p.label), "c"); });
-    releases.forEach(r => { markup += nodeMark(r, 18, "#1c1c1c", "01", "c", true); });
+    clubs.forEach(c => { markup += nodeMark(c, 9, "#1e4a6d", c.label); });
+    players.forEach(p => { markup += nodeMark(p, 11, "#1f5a40", lastName(p.label)); });
+    releases.forEach(r => { markup += nodeMark(r, 18, "#161310", "01", true); });
     checks.forEach(c => {
       const short = c.date ? c.date.slice(8)+"/"+c.date.slice(5,7) : c.label;
-      markup += nodeMark(c, 8, "#8a6a2f", short, "sq");
+      markup += nodeMark(c, 8, "#8a6230", short);
     });
     svg.innerHTML = markup;
-    svg.querySelectorAll(".node").forEach(g => {
-      g.addEventListener("click", () => select(g.getAttribute("data-id")));
-    });
-  }
-
-  function renderList(){
-    const items = players.filter(p => {
-      if(search && !matchSearch(p) && !matchSearch(clubFor(p.id)||{})) return false;
-      if(query === "same-club"){
-        const c = clubFor(p.id);
-        return c && clubPlayers(c.id).length > 1;
-      }
-      return true;
-    });
-    document.getElementById("list").innerHTML = items.map(p => {
-      const c = clubFor(p.id);
-      const pk = picksFor(p.id)[0];
-      return `<li><button type="button" data-id="${p.id}"><b>${p.label}</b><span>${pk?pk.label+" · ":""}${c?c.label:""}</span></button></li>`;
-    }).join("") || `<li style="padding:16px 0;color:#5a5a5a">Nessun nome coincide.</li>`;
-    document.getElementById("list").querySelectorAll("button[data-id]").forEach(b => {
-      b.addEventListener("click", () => select(b.getAttribute("data-id")));
-    });
+    svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", () => select(g.getAttribute("data-id"))));
   }
 
   function sheetFor(id){
     const n = byId[id];
     if(!n){
-      return `<p class="hint">Tocca un giocatore, un club o una data di verifica per vedere come sono legati.</p>
-        <p class="hint">Ogni uscita allarga questo grafo: lo stesso giocatore resta un solo nodo se ricompare.</p>`;
+      return `<p class="hint">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. La mappa serve se vuoi vedere chi condivide il club.</p>`;
     }
     if(n.type === "player"){
       const c = clubFor(n.id);
       const pks = picksFor(n.id);
-      const ev = playerEvidence(n.id);
-      const rels = pks.map(pk => releaseForPick(pk.id)).filter(Boolean);
+      const rels = pks.map(pk => {
+        const e = edges.find(x => x.type==="chosen_in" && x.source===pk.id);
+        return e ? byId[e.target] : null;
+      }).filter(Boolean);
       const chks = rels.flatMap(r => releaseChecks(r.id));
-      return `<div class="k">${pks.map(p=>p.label).join(" · ")||"Giocatore"}</div>
+      const ev = playerEvidence(n.id);
+      const facts = (n.facts||[]).map(f =>
+        `<li><p>${f.text}.</p><a href="${f.url}" target="_blank" rel="noopener">${sourceName(f.url)}</a></li>`
+      ).join("");
+      const conf = n.confidence || {};
+      const confLine = ["gol","minuti","assist"].filter(k => conf[k]).map(k => {
+        const lab = k[0].toUpperCase()+k.slice(1);
+        return `${lab} <b class="${conf[k]}">${conf[k]}</b>`;
+      }).join(" · ");
+      return `<div class="k">${(pks[0]&&pks[0].pick_id)||""}${n.score? " · punteggio "+n.score:""}</div>
         <h2>${n.label}</h2>
-        <p>${c?c.label:""}${rels.length? " · "+rels.map(r=>r.label).join(", "):""}</p>
-        ${chks.length? `<p>Verifiche: ${chks.map(c=>niceDate(c.date,c.approx)).join("; ")}.</p>`:""}
-        <div class="empty-ev">${ev.length
+        <p class="meta" style="color:#5c564e">${[n.age_label,n.role,c&&c.label].filter(Boolean).join(" · ")}</p>
+        ${n.why?`<p class="why">${n.why}</p>`:""}
+        ${facts?`<ul class="facts">${facts}</ul>`:""}
+        ${confLine?`<p class="conf">Quanto sono sicuri i numeri: ${confLine}. Alta = confermato partita per partita; media = due fonti concordano.</p>`:""}
+        ${n.caveat?`<p class="caveat">${n.caveat}</p>`:""}
+        ${chks.length?`<p class="conf">Verifiche già scritte: ${chks.map(c=>niceDate(c.date,c.approx)).join("; ")}.</p>`:""}
+        <div class="hook">${ev.length
           ? ev.map(e => (e.evidence_type||"prova")+(e.date?" · "+e.date:"")).join("<br>")
-          : "Nessuna prova video ancora. Si può agganciare all’id, senza cambiare la scelta."}</div>`;
+          : "Nessuna clip ancora. Un video si può agganciare a questa scelta senza cambiarla: non serve un’API, un postino porta il plico da un sistema all’altro."}</div>`;
     }
     if(n.type === "club"){
-      const ps = clubPlayers(n.id);
+      const ps = clubPlayers(n.id).sort((a,b)=>pickOrder(a)-pickOrder(b));
       return `<div class="k">Club</div><h2>${n.label}</h2>
-        <p>${ps.length} ${ps.length===1?"giocatore scelto":"giocatori scelti"} in questa rete.</p>
-        <ul>${ps.map(p=>`<li>${p.label}</li>`).join("")}</ul>`;
+        <p>${ps.length} ${ps.length===1?"scelta":"scelte"} in questa uscita.</p>
+        <ul>${ps.map(p=>`<li>${p.label}${p.why? " — "+p.why:""}</li>`).join("")}</ul>`;
     }
     if(n.type === "release"){
-      const count = edges.filter(e => e.type==="selected_in" && e.target===n.id).length;
-      return `<div class="k">${n.written?niceDate(n.written):""}</div>
-        <h2>${n.label}</h2>
-        <p>${count} scelte · stagione ${n.season||""}.</p>
-        <p><a href="/radar/">Apri la pagina pubblica dell’uscita</a></p>`;
+      return `<div class="k">${n.written?niceDate(n.written):""}</div><h2>${n.label}</h2>
+        <p>Stagione ${n.season||""}. <a href="/radar/">Apri la pagina pubblica, con metodo ed errata</a>.</p>`;
     }
     if(n.type === "check"){
-      const rel = edges.filter(e => e.type==="has_check" && e.target===n.id).map(e=>byId[e.source])[0];
-      return `<div class="k">Verifica</div>
-        <h2>${niceDate(n.date, n.approx)}</h2>
-        <p>Data dichiarata in anticipo${rel? " per "+rel.label:""}. L’esito si aggiunge, senza riscrivere le scelte.</p>`;
+      return `<div class="k">Verifica</div><h2>${niceDate(n.date, n.approx)}</h2>
+        <p>Data dichiarata in anticipo. L’esito si aggiunge, senza riscrivere le scelte.</p>`;
     }
     return `<div class="k">${n.type}</div><h2>${n.label}</h2>`;
   }
@@ -337,56 +376,32 @@ body.is-list #list{display:block !important}
     selected = (selected === id) ? null : id;
     document.getElementById("sheet").innerHTML = sheetFor(selected);
     draw();
+    if(selected) document.getElementById("sheet").scrollIntoView({behavior:"smooth", block:"nearest"});
   }
-
   function setView(v){
     view = v;
-    document.body.classList.toggle("is-list", v === "list");
+    document.body.classList.toggle("is-list", v==="list");
+    document.body.classList.toggle("is-map", v==="graph");
     document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.view===v ? "true":"false"));
     document.getElementById("canvas").hidden = v !== "graph";
     document.getElementById("list").hidden = v !== "list";
     document.querySelector(".legend").hidden = v !== "graph";
     if(v==="list") renderList();
+    else draw();
   }
 
-  document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
-    query = b.dataset.q;
-    document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x===b ? "true":"false"));
-    selected = null;
-    document.getElementById("sheet").innerHTML = sheetFor(null);
-    if(query==="checks"){
-      /* keep graph but focus checks */
-    }
-    draw();
-    if(view==="list") renderList();
-    if(query==="checks"){
-      document.getElementById("sheet").innerHTML = `<div class="k">Verifiche dichiarate</div><h2>Date già scritte</h2><ul>${checks.map(c=>`<li>${niceDate(c.date,c.approx)}</li>`).join("")}</ul>`;
-    }
-    if(query==="same-club"){
-      const doubles = clubs.filter(c => clubPlayers(c.id).length>1);
-      document.getElementById("sheet").innerHTML = `<div class="k">Stesso club</div><h2>${doubles.length} club con più scelte</h2>
-        <ul>${doubles.map(c=>`<li>${c.label}: ${clubPlayers(c.id).map(p=>p.label).join(", ")}</li>`).join("")}</ul>`;
-    }
-  }));
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
   document.getElementById("q").addEventListener("input", e => {
     search = (e.target.value||"").trim().toLowerCase();
-    selected = null;
-    document.getElementById("sheet").innerHTML = sheetFor(null);
-    draw();
-    if(view==="list") renderList();
+    renderList(); draw();
   });
 
   layout();
+  renderList();
   document.getElementById("sheet").innerHTML = sheetFor(null);
   draw();
-  renderList();
   const params = new URLSearchParams(location.search);
-  if(params.get("vista")==="elenco") setView("list");
-  const filtro = params.get("filtro");
-  if(filtro && document.querySelector('.chip[data-q="'+filtro+'"]')){
-    document.querySelector('.chip[data-q="'+filtro+'"]').click();
-  }
+  if(params.get("vista")==="mappa" || params.get("vista")==="grafo") setView("graph");
   const preset = params.get("nodo");
   if(preset && byId[preset]) select(preset);
 })();

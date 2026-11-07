@@ -146,6 +146,8 @@ def build_graph(releases: list[dict], evidence: list[dict] | None = None, public
             written=rel.get("written"),
             season=rel.get("season"),
             public=bool(rel.get("public")),
+            caveats=rel.get("caveats") or [],
+            note=rel.get("note"),
         )
         mid = f"method:{rel['method_version']}"
         add_node(mid, "method", f"Metodo {rel['method_version']}", version=rel["method_version"])
@@ -170,6 +172,11 @@ def build_graph(releases: list[dict], evidence: list[dict] | None = None, public
             pkid = f"pick:{pick['id']}"
             person = player_id(pick["name"])
             club = club_id(pick["club"])
+            extras = {
+                k: pick[k]
+                for k in ("why", "role", "age_label", "score", "facts", "confidence", "caveat")
+                if k in pick
+            }
             add_node(
                 pkid,
                 "pick",
@@ -177,6 +184,7 @@ def build_graph(releases: list[dict], evidence: list[dict] | None = None, public
                 pick_id=pick["id"],
                 chosen=bool(pick.get("chosen")),
                 in_pool_csv=pick.get("in_pool_csv"),
+                **extras,
             )
             add_node(
                 person,
@@ -184,6 +192,7 @@ def build_graph(releases: list[dict], evidence: list[dict] | None = None, public
                 pick["name"],
                 name=pick["name"],
                 identity="provisional-name",
+                **extras,
             )
             add_node(club, "club", pick["club"], name=pick["club"])
             add_edge(pkid, person, "identifies")

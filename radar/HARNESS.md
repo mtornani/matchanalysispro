@@ -17,7 +17,7 @@ Entrambi devono uscire senza errori.
 
 1. Crea `radar/releases/YYYY-MM-<ambito>/`.
 2. Scrivi `release.json` con lo stesso schema di `radar/schema/release.schema.json`.
-3. Ogni scelta ha un id nuovo e stabile (`E02-001`, …). Non riutilizzare id di uscite precedenti.
+3. Ogni scelta ha un id nuovo e stabile (`U02-001`, …, oppure `E02-001`). Non riutilizzare id di uscite precedenti. Le voci `E01` dell’errata di ottobre sono correzioni sui dati, non gli id delle dieci scelte pubbliche (`U01-001`–`U01-010`).
 4. Se le regole sono le stesse, `method_version` resta `v1`. Se cambi un criterio, crea `radar/method/v2.md` datato: vale solo da questa uscita in poi.
 5. Non inventare giocatori, fonti o risultati di verifica.
 6. Non modificare `radar/accesso/` né i prezzi.
@@ -42,7 +42,7 @@ Questo mattone non rigenera `radar/index.html`. La prova di ottobre e la landing
 
 `python3 radar/build.py` scrive anche `radar/graph/graph.json` (tutto ciò che è nel repo) e `radar/graph/graph.public.json` (solo uscite con `"public": true`). Il mock di interfaccia legge il grafo pubblico.
 
-Nodi: giocatore, scelta (`E01-001`, …), club, uscita, metodo, verifica, prova, competizione, girone.
+Nodi: giocatore, scelta (`U01-001`, …), club, uscita, metodo, verifica, prova, competizione, girone.
 
 Un giocatore è lo stesso nodo se il nome, dopo la normalizzazione (accenti e maiuscole), coincide. È un’identità provvisoria, la stessa idea del matching di ABoringBot ma senza data di nascita: non unire nomi diversi finché non c’è una conferma più forte. Gli id di scelta restano quelli pubblicati; se la stessa persona ricompare prende un nuovo id di scelta e si collega allo stesso nodo giocatore.
 

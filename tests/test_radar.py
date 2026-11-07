@@ -19,8 +19,11 @@ class RadarTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(data["id"], "2026-10-girone-d")
         ids = [p["id"] for p in data["picks"]]
-        self.assertEqual(ids, [f"E01-{i:03d}" for i in range(1, 11)])
+        self.assertEqual(ids, [f"U01-{i:03d}" for i in range(1, 11)])
+        self.assertEqual(data["picks"][0]["name"], "Mattia Valmori")
         self.assertTrue(all(p["chosen"] for p in data["picks"]))
+        self.assertTrue(all(p.get("facts") for p in data["picks"]))
+        self.assertTrue(all("http" in f.get("url","") for p in data["picks"] for f in p["facts"]))
 
     def test_valid_evidence_passes(self):
         known = {p["id"] for p in json.loads(RELEASE.read_text())["picks"]}
@@ -40,15 +43,14 @@ class RadarTests(unittest.TestCase):
             types.setdefault(node["type"], []).append(node)
         self.assertEqual(len(types["player"]), 10)
         self.assertEqual(len(types["pick"]), 10)
-        self.assertEqual(len(types["club"]), 8)
         self.assertEqual(len(types["release"]), 1)
         self.assertEqual(len(types["check"]), 3)
         ids = {n["id"] for n in types["player"]}
-        self.assertIn("player:emanuele-occhipinti", ids)
-        self.assertIn("club:arconatese", {n["id"] for n in types["club"]})
-        # two Arconatese picks share one club node
-        club_edges = [e for e in graph["edges"] if e["type"] == "plays_for" and e["target"] == "club:arconatese"]
-        self.assertEqual(len(club_edges), 2)
+        self.assertIn("player:mattia-valmori", ids)
+        self.assertIn("club:castellanzese", {n["id"] for n in types["club"]})
+        club_edges = [e for e in graph["edges"] if e["type"] == "plays_for" and e["target"] == "club:castellanzese"]
+        self.assertEqual(len(club_edges), 3)
+        self.assertEqual(len(types["club"]), 6)
 
     def test_same_player_reappears_as_one_node(self):
         first = json.loads(RELEASE.read_text())
@@ -61,11 +63,11 @@ class RadarTests(unittest.TestCase):
             "method_version": "v1",
             "public": False,
             "picks": [
-                {"id": "E02-001", "name": "Emanuele Occhipinti", "club": "Oltrepò", "chosen": True}
+                {"id": "U02-001", "name": "Mattia Valmori", "club": "Castellanzese", "chosen": True}
             ],
         }
         graph = build.build_graph([first, second], [])
-        players = [n for n in graph["nodes"] if n["type"] == "player" and n["name"] == "Emanuele Occhipinti"]
+        players = [n for n in graph["nodes"] if n["type"] == "player" and n["name"] == "Mattia Valmori"]
         self.assertEqual(len(players), 1)
         public = build.build_graph([first, second], [], public_only=True)
         self.assertFalse(any(n.get("release_id") == "2026-11-girone-d" for n in public["nodes"]))
