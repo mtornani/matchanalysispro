@@ -363,7 +363,7 @@ footer a{color:var(--ink)}
         ${chks.length?`<p class="conf">Verifiche già scritte: ${chks.map(c=>niceDate(c.date,c.approx)).join("; ")}.</p>`:""}
         <div class="hook">${ev.length
           ? ev.map(e => (e.evidence_type||"prova")+(e.date?" · "+e.date:"")).join("<br>")
-          : "Nessuna clip ancora. Un video si può agganciare a questa scelta senza cambiarla: non serve un’API, un postino porta il plico da un sistema all’altro."}</div>`;
+          : "Nessuna clip ancora. Un video si può agganciare a questa scelta più avanti, senza cambiare il nome."}</div>`;
     }
     if(n.type === "club"){
       const ps = clubPlayers(n.id).sort((a,b)=>pickOrder(a)-pickOrder(b));
