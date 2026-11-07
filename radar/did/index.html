@@ -24,7 +24,7 @@ button,input{font:inherit;color:inherit}
 .hero{padding:28px 0 8px}
 .hero h1{font:normal 1.85rem/1.22 Georgia,"Times New Roman",serif;margin:0 0 12px}
 .hero p{color:var(--muted);max-width:38em}
-.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px;align-items:flex-start}
 .stamps span{border:1px solid var(--ink);padding:7px 11px;font:600 12px/1.2 inherit;letter-spacing:.03em}
 .trust{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:16px 18px;margin:22px 0}
 .trust h2{font:600 12px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
@@ -84,8 +84,8 @@ footer a{color:var(--ink)}
 @media(max-width:600px){
   .hero h1{font-size:1.5rem}
   .card h3{font-size:1.15rem}
-  .list button.card{grid-template-columns:1.8em 1fr; }
-  .score{grid-column:2;padding-top:0}
+  .list button.card{grid-template-columns:2em minmax(0,1fr) auto;gap:8px}
+  .score{padding-top:4px;font-size:1.05rem}
 }
 </style>
 </head>
