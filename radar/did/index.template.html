@@ -19,6 +19,7 @@ button,input{font:inherit;color:inherit}
 .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 0 16px;border-bottom:1px solid var(--line)}
 .wordmark{font:normal 1.7rem/1.05 Georgia,"Times New Roman",serif}
 .wordmark em{font-style:normal;color:var(--accent)}
+.beta{display:inline-block;margin-left:8px;vertical-align:middle;position:relative;top:-7px;font:600 11px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:3px 7px}
 .sub{display:block;margin-top:6px;font:600 11px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .back{color:var(--ink);text-decoration:none;font:500 14px inherit;min-height:40px;display:inline-flex;align-items:center}
 .hero{padding:28px 0 8px}
@@ -53,9 +54,10 @@ button,input{font:inherit;color:inherit}
 .card .why{margin-top:8px;font-size:16px}
 .score{font:600 1.15rem/1 Georgia,serif;color:var(--accent);padding-top:4px}
 #stage{margin-bottom:24px}
-#canvas{width:100%;height:min(48vh,420px);display:block;background:var(--card);border:1px solid var(--line)}
-#canvas[hidden],#list[hidden],.legend[hidden],body.is-map #list,body.is-list #canvas,body.is-list .legend{display:none !important}
-body.is-map #list{display:none !important}
+#canvas{width:100%;height:min(56vh,460px);min-height:360px;display:none;background:var(--card);border:1px solid var(--line);overflow:visible}
+body.is-map #canvas{display:block !important}
+#list[hidden],.legend[hidden],body.is-map #list,body.is-list #canvas,body.is-list .legend{display:none !important}
+body.is-map .legend{display:flex}
 .node{cursor:pointer}
 .node circle{stroke:var(--paper);stroke-width:2}
 .node text{font:600 11px/1.15 inherit;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
@@ -93,7 +95,7 @@ footer a{color:var(--ink)}
 <div class="wrap">
   <header class="top">
     <div>
-      <div class="wordmark"><em>D-id</em> you know it?</div>
+      <div class="wordmark"><em>D-id</em> you know it? <span class="beta">Beta</span></div>
       <span class="sub">Radar · Serie D · 2026/27</span>
     </div>
     <a class="back" href="/radar/">Pagina completa</a>
@@ -131,7 +133,7 @@ footer a{color:var(--ink)}
 
   <div id="stage">
     <ol class="list" id="list"></ol>
-    <svg id="canvas" hidden viewBox="0 0 390 430" role="img" aria-label="Mappa delle scelte"></svg>
+    <svg id="canvas" hidden viewBox="-48 -16 486 472" role="img" aria-label="Mappa delle scelte"></svg>
     <p class="legend" hidden>
       <span><i style="background:#1f5a40"></i>Giocatore</span>
       <span><i style="background:#1e4a6d"></i>Club</span>
@@ -317,7 +319,15 @@ footer a{color:var(--ink)}
       const short = c.date ? c.date.slice(8)+"/"+c.date.slice(5,7) : c.label;
       markup += nodeMark(c, 8, "#8a6230", short);
     });
-    svg.innerHTML = markup;
+    const ns = "http://www.w3.org/2000/svg";
+    const parsed = new DOMParser().parseFromString('<svg xmlns="'+ns+'">'+markup+"</svg>", "image/svg+xml");
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    const root = parsed.documentElement;
+    if(root && !parsed.querySelector("parsererror")){
+      Array.from(root.childNodes).forEach(node => svg.appendChild(document.importNode(node, true)));
+    } else {
+      svg.innerHTML = markup;
+    }
     svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", () => select(g.getAttribute("data-id"))));
   }
 
@@ -387,7 +397,7 @@ footer a{color:var(--ink)}
     document.getElementById("list").hidden = v !== "list";
     document.querySelector(".legend").hidden = v !== "graph";
     if(v==="list") renderList();
-    else draw();
+    else requestAnimationFrame(() => { layout(); draw(); });
   }
 
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
