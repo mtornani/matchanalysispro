@@ -15,19 +15,19 @@
 html,body{background:var(--paper);color:var(--ink);font:17px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
 a{color:var(--cite)}
 button,input,select{font:inherit;color:inherit}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
 .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 0 16px;border-bottom:1px solid var(--line)}
 .wordmark{font:normal 1.7rem/1.05 Georgia,"Times New Roman",serif}
 .wordmark em{font-style:normal;color:var(--accent)}
 .beta{display:inline-block;margin-left:8px;vertical-align:middle;position:relative;top:-7px;font:600 11px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:3px 7px}
 .sub{display:block;margin-top:6px;font:600 11px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .back{color:var(--ink);text-decoration:none;font:500 14px inherit;min-height:40px;display:inline-flex;align-items:center}
-.hero{padding:28px 0 8px}
+.hero{padding:22px 0 6px}
 .hero h1{font:normal 1.85rem/1.22 Georgia,"Times New Roman",serif;margin:0 0 12px}
 .hero p{color:var(--muted);max-width:38em}
-.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px;align-items:flex-start}
+.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 6px;align-items:flex-start}
 .stamps span{border:1px solid var(--ink);padding:7px 11px;font:600 12px/1.2 inherit;letter-spacing:.03em}
-.trust{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:16px 18px;margin:22px 0}
+.trust{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:14px 16px;margin:16px 0}
 .trust h2{font:600 12px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
 .trust details{margin-top:10px}
 .trust summary{cursor:pointer;font:600 15px inherit;list-style:none}
@@ -36,22 +36,24 @@ button,input,select{font:inherit;color:inherit}
 .trust details[open] summary:before{content:"− "}
 .trust li{margin:8px 0 0 18px;color:var(--muted)}
 .trust li strong{color:var(--ink);font-weight:600}
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 10px}
-.search{flex:1;min-width:180px}
-.search input,.filters select{width:100%;min-height:44px;border:1px solid var(--line);background:var(--card);padding:10px 12px}
-.search input:focus,.filters select:focus{outline:2px solid var(--accent);outline-offset:2px}
-.seg{display:flex;border:1px solid var(--ink)}
-.seg button{min-height:40px;padding:8px 14px;border:0;background:transparent;cursor:pointer;border-left:1px solid var(--ink)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 8px}
+.search{flex:1;min-width:160px}
+.search input,.drawer select{width:100%;min-height:44px;border:1px solid var(--line);background:var(--card);padding:10px 12px}
+.search input:focus,.drawer select:focus{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:flex;border:1px solid var(--ink);flex:none}
+.seg button{min-height:40px;padding:8px 12px;border:0;background:transparent;cursor:pointer;border-left:1px solid var(--ink)}
 .seg button:first-child{border-left:0}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
-.filters .full{grid-column:1 / -1}
-.filters label{display:block;font:600 11px/1.2 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
-.filter-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 8px}
 .chip{min-height:36px;padding:6px 12px;border:1px solid var(--line);background:var(--card);cursor:pointer;font:600 13px inherit}
-.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.chip[aria-pressed="true"],.chip.is-on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .chip.is-reset{border-style:dashed;color:var(--muted)}
-.map-hint{font:14px/1.4 inherit;color:var(--muted);margin:0 0 8px}
+.chip .count{display:inline-block;margin-left:6px;min-width:1.3em;padding:1px 6px;border-radius:999px;background:var(--accent);color:#fff;font-size:11px;line-height:1.4;vertical-align:1px}
+.chip[aria-pressed="true"] .count,.chip.is-on .count{background:var(--paper);color:var(--ink)}
+.drawer{display:none;background:var(--card);border:1px solid var(--line);padding:12px;margin:0 0 10px}
+.drawer.is-open{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.drawer label{display:block;font:600 11px/1.2 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.map-hint{font:13px/1.35 inherit;color:var(--muted);margin:0 0 6px}
 .map-hint strong{color:var(--ink);font-weight:600}
 .list{list-style:none}
 .list li{background:var(--card);border:1px solid var(--line);border-top:0}
@@ -62,30 +64,37 @@ button,input,select{font:inherit;color:inherit}
 .card .meta{color:var(--muted);font-size:14px;margin-top:3px}
 .card .why{margin-top:8px;font-size:16px}
 .score{font:600 1.15rem/1 Georgia,serif;color:var(--accent);padding-top:4px}
-#stage{margin-bottom:24px}
-#canvas-wrap{display:none;background:var(--card);border:1px solid var(--line);overflow:auto;-webkit-overflow-scrolling:touch}
+#stage{margin-bottom:20px}
+#canvas-wrap{display:none;position:relative;background:var(--card);border:1px solid var(--line);overflow:hidden;height:min(72vh,620px);min-height:420px;touch-action:none}
 body.is-map #canvas-wrap{display:block}
-#canvas{display:block;width:100%;height:auto;min-height:440px;touch-action:manipulation}
-body.is-list #canvas-wrap,body.is-list .legend,body.is-list .map-hint,body.is-list .filter-bar.map-only{display:none !important}
+#canvas{display:block;width:100%;height:100%;cursor:grab}
+#canvas.is-dragging{cursor:grabbing}
+.zoom-tools{position:absolute;right:8px;bottom:8px;display:flex;gap:6px;z-index:2}
+.zoom-tools button{min-width:40px;min-height:40px;border:1px solid var(--ink);background:var(--paper);cursor:pointer;font:700 16px/1 inherit}
+body.is-list #canvas-wrap,body.is-list .legend,body.is-list .map-hint,body.is-list .map-only{display:none !important}
 body.is-map #list{display:none !important}
 body.is-map .legend{display:flex}
 .node{cursor:pointer}
 .node circle{stroke:var(--paper);stroke-width:2}
-.node text{font:600 11px/1.15 inherit;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
-.node.is-dim{opacity:.18}
+.node text{font:600 13px/1.15 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3.5px}
+.node.is-dim{opacity:.16}
 .node.is-on circle{stroke:var(--accent);stroke-width:3}
-.edge{stroke:#cfc6b8;stroke-width:1.2;fill:none}
-.edge.is-on{stroke:var(--ink);stroke-width:2.2}
+.node.ghost circle{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:4 3}
+.node.ghost text{fill:var(--muted);font-weight:600;font-size:12px;stroke:none}
+.edge{stroke:#cfc6b8;stroke-width:1.4;fill:none}
+.edge.is-on{stroke:var(--ink);stroke-width:2.4}
 .edge.is-dim{opacity:.1}
 .edge.span{stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3;fill:none}
-.tl-axis{stroke:var(--ink);stroke-width:2}
-.tl-tick{stroke:var(--ink);stroke-width:1.5}
-.tl-label{font:600 11px/1.2 inherit;fill:var(--muted);letter-spacing:.04em}
-.tl-date{font:600 12px/1.2 Georgia,serif;fill:var(--ink)}
-.col-guide{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4}
-.legend{display:flex;flex-wrap:wrap;gap:10px 14px;padding:10px 4px 0;font:12px inherit;color:var(--muted)}
+.tl-band{fill:#efe8db;stroke:var(--line);stroke-width:1}
+.tl-axis{stroke:var(--ink);stroke-width:2.5}
+.tl-label{font:700 12px/1.2 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tl-date{font:700 14px/1.2 Georgia,"Times New Roman",serif;fill:var(--ink)}
+.tl-title{font:600 12px/1.2 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--muted)}
+.col-guide{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.ghost-col{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 4;opacity:.85}
+.legend{display:flex;flex-wrap:wrap;gap:10px 14px;padding:10px 2px 0;font:12px inherit;color:var(--muted)}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.sheet{background:var(--card);border:1px solid var(--line);padding:20px 18px 24px;margin:0 0 40px}
+.sheet{background:var(--card);border:1px solid var(--line);padding:18px 16px 22px;margin:0 0 36px}
 .sheet .sheet-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
 .sheet .reset{min-height:36px;padding:6px 12px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font:600 13px inherit;white-space:nowrap}
 .k{font:600 12px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -125,6 +134,7 @@ body.is-map .legend{display:flex}
   .trip{grid-template-columns:1fr}
   .trip .arr{transform:rotate(90deg);height:18px;padding:0}
   .fields li{grid-template-columns:1fr}
+  .drawer.is-open{grid-template-columns:1fr}
 }
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
 footer a{color:var(--ink)}
@@ -132,16 +142,14 @@ footer a{color:var(--ink)}
   .wordmark{font-size:1.4rem}
   .back{white-space:nowrap;flex:none}
   .top{align-items:flex-start}
-  .hero h1{font-size:1.5rem}
+  .hero h1{font-size:1.45rem}
   .card h3{font-size:1.15rem}
   .list button.card{grid-template-columns:2em minmax(0,1fr) auto;gap:8px}
   .score{padding-top:4px;font-size:1.05rem}
-  .filters{grid-template-columns:1fr}
-  #canvas{min-height:480px}
+  #canvas-wrap{height:min(68vh,560px);min-height:380px}
 }
 @media(min-width:700px){
-  .filters{grid-template-columns:repeat(4,1fr)}
-  .filters .full{grid-column:auto}
+  .drawer.is-open{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
@@ -185,7 +193,13 @@ footer a{color:var(--ink)}
     </div>
   </div>
 
-  <div class="filters" id="filters" aria-label="Filtri">
+  <div class="chip-row" id="chip-row">
+    <button type="button" class="chip" id="filters-toggle" aria-expanded="false" aria-controls="filters-drawer">Filtri</button>
+    <button type="button" class="chip is-reset map-only" id="reset-focus" hidden>Azzera</button>
+    <button type="button" class="chip is-reset map-only" id="fit-btn" hidden>Adatta</button>
+  </div>
+
+  <div class="drawer" id="filters-drawer" hidden>
     <div>
       <label for="f-role">Ruolo</label>
       <select id="f-role"><option value="">Tutti</option></select>
@@ -206,26 +220,29 @@ footer a{color:var(--ink)}
         <option value="media">Media</option>
       </select>
     </div>
+    <div style="grid-column:1/-1">
+      <button type="button" class="chip is-reset" id="clear-filters">Pulisci filtri</button>
+    </div>
   </div>
 
-  <div class="filter-bar map-only" id="focus-bar" hidden>
-    <button type="button" class="chip is-reset" id="reset-focus">Azzera selezione</button>
-    <button type="button" class="chip is-reset" id="clear-filters">Pulisci filtri</button>
-  </div>
-
-  <p class="map-hint" id="map-hint" hidden><strong>La linea in alto è il tempo:</strong> ogni colonna è un’uscita. Tocca un nome per vedere il percorso e le fonti.</p>
+  <p class="map-hint" id="map-hint" hidden><strong>La fascia in alto è il tempo:</strong> ogni colonna è un’uscita. Trascina per spostare, pizzica per zoom. Tocca un nome per il percorso.</p>
 
   <div id="stage">
     <ol class="list" id="list"></ol>
     <div id="canvas-wrap">
-      <svg id="canvas" viewBox="0 0 360 560" role="img" aria-label="Mappa delle scelte lungo il tempo"></svg>
+      <svg id="canvas" viewBox="0 0 420 560" role="img" aria-label="Mappa delle scelte lungo il tempo"></svg>
+      <div class="zoom-tools" aria-label="Zoom">
+        <button type="button" id="zoom-out" title="Riduci">−</button>
+        <button type="button" id="zoom-in" title="Ingrandisci">+</button>
+        <button type="button" id="zoom-fit" title="Adatta">⤢</button>
+      </div>
     </div>
     <p class="legend" hidden>
       <span><i style="background:#1f5a40"></i>Giocatore</span>
       <span><i style="background:#1e4a6d"></i>Club</span>
       <span><i style="background:#161310"></i>Uscita</span>
       <span><i style="background:#8a6230"></i>Verifica</span>
-      <span><i style="background:#8f2a1c;border-radius:0;height:2px;width:14px;vertical-align:middle"></i>Stesso giocatore su più uscite</span>
+      <span><i style="background:transparent;border:1.5px dashed #5c564e;border-radius:0;width:12px;height:10px"></i>Prossima uscita</span>
     </p>
   </div>
 
@@ -314,8 +331,18 @@ footer a{color:var(--ink)}
     const c = p.confidence || {};
     return ["gol","minuti","assist"].map(k => c[k]).filter(Boolean);
   }
+  function nextUscitaLabel(){
+    let maxN = 0;
+    releases.forEach(r => {
+      const m = (r.label||"").match(/(\d+)/);
+      if(m) maxN = Math.max(maxN, Number(m[1]));
+    });
+    const n = String(maxN + 1).padStart(2, "0");
+    return { num: n, title: "Uscita " + n + " · in arrivo" };
+  }
 
   const MONTHS = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  const MONTHS_SHORT = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
   function niceDate(iso, approx){
     if(!iso) return "";
     const [y,m,d] = iso.split("-").map(Number);
@@ -325,7 +352,7 @@ footer a{color:var(--ink)}
   function shortDate(iso){
     if(!iso) return "";
     const [y,m,d] = iso.split("-");
-    return Number(d) + " " + MONTHS[Number(m)-1].slice(0,3) + " " + y;
+    return Number(d) + " " + MONTHS_SHORT[Number(m)-1] + " " + y;
   }
   function sourceName(url){
     try{
@@ -351,7 +378,6 @@ footer a{color:var(--ink)}
     caveatsEl.appendChild(li);
   });
 
-  // Populate filter options from graph data only
   const roleSel = document.getElementById("f-role");
   const clubSel = document.getElementById("f-club");
   const relSel = document.getElementById("f-release");
@@ -367,8 +393,11 @@ footer a{color:var(--ink)}
   });
 
   const svg = document.getElementById("canvas");
+  const wrap = document.getElementById("canvas-wrap");
   const positions = {};
-  let viewBox = {w:360, h:560};
+  let viewBox = {w:420, h:560};
+  let ghost = null;
+  let zoom = 1, panX = 0, panY = 0;
 
   function lastName(label){
     const parts = (label||"").trim().split(/\s+/);
@@ -377,13 +406,31 @@ footer a{color:var(--ink)}
     return parts[parts.length-1] || label;
   }
   function shortClub(label){
-    if(label === "Casatese Merate") return "Casatese";
-    return label;
+    const map = {
+      "Casatese Merate":"Casatese",
+      "Castellanzese":"Castell.",
+      "Pistoiese":"Pistoiese",
+      "Oltrepò":"Oltrepò",
+      "Varese":"Varese",
+      "Crema":"Crema"
+    };
+    return map[label] || ((label||"").length > 10 ? label.slice(0,9)+"…" : label);
   }
 
   let selected = null, view = "list";
-  let search = "";
-  let filterRole = "", filterClub = "", filterRelease = "", filterConf = "";
+  let search = "", filterRole = "", filterClub = "", filterRelease = "", filterConf = "";
+  let drawerOpen = false;
+
+  function activeFilterCount(){
+    return [filterRole, filterClub, filterRelease, filterConf].filter(Boolean).length;
+  }
+  function updateFilterChip(){
+    const n = activeFilterCount();
+    const btn = document.getElementById("filters-toggle");
+    btn.innerHTML = n ? ('Filtri<span class="count">'+n+"</span>") : "Filtri";
+    btn.classList.toggle("is-on", drawerOpen || n > 0);
+    btn.setAttribute("aria-expanded", drawerOpen ? "true" : "false");
+  }
 
   function playerMatchesFilters(p){
     if(search){
@@ -400,21 +447,16 @@ footer a{color:var(--ink)}
       if(!rels.some(r => r.id === filterRelease)) return false;
     }
     if(filterConf){
-      const vals = confValues(p);
-      if(!vals.includes(filterConf)) return false;
+      if(!confValues(p).includes(filterConf)) return false;
     }
     return true;
   }
-
   function visiblePlayers(){
     return players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b)).filter(playerMatchesFilters);
   }
-
   function matchingSet(){
-    // nodes that should stay bright under filters (search included)
     const set = new Set();
-    const vp = visiblePlayers();
-    vp.forEach(p => {
+    visiblePlayers().forEach(p => {
       set.add(p.id);
       const c = clubFor(p.id); if(c) set.add(c.id);
       releasesForPlayer(p.id).forEach(r => {
@@ -425,50 +467,61 @@ footer a{color:var(--ink)}
       });
       picksFor(p.id).forEach(pk => set.add(pk.id));
     });
-    // if filtering by release, keep that release even with no matches
     if(filterRelease) set.add(filterRelease);
     return set;
   }
 
+  function separateY(items, minGap){
+    const arr = items.slice().sort((a,b)=>a.y-b.y);
+    for(let i=1;i<arr.length;i++){
+      if(arr[i].y - arr[i-1].y < minGap) arr[i].y = arr[i-1].y + minGap;
+    }
+    return arr;
+  }
+
   function layout(){
     Object.keys(positions).forEach(k => delete positions[k]);
-    const nRel = Math.max(releases.length, 1);
-    const colW = Math.max(220, Math.min(320, nRel === 1 ? 320 : 240));
-    const leftPad = 96;
-    const rightPad = 110;
-    const topAxis = 36;
-    const releaseY = 78;
-    const playerStart = 130;
-    const playerGap = 42;
-    const clubOffsetX = 78;
-    const checkGap = 56;
-    const bottomPad = 36;
+    const ghostMeta = nextUscitaLabel();
+    ghost = { id: "ghost:next", label: ghostMeta.title, num: ghostMeta.num };
+    const nCols = Math.max(releases.length, 1) + 1; // + ghost
+    const leftPad = 78;
+    const rightPad = 24;
+    const bandH = 64;
+    const releaseY = bandH + 36;
+    const playerStart = releaseY + 48;
+    const playerGap = 36;
+    const clubX = 40;
 
-    let maxPlayersInCol = 0;
+    let maxPlayersInCol = 1;
     releases.forEach(r => {
-      maxPlayersInCol = Math.max(maxPlayersInCol, playersInRelease(r.id).length);
+      maxPlayersInCol = Math.max(maxPlayersInCol, playersInRelease(r.id).length || 1);
     });
-    if(!releases.length) maxPlayersInCol = players.length;
 
-    const playersBlock = Math.max(maxPlayersInCol, 1) * playerGap;
-    const checksBlock = 70;
-    const h = topAxis + 50 + playersBlock + 30 + checksBlock + bottomPad;
-    const w = leftPad + rightPad + colW * nRel;
+    const playersBlock = maxPlayersInCol * playerGap + 8;
+    const checksBand = 56;
+    const h = playerStart + playersBlock + checksBand + 36;
+    // Fill typical mobile width: columns share available space
+    const avail = 420;
+    const colW = Math.max(150, (avail - leftPad - rightPad) / nCols);
+    const w = leftPad + rightPad + colW * nCols;
     viewBox = {w, h};
 
-    // Place releases along timeline
-    const colX = [];
     releases.forEach((r, i) => {
       const x = leftPad + colW * i + colW / 2;
-      colX.push(x);
-      positions[r.id] = {x, y: releaseY, col: i};
+      positions[r.id] = {x, y: releaseY, col: i, x0: leftPad + colW * i, x1: leftPad + colW * (i+1)};
     });
+    // ghost column after last
+    const gi = releases.length;
+    const gx = leftPad + colW * gi + colW / 2;
+    positions[ghost.id] = {
+      x: gx, y: releaseY, col: gi,
+      x0: leftPad + colW * gi, x1: leftPad + colW * (gi+1),
+      ghost: true
+    };
 
-    // Players: single-release → under that column; multi-release → midpoint (span)
-    const orderedAll = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
     const slotInCol = {};
     releases.forEach(r => { slotInCol[r.id] = 0; });
-
+    const orderedAll = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
     orderedAll.forEach(p => {
       const rels = releasesForPlayer(p.id);
       if(!rels.length){
@@ -478,48 +531,68 @@ footer a{color:var(--ink)}
       if(rels.length === 1){
         const r = rels[0];
         const slot = slotInCol[r.id]++;
-        const x = positions[r.id].x;
-        positions[p.id] = {x, y: playerStart + slot * playerGap, cols: [r.id]};
+        positions[p.id] = {x: positions[r.id].x, y: playerStart + slot * playerGap, cols: [r.id]};
       } else {
-        // span across releases: average x, use earliest slot among columns
         let slot = 0;
         rels.forEach(r => { slot = Math.max(slot, slotInCol[r.id] || 0); });
         rels.forEach(r => { slotInCol[r.id] = Math.max(slotInCol[r.id], slot + 1); });
         const xs = rels.map(r => positions[r.id].x);
-        const x = xs.reduce((a,b)=>a+b,0) / xs.length;
-        positions[p.id] = {x, y: playerStart + slot * playerGap, cols: rels.map(r=>r.id), span: true};
+        positions[p.id] = {
+          x: xs.reduce((a,b)=>a+b,0)/xs.length,
+          y: playerStart + slot * playerGap,
+          cols: rels.map(r=>r.id),
+          span: true
+        };
       }
     });
 
-    // Clubs: average of their visible players, nudged left
-    clubs.forEach(c => {
+    // Clubs: left rail, collision-separated
+    const clubItems = clubs.map(c => {
       const ps = clubPlayers(c.id).filter(p => positions[p.id]);
-      if(!ps.length){ positions[c.id] = {x: leftPad, y: playerStart}; return; }
-      const ax = ps.reduce((s,p)=>s+positions[p.id].x,0)/ps.length;
-      const ay = ps.reduce((s,p)=>s+positions[p.id].y,0)/ps.length;
-      positions[c.id] = {x: Math.max(18, ax - clubOffsetX), y: ay};
+      const ay = ps.length ? ps.reduce((s,p)=>s+positions[p.id].y,0)/ps.length : playerStart;
+      return {id: c.id, y: ay, x: clubX};
+    });
+    separateY(clubItems, 42).forEach((it, idx) => {
+      positions[it.id] = {x: it.x + (idx % 2 ? 10 : 0), y: it.y};
     });
 
-    // Checks under their release, left-to-right by date
+    // Checks: under their release, spaced across column width; labels only when focused
     releases.forEach(r => {
       const chs = releaseChecks(r.id).slice().sort((a,b)=>(a.date||"").localeCompare(b.date||""));
-      const baseY = playerStart + playersBlock + 28;
+      const baseY = playerStart + playersBlock + 22;
+      const col = positions[r.id];
+      const inner = Math.max(colW - 28, 40);
       chs.forEach((ch, i) => {
-        const spread = (chs.length - 1) * 36;
-        const x = positions[r.id].x - spread/2 + i * 36;
-        positions[ch.id] = {x, y: baseY};
+        const t = chs.length === 1 ? 0.5 : i / (chs.length - 1);
+        const x = col.x0 + 14 + t * inner;
+        positions[ch.id] = {x, y: baseY, hideLabel: true};
       });
     });
 
-    // Method near first release (optional small node)
-    methods.forEach((m, i) => {
+    methods.forEach(m => {
       const r = releases[0];
       if(!r || !positions[r.id]) return;
-      positions[m.id] = {x: positions[r.id].x + 52, y: releaseY - 28};
+      positions[m.id] = {x: positions[r.id].x + Math.min(48, colW*0.28), y: releaseY - 22, hideLabel: true};
     });
 
     svg.setAttribute("viewBox", "0 0 " + w + " " + h);
-    svg.style.minHeight = Math.max(440, Math.min(h, 720)) + "px";
+  }
+
+  function applyView(){
+    const g = svg.querySelector("#viewport");
+    if(g) g.setAttribute("transform", "translate("+panX+","+panY+") scale("+zoom+")");
+  }
+  function fitView(){
+    zoom = 1; panX = 0; panY = 0; applyView();
+  }
+  function zoomBy(factor, cx, cy){
+    const prev = zoom;
+    zoom = Math.max(0.7, Math.min(3.2, zoom * factor));
+    if(cx != null){
+      panX = cx - (cx - panX) * (zoom / prev);
+      panY = cy - (cy - panY) * (zoom / prev);
+    }
+    applyView();
   }
 
   function renderList(){
@@ -544,7 +617,6 @@ footer a{color:var(--ink)}
     const set = new Set([selected]);
     const n = byId[selected];
     (neighbors[selected]||[]).forEach(id => set.add(id));
-    // Expand path: player → pick → release → method/check + club
     if(n && n.type === "player"){
       picksFor(n.id).forEach(pk => {
         set.add(pk.id);
@@ -585,8 +657,8 @@ footer a{color:var(--ink)}
     const focus = focusSet();
     const match = matchingSet();
     const filtersOn = !!(search || filterRole || filterClub || filterRelease || filterConf);
-
     function isBright(id){
+      if(id && String(id).startsWith("ghost:")) return !focus && !filtersOn;
       if(focus) return focus.has(id);
       if(filtersOn) return match.has(id);
       return true;
@@ -594,26 +666,37 @@ footer a{color:var(--ink)}
 
     let markup = "";
     const {w, h} = viewBox;
+    const bandH = 64;
 
-    // Timeline axis
-    if(releases.length){
-      const xs = releases.map(r => positions[r.id].x);
-      const y = 28;
-      const x0 = Math.min(...xs) - 20;
-      const x1 = Math.max(...xs) + 20;
+    // Timeline band
+    markup += `<rect class="tl-band" x="0" y="0" width="${w}" height="${bandH}"></rect>`;
+    markup += `<text class="tl-label" x="12" y="22">Tempo</text>`;
+
+    if(releases.length || ghost){
+      const cols = releases.map(r => positions[r.id]).concat(ghost ? [positions[ghost.id]] : []);
+      const xs = cols.map(c => c.x);
+      const y = 40;
+      const x0 = Math.min(...xs) - 16;
+      const x1 = Math.max(...xs) + 16;
       markup += `<line class="tl-axis" x1="${x0}" y1="${y}" x2="${x1}" y2="${y}"></line>`;
-      // arrow tip
-      markup += `<path d="M${x1},${y} l-8,-4 l0,8 z" fill="#161310"></path>`;
-      markup += `<text class="tl-label" x="${x0}" y="${y - 10}">tempo →</text>`;
+      markup += `<path d="M${x1},${y} l-9,-5 l0,10 z" fill="#161310"></path>`;
+
       releases.forEach(r => {
         const p = positions[r.id];
-        markup += `<line class="tl-tick" x1="${p.x}" y1="${y-6}" x2="${p.x}" y2="${y+6}"></line>`;
-        markup += `<line class="col-guide" x1="${p.x}" y1="${y+8}" x2="${p.x}" y2="${h - 24}"></line>`;
-        markup += `<text class="tl-date" x="${p.x}" y="${y + 22}" text-anchor="middle">${shortDate(r.written)}</text>`;
+        markup += `<line class="col-guide" x1="${p.x}" y1="${bandH}" x2="${p.x}" y2="${h-16}"></line>`;
+        markup += `<text class="tl-date" x="${p.x}" y="28" text-anchor="middle">${shortDate(r.written)}</text>`;
+        markup += `<text class="tl-title" x="${p.x}" y="56" text-anchor="middle">${r.label||""}</text>`;
       });
+      if(ghost && positions[ghost.id]){
+        const p = positions[ghost.id];
+        const pad = 8;
+        markup += `<rect class="ghost-col" x="${p.x0+pad}" y="${bandH+8}" width="${(p.x1-p.x0)-pad*2}" height="${h-bandH-24}" rx="6"></rect>`;
+        markup += `<text class="tl-date" x="${p.x}" y="28" text-anchor="middle" style="fill:#5c564e;font-size:13px">prossima</text>`;
+        markup += `<text class="tl-title" x="${p.x}" y="56" text-anchor="middle">${ghost.label}</text>`;
+      }
     }
 
-    // Span edges for multi-release players
+    // Span edges
     players.forEach(p => {
       const pos = positions[p.id];
       if(!pos || !pos.span || !pos.cols) return;
@@ -625,71 +708,87 @@ footer a{color:var(--ink)}
       });
     });
 
-    const visualEdges = edges.filter(e =>
+    edges.filter(e =>
       (e.type === "plays_for" || e.type === "selected_in" || e.type === "has_check") &&
       positions[e.source] && positions[e.target]
-    );
-    visualEdges.forEach(e => {
-      // skip selected_in if already drawn as span curve for multi-release
-      if(e.type === "selected_in"){
-        const pos = positions[e.source];
-        if(pos && pos.span) return;
-      }
+    ).forEach(e => {
+      if(e.type === "selected_in" && positions[e.source] && positions[e.source].span) return;
       const a = positions[e.source], b = positions[e.target];
       const on = isBright(e.source) && isBright(e.target);
       markup += `<line class="edge${on?(focus?" is-on":""):" is-dim"}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>`;
     });
 
-    function nodeMark(n, r, fill, label, inside){
+    function nodeMark(n, r, fill, label, opts){
+      opts = opts || {};
       if(!positions[n.id]) return "";
       const p = positions[n.id];
       const on = isBright(n.id);
       const sel = selected === n.id;
-      if(inside){
+      const showLabel = opts.forceLabel || !(p.hideLabel && !sel && !(focus && focus.has(n.id)));
+      if(opts.inside){
         return `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${n.id}">
         <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
-        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#f3eee4;stroke:none;font-size:10px">${label}</text></g>`;
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#f3eee4;stroke:none;font-size:12px">${label}</text></g>`;
       }
       const isClub = n.type === "club";
-      const tx = isClub ? (p.x - r - 8) : (p.x + r + 8);
-      const ty = p.y + 4;
-      const anchor = isClub ? "end" : "start";
+      const isCheck = n.type === "check";
+      let tx, ty, anchor;
+      if(isClub){ tx = p.x + r + 7; ty = p.y + 4; anchor = "start"; }
+      else if(isCheck){ tx = p.x; ty = p.y + r + 14; anchor = "middle"; }
+      else { tx = p.x + r + 8; ty = p.y + 4; anchor = "start"; }
+      const labelMarkup = showLabel ? `<text x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text>` : "";
       return `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${n.id}">
         <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
-        <text x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text></g>`;
+        ${labelMarkup}</g>`;
     }
 
-    clubs.forEach(c => { markup += nodeMark(c, 8, "#1e4a6d", shortClub(c.label)); });
-    players.forEach(p => { markup += nodeMark(p, 10, "#1f5a40", lastName(p.label)); });
+    clubs.forEach(c => { markup += nodeMark(c, 9, "#1e4a6d", shortClub(c.label), {forceLabel:true}); });
+    players.forEach(p => { markup += nodeMark(p, 11, "#1f5a40", lastName(p.label), {forceLabel:true}); });
     releases.forEach(r => {
       const num = (r.label || "").replace(/\D+/g, "") || "01";
-      markup += nodeMark(r, 16, "#161310", num, true);
+      markup += nodeMark(r, 18, "#161310", num, {inside:true, forceLabel:true});
     });
     checks.forEach(c => {
-      const short = c.date ? c.date.slice(8)+"/"+c.date.slice(5,7) : c.label;
-      markup += nodeMark(c, 7, "#8a6230", short);
+      const short = c.date ? (c.date.slice(8)+"/"+c.date.slice(5,7)) : c.label;
+      markup += nodeMark(c, 8, "#8a6230", short);
     });
-    methods.forEach(m => {
-      if(positions[m.id]) markup += nodeMark(m, 7, "#5c564e", m.label.replace("Metodo ",""));
-    });
+    // Ghost node (no data)
+    if(ghost && positions[ghost.id]){
+      const p = positions[ghost.id];
+      markup += `<g class="node ghost" data-id="${ghost.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="16"></circle>
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle">${ghost.num}</text>
+        <text x="${p.x}" y="${p.y+38}" text-anchor="middle">vuota</text>
+      </g>`;
+    }
 
     const ns = "http://www.w3.org/2000/svg";
-    const parsed = new DOMParser().parseFromString('<svg xmlns="'+ns+'">'+markup+"</svg>", "image/svg+xml");
+    const inner = '<g id="viewport" transform="translate('+panX+','+panY+') scale('+zoom+')">'+markup+"</g>";
+    const parsed = new DOMParser().parseFromString('<svg xmlns="'+ns+'">'+inner+"</svg>", "image/svg+xml");
     while(svg.firstChild) svg.removeChild(svg.firstChild);
     const root = parsed.documentElement;
     if(root && !parsed.querySelector("parsererror")){
       Array.from(root.childNodes).forEach(node => svg.appendChild(document.importNode(node, true)));
     } else {
-      svg.innerHTML = markup;
+      svg.innerHTML = inner;
     }
-    svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", () => select(g.getAttribute("data-id"))));
+    svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const id = g.getAttribute("data-id");
+      if(id && id.startsWith("ghost:")){
+        select(null);
+        document.getElementById("sheet").innerHTML = `<div class="k">Prossima uscita</div><h2>${ghost.label}</h2><p class="hint">Colonna segnaposto: nessun dato inventato. Quando l’uscita sarà pubblica, i nomi appariranno qui.</p>`;
+        return;
+      }
+      select(id);
+    }));
   }
 
   function sheetFor(id){
     const n = byId[id];
     const resetBtn = id ? `<button type="button" class="reset" id="sheet-reset">Azzera</button>` : "";
     if(!n){
-      return `<div class="sheet-top"><p class="hint" style="margin:0">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. Nella mappa la linea in alto è il tempo: ogni colonna è un’uscita.</p>${resetBtn}</div>`;
+      return `<div class="sheet-top"><p class="hint" style="margin:0">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. La fascia in alto è il tempo: ogni colonna è un’uscita.</p>${resetBtn}</div>`;
     }
     let body = "";
     if(n.type === "player"){
@@ -742,33 +841,42 @@ footer a{color:var(--ink)}
     const b = document.getElementById("sheet-reset");
     if(b) b.addEventListener("click", () => select(null));
   }
-
   function select(id){
-    if(id === null){ selected = null; }
-    else { selected = (selected === id) ? null : id; }
+    if(id === null) selected = null;
+    else selected = (selected === id) ? null : id;
     document.getElementById("sheet").innerHTML = sheetFor(selected);
     bindSheetReset();
     draw();
-    if(selected) document.getElementById("sheet").scrollIntoView({behavior:"smooth", block:"nearest"});
+    const noscroll = new URLSearchParams(location.search).get("nosheetscroll") === "1";
+    if(selected && !noscroll) document.getElementById("sheet").scrollIntoView({behavior:"smooth", block:"nearest"});
   }
-
   function setView(v){
     view = v;
     document.body.classList.toggle("is-list", v==="list");
     document.body.classList.toggle("is-map", v==="graph");
     document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.view===v ? "true":"false"));
     document.getElementById("map-hint").hidden = v !== "graph";
-    document.getElementById("focus-bar").hidden = v !== "graph";
+    document.getElementById("reset-focus").hidden = v !== "graph";
+    document.getElementById("fit-btn").hidden = v !== "graph";
     document.querySelector(".legend").hidden = v !== "graph";
     if(v==="list") renderList();
-    else requestAnimationFrame(() => { layout(); draw(); });
+    else requestAnimationFrame(() => { layout(); fitView(); draw(); });
   }
-
   function refresh(){
+    updateFilterChip();
     renderList();
     if(view === "graph"){ layout(); draw(); }
     else draw();
   }
+
+  // Filters drawer
+  const drawer = document.getElementById("filters-drawer");
+  document.getElementById("filters-toggle").addEventListener("click", () => {
+    drawerOpen = !drawerOpen;
+    drawer.hidden = !drawerOpen;
+    drawer.classList.toggle("is-open", drawerOpen);
+    updateFilterChip();
+  });
 
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
   document.getElementById("q").addEventListener("input", e => {
@@ -787,16 +895,88 @@ footer a{color:var(--ink)}
     document.getElementById("f-conf").value = "";
     refresh();
   });
+  document.getElementById("fit-btn").addEventListener("click", fitView);
+  document.getElementById("zoom-fit").addEventListener("click", fitView);
+  document.getElementById("zoom-in").addEventListener("click", () => zoomBy(1.2, viewBox.w/2, viewBox.h/2));
+  document.getElementById("zoom-out").addEventListener("click", () => zoomBy(1/1.2, viewBox.w/2, viewBox.h/2));
+
+  // Pan / pinch / wheel on canvas
+  let dragging = false, lastX = 0, lastY = 0, moved = false;
+  let pinch = null;
+  function svgPoint(clientX, clientY){
+    const rect = svg.getBoundingClientRect();
+    const sx = viewBox.w / rect.width;
+    const sy = viewBox.h / rect.height;
+    return { x: (clientX - rect.left) * sx, y: (clientY - rect.top) * sy };
+  }
+  svg.addEventListener("pointerdown", e => {
+    if(e.target.closest && e.target.closest(".node")) return;
+    dragging = true; moved = false;
+    lastX = e.clientX; lastY = e.clientY;
+    svg.classList.add("is-dragging");
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", e => {
+    if(!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    if(Math.abs(dx)+Math.abs(dy) > 3) moved = true;
+    const rect = svg.getBoundingClientRect();
+    panX += dx * (viewBox.w / rect.width);
+    panY += dy * (viewBox.h / rect.height);
+    lastX = e.clientX; lastY = e.clientY;
+    applyView();
+  });
+  function endDrag(e){
+    if(!dragging) return;
+    dragging = false;
+    svg.classList.remove("is-dragging");
+    try{ svg.releasePointerCapture(e.pointerId); }catch(_){}
+  }
+  svg.addEventListener("pointerup", endDrag);
+  svg.addEventListener("pointercancel", endDrag);
+  svg.addEventListener("wheel", e => {
+    e.preventDefault();
+    const p = svgPoint(e.clientX, e.clientY);
+    zoomBy(e.deltaY < 0 ? 1.12 : 1/1.12, p.x, p.y);
+  }, {passive:false});
+
+  // Pinch
+  wrap.addEventListener("touchstart", e => {
+    if(e.touches.length === 2){
+      const a = e.touches[0], b = e.touches[1];
+      pinch = {
+        dist: Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY),
+        cx: (a.clientX+b.clientX)/2,
+        cy: (a.clientY+b.clientY)/2
+      };
+      dragging = false;
+    }
+  }, {passive:true});
+  wrap.addEventListener("touchmove", e => {
+    if(e.touches.length === 2 && pinch){
+      e.preventDefault();
+      const a = e.touches[0], b = e.touches[1];
+      const dist = Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY);
+      const p = svgPoint((a.clientX+b.clientX)/2, (a.clientY+b.clientY)/2);
+      zoomBy(dist / pinch.dist, p.x, p.y);
+      pinch.dist = dist;
+    }
+  }, {passive:false});
+  wrap.addEventListener("touchend", () => { pinch = null; });
 
   layout();
   renderList();
+  updateFilterChip();
   document.getElementById("sheet").innerHTML = sheetFor(null);
   bindSheetReset();
   draw();
   const params = new URLSearchParams(location.search);
   if(params.get("vista")==="mappa" || params.get("vista")==="grafo") setView("graph");
   const preset = params.get("nodo");
-  if(preset && byId[preset]) select(preset);
+  if(preset && byId[preset]){
+    if(view !== "graph") setView("graph");
+    select(preset);
+  }
 })();
 </script>
 </body>
