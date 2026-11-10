@@ -176,6 +176,7 @@ footer a{color:var(--ink)}
 .node.is-on text{font-weight:700}
 .ghost-note{font:500 12px/1.2 var(--sans);fill:var(--muted)}
 .ghost-note.strong{font-weight:600}
+.ghost-line{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4}
 /* Computer (da 1000px in su): pagina a tutta larghezza, filtri sempre in vista, scheda a fianco */
 @media(min-width:1000px){
   .wrap{max-width:1440px;padding:0 var(--r-s8)}
@@ -584,12 +585,11 @@ footer a{color:var(--ink)}
     const now = new Date();
     const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 864e5;
     const todayX = (today >= d0 && today <= d1) ? X(today) : null;
-    // Prossima uscita: senza data. La colonna vuota parte da oggi, non indica un giorno.
+    // Prossima uscita: senza data. Una linea tratteggiata sottile subito dopo «Oggi», senza larghezza:
+    // non è una colonna e non indica un giorno.
     const lastRelX = releases.length ? Math.max(...releases.map(r => positions[r.id].x)) : x0;
-    const ghostW = 140;
-    let gx = Math.max(todayX == null ? 0 : todayX, lastRelX + 30);
-    gx = Math.min(gx, x1 + 24 - ghostW);
-    positions[ghost.id] = {x: gx + ghostW/2, y: bandH + 36, x0: gx, x1: gx + ghostW, ghost: true};
+    const gx = Math.min(Math.max(todayX == null ? 0 : todayX + 9, lastRelX + 30), x1);
+    positions[ghost.id] = {x: gx, y: bandH + 36, x0: gx, x1: gx, ghost: true};
 
     wideGeo = {x0, x1, d0, d1, X, axisY, bandH, clubW, rowsBottom, todayX, now};
     viewBox = {w, h};
@@ -809,12 +809,11 @@ footer a{color:var(--ink)}
     if(selNode && selNode.type === "player" && positions[selected]){
       m += `<rect class="row-on" x="${g.clubW}" y="${positions[selected].y-17}" width="${w-g.clubW-12}" height="34" rx="4"></rect>`;
     }
-    // Prossima uscita: colonna vuota, senza data e senza nomi
+    // Prossima uscita: linea tratteggiata sottile, senza data e senza nomi
     const gp = positions[ghost.id];
     m += `<g class="node ghost${isBright(ghost.id)?"":" is-dim"}" data-id="${ghost.id}">
-      <rect class="ghost-col" x="${gp.x0}" y="${g.bandH+10}" width="${gp.x1-gp.x0}" height="${g.rowsBottom-g.bandH-10}" rx="6" style="fill:var(--r-surface);fill-opacity:.55"></rect>
-      <text class="ghost-note strong" x="${gp.x0+2}" y="${g.rowsBottom+22}">${ghost.label}</text>
-      <text class="ghost-note" x="${gp.x0+2}" y="${g.rowsBottom+40}">Data da definire: colonna vuota, nessun nome.</text>
+      <line class="ghost-line" x1="${gp.x}" y1="${g.bandH}" x2="${gp.x}" y2="${g.rowsBottom+26}"></line>
+      <text class="ghost-note strong" x="${gp.x+7}" y="${g.rowsBottom+22}">Prossima uscita: data da definire</text>
     </g>`;
     if(g.todayX != null){
       m += `<line class="today-line" x1="${g.todayX}" y1="${g.bandH}" x2="${g.todayX}" y2="${g.rowsBottom+26}"></line>`;
