@@ -176,6 +176,9 @@ footer a{color:var(--ink)}
 .node.is-on text{font-weight:700}
 .ghost-note{font:500 12px/1.2 var(--sans);fill:var(--muted)}
 .ghost-note.strong{font-weight:600}
+.pscore{fill:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.guide{margin:0 0 var(--r-s4);padding:var(--r-s2) var(--r-s3);border-radius:var(--r-radius-sm);background:var(--accent-soft);color:var(--accent);font:600 var(--r-fs-sm)/1.35 var(--sans)}
+.wide-only{display:none}
 .ghost-line{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4}
 /* Computer (da 1000px in su): pagina a tutta larghezza, filtri sempre in vista, scheda a fianco */
 @media(min-width:1000px){
@@ -195,6 +198,7 @@ footer a{color:var(--ink)}
   .work .sheet .sheet-top>div{flex:1 1 100% !important}
   .work .sheet .sheet-top>div~.reset{order:-1;margin-left:auto}
   .postman{max-width:900px}
+  .legend .wide-only{display:inline}
 }
 </style>
 </head>
@@ -291,6 +295,7 @@ footer a{color:var(--ink)}
       <span><i style="background:var(--r-node-release);width:13px;height:13px"></i>Uscita</span>
       <span><i style="background:var(--r-node-check);width:8px;height:8px"></i>Verifica</span>
       <span><i style="background:transparent;border:1.5px dashed var(--r-muted);border-radius:0;width:12px;height:10px"></i>Prossima uscita</span>
+      <span class="wide-only">Numero verde e grandezza del punto: punteggio pubblicato</span>
     </p>
   </div>
 
@@ -450,6 +455,8 @@ footer a{color:var(--ink)}
   // Computer: linea del tempo larga. Telefono: colonne, come prima.
   const wideQuery = window.matchMedia("(min-width:1000px)");
   let wideMode = false, wideGeo = null;
+  // Solo computer: finché non si clicca nulla, la scheda mostra il primo nome della lista
+  let previewId = null;
   const hintEl = document.getElementById("map-hint");
   const hintNarrow = hintEl.innerHTML;
   const hintWide = "<strong>Il tempo scorre da sinistra a destra:</strong> ogni riga è un giocatore, dal giorno in cui è stato scritto fino alle verifiche già fissate. Clicca un nome per vedere solo il suo percorso.";
@@ -544,7 +551,7 @@ footer a{color:var(--ink)}
     const ghostMeta = nextUscitaLabel();
     ghost = { id: "ghost:next", label: ghostMeta.title, num: ghostMeta.num };
     const w = Math.max(wrap.clientWidth, 640);
-    const clubW = 150, nameW = 196;
+    const clubW = 150, nameW = 240;
     const x0 = clubW + nameW + 14, x1 = w - 48;
     const axisY = 58, bandH = 94, rowStart = bandH + 34, rowGap = 38, groupGap = 14;
 
@@ -775,6 +782,11 @@ footer a{color:var(--ink)}
     return set;
   }
 
+  // Raggio del punto in proporzione al punteggio già pubblicato (letto così com'è, nessun ricalcolo)
+  function scoreRadius(p){
+    const v = parseFloat(String(p.score || "").replace(",", "."));
+    return isFinite(v) ? Math.max(4, 12 * v / 100) : 9;
+  }
   function drawWide(isBright, focus){
     const g = wideGeo, {w} = viewBox;
     const state = on => on ? (focus ? " is-on" : "") : " is-dim";
@@ -805,9 +817,10 @@ footer a{color:var(--ink)}
       m += `<line class="col-guide" x1="${p.x}" y1="${g.bandH}" x2="${p.x}" y2="${g.rowsBottom}"></line>`;
     });
     // Riga evidenziata del giocatore scelto
-    const selNode = selected && byId[selected];
-    if(selNode && selNode.type === "player" && positions[selected]){
-      m += `<rect class="row-on" x="${g.clubW}" y="${positions[selected].y-17}" width="${w-g.clubW-12}" height="34" rx="4"></rect>`;
+    const rowId = selected || previewId;
+    const selNode = rowId && byId[rowId];
+    if(selNode && selNode.type === "player" && positions[rowId]){
+      m += `<rect class="row-on" x="${g.clubW}" y="${positions[rowId].y-17}" width="${w-g.clubW-12}" height="34" rx="4"></rect>`;
     }
     // Prossima uscita: linea tratteggiata sottile, senza data e senza nomi
     const gp = positions[ghost.id];
@@ -832,9 +845,10 @@ footer a{color:var(--ink)}
     // Giocatori: nome, punto nel giorno dell'uscita, percorso fino all'ultima verifica
     players.forEach(p => {
       const pos = positions[p.id]; if(!pos) return;
-      const on = isBright(p.id), sel = selected === p.id;
+      const on = isBright(p.id), sel = (selected || previewId) === p.id;
       const pk = picksFor(p.id)[0];
       const num = pk && pk.pick_id ? pk.pick_id.slice(-2) : "";
+      const nameX = pos.x - 19 - (p.score ? 42 : 0);
       m += `<line class="edge path${state(on)}" x1="${pos.x}" y1="${pos.y}" x2="${g.x1+14}" y2="${pos.y}"></line>`;
       releasesForPlayer(p.id).forEach(r => releaseChecks(r.id).forEach(ch => {
         const cp = positions[ch.id]; if(!cp) return;
@@ -842,8 +856,9 @@ footer a{color:var(--ink)}
       }));
       m += `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${p.id}">
         <line class="hit" x1="${g.clubW+6}" y1="${pos.y}" x2="${g.x1+14}" y2="${pos.y}"></line>
-        <circle cx="${pos.x}" cy="${pos.y}" r="9" style="fill:var(--r-node-player)"></circle>
-        <text x="${pos.x-17}" y="${pos.y+4}" text-anchor="end"><tspan class="pnum">${num}</tspan>  ${p.label}</text></g>`;
+        <circle cx="${pos.x}" cy="${pos.y}" r="${scoreRadius(p)}" style="fill:var(--r-node-player)"></circle>
+        ${p.score ? `<text class="pscore" x="${pos.x-19}" y="${pos.y+4}" text-anchor="end">${p.score}</text>` : ""}
+        <text x="${nameX}" y="${pos.y+4}" text-anchor="end"><tspan class="pnum">${num}</tspan>  ${p.label}</text></g>`;
     });
     // Sull'asse: uscite e verifiche, con la data sopra
     releases.forEach(r => {
@@ -994,6 +1009,11 @@ footer a{color:var(--ink)}
       const id = g.getAttribute("data-id");
       if(id && id.startsWith("ghost:")){
         select(null);
+        previewId = null; draw();
+        if(wideMode){
+          document.getElementById("sheet").innerHTML = `<h2>Prossima uscita: data da definire</h2><p class="hint">Nessun nome e nessun dato inventato. Quando l’uscita sarà pubblica, i nomi appariranno qui.</p>`;
+          return;
+        }
         document.getElementById("sheet").innerHTML = `<div class="k">Prossima uscita</div><h2>${ghost.label}</h2><p class="hint">Colonna segnaposto: nessun dato inventato. Quando l’uscita sarà pubblica, i nomi appariranno qui.</p>`;
         return;
       }
@@ -1001,9 +1021,9 @@ footer a{color:var(--ink)}
     }));
   }
 
-  function sheetFor(id){
+  function sheetFor(id, guide){
     const n = byId[id];
-    const resetBtn = id ? `<button type="button" class="reset" id="sheet-reset">Azzera</button>` : "";
+    const resetBtn = (id && !guide) ? `<button type="button" class="reset" id="sheet-reset">Azzera</button>` : "";
     if(!n){
       return `<div class="sheet-top"><p class="hint" style="margin:0">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. La fascia in alto è il tempo: ogni colonna è un’uscita.</p>${resetBtn}</div>`;
     }
@@ -1051,7 +1071,17 @@ footer a{color:var(--ink)}
     } else {
       body = `<div class="k">${n.type}</div><h2>${n.label}</h2>`;
     }
-    return `<div class="sheet-top"><div style="flex:1">${body}</div>${resetBtn}</div>`;
+    return `${guide?`<p class="guide">${guide}</p>`:""}<div class="sheet-top"><div style="flex:1">${body}</div>${resetBtn}</div>`;
+  }
+  function renderSheet(){
+    previewId = null;
+    if(!selected && wideQuery.matches){
+      const first = visiblePlayers()[0];
+      if(first) previewId = first.id;
+    }
+    const guide = previewId ? (view === "graph" ? "Clicca un nome per vedere il suo percorso." : "Clicca un nome per aprire la sua scheda.") : "";
+    document.getElementById("sheet").innerHTML = sheetFor(selected || previewId, guide);
+    bindSheetReset();
   }
 
   function bindSheetReset(){
@@ -1061,8 +1091,7 @@ footer a{color:var(--ink)}
   function select(id){
     if(id === null) selected = null;
     else selected = (selected === id) ? null : id;
-    document.getElementById("sheet").innerHTML = sheetFor(selected);
-    bindSheetReset();
+    renderSheet();
     draw();
     const noscroll = new URLSearchParams(location.search).get("nosheetscroll") === "1";
     if(selected && !noscroll) document.getElementById("sheet").scrollIntoView({behavior:"smooth", block:"nearest"});
@@ -1076,12 +1105,14 @@ footer a{color:var(--ink)}
     document.getElementById("reset-focus").hidden = v !== "graph";
     document.getElementById("fit-btn").hidden = v !== "graph";
     document.querySelector(".legend").hidden = v !== "graph";
+    if(!selected) renderSheet();
     if(v==="list") renderList();
     else requestAnimationFrame(() => { layout(); fitView(); draw(); });
   }
   function refresh(){
     updateFilterChip();
     renderList();
+    if(!selected) renderSheet();
     if(view === "graph"){ layout(); draw(); }
     else draw();
   }
@@ -1185,8 +1216,7 @@ footer a{color:var(--ink)}
   layout();
   renderList();
   updateFilterChip();
-  document.getElementById("sheet").innerHTML = sheetFor(null);
-  bindSheetReset();
+  renderSheet();
   draw();
   const params = new URLSearchParams(location.search);
   if(params.get("vista")==="mappa" || params.get("vista")==="grafo") setView("graph");
@@ -1194,7 +1224,7 @@ footer a{color:var(--ink)}
   let resizeTimer = null;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { if(view === "graph"){ layout(); fitView(); draw(); } }, 150);
+    resizeTimer = setTimeout(() => { if(!selected) renderSheet(); if(view === "graph"){ layout(); fitView(); draw(); } }, 150);
   });
   const preset = params.get("nodo");
   if(preset && byId[preset]){
