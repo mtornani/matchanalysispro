@@ -6,119 +6,211 @@
 <meta name="robots" content="noindex, nofollow">
 <title>D-id you know it? — Radar</title>
 <meta name="description" content="Dieci giovani di Serie D scritti il 18 ottobre 2026, con le fonti. Le scelte restano; gli errori si pubblicano.">
+<link rel="preload" href="../stile/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../stile/tokens.css">
 <style>
+/* Alias locali: tutti i valori arrivano da ../stile/tokens.css */
 :root{
-  --paper:#f3eee4;--ink:#161310;--muted:#5c564e;--line:#ddd4c6;--card:#fffdf8;
-  --accent:#8f2a1c;--accent-soft:#f3ddd6;--cite:#1e4a6d;--ok:#1f5a40;--mid:#8a6230;
+  --paper:var(--r-bg);--ink:var(--r-text);--muted:var(--r-muted);--line:var(--r-line);--card:var(--r-surface);
+  --accent:var(--r-accent);--accent-soft:var(--r-accent-soft);--cite:var(--r-node-club);--ok:var(--r-conf-high);--mid:var(--r-conf-mid);
+  --sans:var(--r-font-sans);--serif:var(--r-font-serif);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--paper);color:var(--ink);font:17px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
-a{color:var(--cite)}
-button,input{font:inherit;color:inherit}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 0 16px;border-bottom:1px solid var(--line)}
-.wordmark{font:normal 1.7rem/1.05 Georgia,"Times New Roman",serif}
+html,body{background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+a{color:var(--cite);text-underline-offset:2px}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 var(--r-s4)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--r-s4);padding:var(--r-s6) 0 var(--r-s4);border-bottom:1px solid var(--line)}
+.wordmark{font:500 1.6rem/1.05 var(--serif);letter-spacing:-.01em}
 .wordmark em{font-style:normal;color:var(--accent)}
-.beta{display:inline-block;margin-left:8px;vertical-align:middle;position:relative;top:-7px;font:600 11px/1 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:3px 7px}
-.sub{display:block;margin-top:6px;font:600 11px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.back{color:var(--ink);text-decoration:none;font:500 14px inherit;min-height:40px;display:inline-flex;align-items:center}
-.hero{padding:28px 0 8px}
-.hero h1{font:normal 1.85rem/1.22 Georgia,"Times New Roman",serif;margin:0 0 12px}
+.beta{display:inline-block;margin-left:var(--r-s2);vertical-align:middle;position:relative;top:-6px;font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:var(--r-radius-sm);padding:4px 7px}
+.sub{display:block;margin-top:6px;font:600 var(--r-fs-xs)/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.back{color:var(--ink);text-decoration:none;font:500 var(--r-fs-sm) var(--sans);min-height:40px;display:inline-flex;align-items:center}
+.hero{padding:var(--r-s6) 0 var(--r-s2)}
+.hero h1{font:500 var(--r-fs-2xl)/1.18 var(--serif);letter-spacing:-.015em;margin:0 0 var(--r-s3)}
 .hero p{color:var(--muted);max-width:38em}
-.stamps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px;align-items:flex-start}
-.stamps span{border:1px solid var(--ink);padding:7px 11px;font:600 12px/1.2 inherit;letter-spacing:.03em}
-.trust{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:16px 18px;margin:22px 0}
-.trust h2{font:600 12px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-.trust details{margin-top:10px}
-.trust summary{cursor:pointer;font:600 15px inherit;list-style:none}
+.stamps{display:flex;flex-wrap:wrap;gap:var(--r-s2);margin:var(--r-s4) 0 6px;align-items:flex-start}
+.stamps span{border:1px solid var(--r-line-strong);border-radius:var(--r-radius-pill);background:var(--r-surface);padding:6px 12px;font:500 var(--r-fs-xs)/1.2 var(--sans);letter-spacing:.01em}
+.trust{background:var(--r-warn-bg);color:var(--r-warn-ink);border-radius:var(--r-radius-lg);padding:var(--r-s4) var(--r-s4);margin:var(--r-s4) 0}
+.trust h2{font:600 var(--r-fs-xs)/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--r-warn-ink);margin:0 0 var(--r-s2)}
+.trust details{margin-top:var(--r-s2)}
+.trust summary{cursor:pointer;font:600 15px var(--sans);list-style:none;min-height:32px;display:flex;align-items:center}
 .trust summary::-webkit-details-marker{display:none}
-.trust summary:before{content:"+ ";color:var(--accent)}
+.trust summary:before{content:"+ ";color:var(--r-warn-ink);margin-right:4px}
 .trust details[open] summary:before{content:"− "}
-.trust li{margin:8px 0 0 18px;color:var(--muted)}
-.trust li strong{color:var(--ink);font-weight:600}
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 14px}
-.search{flex:1;min-width:180px}
-.search input{width:100%;min-height:44px;border:1px solid var(--line);background:var(--card);padding:10px 12px}
-.search input:focus{outline:2px solid var(--accent);outline-offset:2px}
-.seg{display:flex;border:1px solid var(--ink)}
-.seg button{min-height:40px;padding:8px 14px;border:0;background:transparent;cursor:pointer;border-left:1px solid var(--ink)}
-.seg button:first-child{border-left:0}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.list{list-style:none}
-.list li{background:var(--card);border:1px solid var(--line);border-top:0}
-.list li:first-child{border-top:1px solid var(--line)}
-.list button.card{width:100%;text-align:left;background:none;border:0;padding:16px 16px 14px;cursor:pointer;min-height:72px;display:grid;grid-template-columns:2.2em 1fr auto;gap:10px;align-items:start}
-.num{font:600 14px/1.2 Georgia,serif;color:var(--muted);padding-top:4px}
-.card h3{font:normal 1.25rem/1.2 Georgia,serif}
-.card .meta{color:var(--muted);font-size:14px;margin-top:3px}
-.card .why{margin-top:8px;font-size:16px}
-.score{font:600 1.15rem/1 Georgia,serif;color:var(--accent);padding-top:4px}
-#stage{margin-bottom:24px}
-#canvas{width:100%;height:min(64vh,540px);min-height:420px;display:none;background:var(--card);border:1px solid var(--line);overflow:hidden}
-body.is-map #canvas{display:block !important}
-#list[hidden],.legend[hidden],body.is-map #list,body.is-list #canvas,body.is-list .legend{display:none !important}
+.trust li{margin:var(--r-s2) 0 0 18px;color:var(--r-warn-ink)}
+.trust li strong{color:var(--r-warn-ink);font-weight:600}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:var(--r-s2);flex-wrap:wrap;margin:var(--r-s1) 0 var(--r-s2)}
+.search{flex:1;min-width:160px}
+.search input,.drawer select{width:100%;min-height:44px;border:1px solid var(--r-line-strong);border-radius:var(--r-radius-sm);background:var(--card);padding:10px 12px}
+.search input:focus,.drawer select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.seg{display:flex;border:1px solid var(--r-line-strong);border-radius:var(--r-radius-sm);background:var(--card);flex:none;padding:2px;gap:2px}
+.seg button{min-height:38px;padding:8px 14px;border:0;border-radius:3px;background:transparent;cursor:pointer;font:500 var(--r-fs-sm) var(--sans)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--r-on-dark)}
+.chip-row{display:flex;flex-wrap:wrap;gap:var(--r-s2);align-items:center;margin:0 0 var(--r-s2)}
+.chip{min-height:36px;padding:6px 14px;border:1px solid var(--r-line-strong);border-radius:var(--r-radius-pill);background:var(--card);cursor:pointer;font:500 13px var(--sans)}
+.chip[aria-pressed="true"],.chip.is-on{border-color:var(--accent);background:var(--accent);color:var(--r-on-dark)}
+.chip.is-reset{border-style:dashed;color:var(--muted)}
+.chip .count{display:inline-block;margin-left:6px;min-width:1.3em;padding:1px 6px;border-radius:var(--r-radius-pill);background:var(--accent);color:var(--r-on-dark);font-size:11px;line-height:1.4;vertical-align:1px;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"] .count,.chip.is-on .count{background:var(--r-on-dark);color:var(--accent)}
+.drawer{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r-radius-lg);padding:var(--r-s3);margin:0 0 var(--r-s3)}
+.drawer.is-open{display:grid;grid-template-columns:1fr 1fr;gap:var(--r-s3)}
+.drawer label{display:block;font:600 11px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 var(--r-s1)}
+.map-hint{font:13px/1.45 var(--sans);color:var(--muted);margin:0 0 var(--r-s2)}
+.map-hint strong{color:var(--ink);font-weight:600}
+.list{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r-radius-lg);overflow:hidden}
+.list li{border-top:1px solid var(--line)}
+.list li:first-child{border-top:0}
+.list button.card{width:100%;text-align:left;background:none;border:0;padding:var(--r-s4) var(--r-s4) 14px;cursor:pointer;min-height:72px;display:grid;grid-template-columns:2.2em 1fr auto;gap:var(--r-s3);align-items:start}
+.list button.card:hover{background:var(--r-bg)}
+.num{font:600 var(--r-fs-sm)/1.2 var(--sans);color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.card h3{font:500 var(--r-fs-lg)/1.2 var(--serif);letter-spacing:-.01em}
+.card .meta{color:var(--muted);font-size:var(--r-fs-sm);margin-top:3px}
+.card .why{margin-top:var(--r-s2);font-size:15px}
+.score{font:600 1.05rem/1 var(--sans);color:var(--accent);padding-top:5px;font-variant-numeric:tabular-nums}
+#stage{margin-bottom:var(--r-s5)}
+#canvas-wrap{display:none;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-radius-lg);overflow:hidden;height:min(72vh,620px);min-height:420px;touch-action:none}
+body.is-map #canvas-wrap{display:block}
+#canvas{display:block;width:100%;height:100%;cursor:grab}
+#canvas.is-dragging{cursor:grabbing}
+.zoom-tools{position:absolute;right:var(--r-s2);bottom:var(--r-s2);display:flex;gap:6px;z-index:2}
+.zoom-tools button{min-width:40px;min-height:40px;border:1px solid var(--r-line-strong);border-radius:var(--r-radius-sm);background:var(--card);cursor:pointer;font:600 16px/1 var(--sans)}
+body.is-list #canvas-wrap,body.is-list .legend,body.is-list .map-hint,body.is-list .map-only{display:none !important}
+body.is-map #list{display:none !important}
 body.is-map .legend{display:flex}
 .node{cursor:pointer}
-.node circle{stroke:var(--paper);stroke-width:2}
-.node text{font:600 11px/1.15 inherit;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
-.node.is-dim{opacity:.2}
-.edge{stroke:#cfc6b8;stroke-width:1.2;fill:none}
-.edge.is-on{stroke:var(--ink);stroke-width:2}
-.edge.is-dim{opacity:.12}
-.legend{display:flex;flex-wrap:wrap;gap:10px 14px;padding:10px 4px 0;font:12px inherit;color:var(--muted)}
-.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.sheet{background:var(--card);border:1px solid var(--line);padding:20px 18px 24px;margin:0 0 40px}
-.k{font:600 12px/1.3 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.sheet h2{font:normal 1.7rem/1.15 Georgia,serif;margin:6px 0 8px}
-.sheet .why{font-size:1.05rem;margin:0 0 14px}
-.facts{list-style:none;margin:0 0 16px}
-.facts li{border-top:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.node circle{stroke:var(--card);stroke-width:2}
+.node text{font:600 13px/1.15 var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3.5px}
+.node.is-dim{opacity:.14}
+.node.is-on circle{stroke:var(--r-text);stroke-width:3}
+.node.ghost circle{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:4 3}
+.node.ghost text{fill:var(--muted);font-weight:600;font-size:12px;stroke:none}
+.edge{stroke:var(--r-edge);stroke-width:1.2;fill:none}
+.edge.is-on{stroke:var(--ink);stroke-width:2.2;opacity:1}
+.edge.is-dim{opacity:.08}
+.edge.span{stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3;fill:none}
+.tl-band{fill:var(--r-surface-2);stroke:var(--line);stroke-width:1}
+.tl-axis{stroke:var(--ink);stroke-width:2}
+.tl-label{font:600 11px/1.2 var(--sans);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tl-date{font:600 14px/1.2 var(--sans);fill:var(--ink);font-variant-numeric:tabular-nums}
+.tl-title{font:500 12px/1.2 var(--sans);fill:var(--muted)}
+.col-guide{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.ghost-col{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4;opacity:.8}
+.legend{display:flex;flex-wrap:wrap;gap:var(--r-s2) var(--r-s4);padding:var(--r-s3) 2px 0;font:500 var(--r-fs-xs) var(--sans);color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:var(--r-radius-lg);padding:var(--r-s5) var(--r-s4) var(--r-s6);margin:0 0 var(--r-s8)}
+.sheet .sheet-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--r-s3);margin-bottom:var(--r-s1)}
+.sheet .reset{min-height:36px;padding:6px 14px;border:1px solid var(--r-line-strong);border-radius:var(--r-radius-pill);background:var(--card);cursor:pointer;font:500 13px var(--sans);white-space:nowrap}
+.k{font:600 var(--r-fs-xs)/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sheet h2{font:500 var(--r-fs-xl)/1.15 var(--serif);letter-spacing:-.01em;margin:6px 0 var(--r-s2)}
+.sheet .why{font-size:1.02rem;margin:0 0 14px}
+.facts{list-style:none;margin:0 0 var(--r-s4)}
+.facts li{border-top:1px solid var(--line);padding:var(--r-s3) 0;display:flex;justify-content:space-between;gap:var(--r-s3);align-items:flex-start}
 .facts p{margin:0;flex:1}
-.facts a{flex:none;font:600 13px inherit;white-space:nowrap}
-.conf{font-size:14px;color:var(--muted);margin:0 0 14px}
-.conf b.alta{color:var(--ok)}
-.conf b.media{color:var(--mid)}
-.caveat{border-left:3px solid var(--accent);padding:8px 0 8px 12px;margin:0 0 14px;color:var(--ink);background:var(--accent-soft)}
-.hook{border:1px dashed var(--line);padding:12px 14px;color:var(--muted);margin-top:8px}
+.facts a{flex:none;font:600 13px var(--sans);white-space:nowrap;min-height:32px;display:inline-flex;align-items:center}
+.conf{font-size:var(--r-fs-sm);color:var(--muted);margin:0 0 14px}
+.conf b{display:inline-block;padding:1px 8px;border-radius:var(--r-radius-pill);font-weight:600;font-size:var(--r-fs-xs);border:1px solid currentColor}
+.conf b.alta{color:var(--r-conf-high)}
+.conf b.media{color:var(--r-conf-mid)}
+.conf b.bassa{color:var(--r-conf-low)}
+.caveat{border-radius:var(--r-radius-sm);padding:var(--r-s2) var(--r-s3);margin:0 0 14px;color:var(--r-warn-ink);background:var(--r-warn-bg)}
+.hook{border:1px dashed var(--r-line-strong);border-radius:var(--r-radius-sm);padding:var(--r-s3) 14px;color:var(--muted);margin-top:var(--r-s2)}
 .hint{color:var(--muted)}
-
-.postman{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--cite);padding:20px 18px 22px;margin:28px 0 16px}
+.postman{background:var(--card);border:1px solid var(--line);border-radius:var(--r-radius-lg);padding:var(--r-s5) var(--r-s4) var(--r-s6);margin:28px 0 var(--r-s4)}
 .postman .k{color:var(--cite)}
-.postman h2{font:normal 1.45rem/1.2 Georgia,"Times New Roman",serif;margin:6px 0 10px}
+.postman h2{font:500 1.4rem/1.2 var(--serif);letter-spacing:-.01em;margin:6px 0 10px}
 .postman .lead{color:var(--muted);margin:0 0 18px;max-width:42em}
-.trip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin:0 0 16px}
-.trip .step{border:1px solid var(--ink);background:var(--paper);padding:12px 12px 11px}
-.trip .step b{display:block;font:600 11px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--cite);margin-bottom:5px}
+.trip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:var(--r-s2);align-items:stretch;margin:0 0 var(--r-s4)}
+.trip .step{border:1px solid var(--line);border-radius:var(--r-radius-sm);background:var(--paper);padding:var(--r-s3) var(--r-s3) 11px}
+.trip .step b{display:block;font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--cite);margin-bottom:5px}
 .trip .step span{display:block;font-size:15px;color:var(--ink)}
-.trip .step em{display:block;margin-top:4px;font-style:normal;font-size:13px;color:var(--muted)}
+.trip .step em{display:block;margin-top:var(--r-s1);font-style:normal;font-size:13px;color:var(--muted)}
 .trip .arr{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:22px;line-height:1;padding:0 2px}
 .fields{list-style:none;margin:0 0 14px}
 .fields li{border-top:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline}
-.fields b{font:600 12px/1.3 inherit;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.codes{background:var(--paper);border:1px solid var(--line);padding:14px 14px 12px}
-.codes p{margin:0 0 8px;font:600 12px/1.2 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--ok)}
+.fields b{font:600 var(--r-fs-xs)/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.codes{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-radius-sm);padding:14px 14px var(--r-s3)}
+.codes p{margin:0 0 var(--r-s2);font:600 var(--r-fs-xs)/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ok)}
 .codes dl{margin:0}
-.codes dt{font:600 11px/1.2 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.codes dt{font:600 11px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
 .codes dt:first-of-type{margin-top:0}
-.codes dd{margin:4px 0 0;font:12.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-all}
+.codes dd{margin:var(--r-s1) 0 0;font:12.5px/1.45 var(--r-font-mono);word-break:break-all}
 .postman .note{margin:14px 0 0;color:var(--muted);font-size:15px;max-width:42em}
 @media(max-width:640px){
   .trip{grid-template-columns:1fr}
   .trip .arr{transform:rotate(90deg);height:18px;padding:0}
   .fields li{grid-template-columns:1fr}
+  .drawer.is-open{grid-template-columns:1fr}
 }
-footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:var(--r-fs-sm)}
 footer a{color:var(--ink)}
 @media(max-width:600px){
-  .wordmark{font-size:1.4rem}
+  .wordmark{font-size:1.35rem}
   .back{white-space:nowrap;flex:none}
   .top{align-items:flex-start}
   .hero h1{font-size:1.5rem}
   .card h3{font-size:1.15rem}
-  .list button.card{grid-template-columns:2em minmax(0,1fr) auto;gap:8px}
-  .score{padding-top:4px;font-size:1.05rem}
-  #canvas{height:min(70vh,560px);min-height:440px}
+  .list button.card{grid-template-columns:2em minmax(0,1fr) auto;gap:var(--r-s2)}
+  .score{padding-top:5px;font-size:1rem}
+  #canvas-wrap{height:min(68vh,560px);min-height:380px}
+  .sheet .sheet-top{flex-wrap:wrap}
+  .sheet .sheet-top>div{flex:1 1 100% !important}
+  .sheet .sheet-top>div~.reset{order:-1;margin-left:auto}
 }
+@media(min-width:700px){
+  .drawer.is-open{grid-template-columns:repeat(4,1fr)}
+}
+/* Linea del tempo larga (solo computer): una riga per giocatore, il tempo da sinistra a destra */
+.edge.path{stroke-width:2;stroke-linecap:round}
+.edge.path.is-on{stroke-width:3}
+.edge.bracket{stroke:var(--r-line-strong)}
+.hit{stroke:transparent;stroke-width:26;fill:none;pointer-events:stroke}
+.tick{fill:var(--card);stroke:var(--r-node-check);stroke-width:1.6}
+.tick.is-dim{opacity:.14}
+.row-on{fill:var(--accent-soft)}
+.today-line{stroke:var(--accent);stroke-width:1.6}
+.today-label{font:600 12px/1.2 var(--sans);fill:var(--accent)}
+.month-tick{stroke:var(--r-line-strong);stroke-width:1}
+.pnum{fill:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.node.is-on text{font-weight:700}
+.ghost-note{font:500 12px/1.2 var(--sans);fill:var(--muted)}
+.ghost-note.strong{font-weight:600}
+.pscore{fill:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.guide{margin:0 0 var(--r-s4);padding:var(--r-s2) var(--r-s3);border-radius:var(--r-radius-sm);background:var(--accent-soft);color:var(--accent);font:600 var(--r-fs-sm)/1.35 var(--sans)}
+.wide-only{display:none}
+.ghost-line{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4}
+/* Computer (da 1000px in su): pagina a tutta larghezza, filtri sempre in vista, scheda a fianco */
+@media(min-width:1000px){
+  .wrap{max-width:1440px;padding:0 var(--r-s8)}
+  .intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--r-s8);align-items:start}
+  .intro .trust{margin-top:var(--r-s6)}
+  .hero p{max-width:44em}
+  .search{max-width:420px}
+  #filters-toggle{display:none}
+  .chip-row{float:right;margin:0 0 0 var(--r-s3)}
+  .drawer,.drawer[hidden]{display:grid !important;grid-template-columns:repeat(4,minmax(0,220px)) auto;justify-content:start;align-items:end;gap:var(--r-s3);background:none;border:0;padding:0;margin:0 0 var(--r-s4)}
+  .drawer>div:last-child{grid-column:auto !important}
+  .work{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,28vw,380px);gap:var(--r-s6);align-items:start}
+  .work .sheet{position:sticky;top:var(--r-s4);max-height:calc(100vh - 32px);overflow:auto}
+  #canvas-wrap{min-height:0;touch-action:auto}
+  .work .sheet .sheet-top{flex-wrap:wrap}
+  .work .sheet .sheet-top>div{flex:1 1 100% !important}
+  .work .sheet .sheet-top>div~.reset{order:-1;margin-left:auto}
+  .postman{max-width:900px}
+  .legend .wide-only{display:inline}
+  /* zoom nella fascia del tempo, a sinistra: in basso coprirebbe le scritte «Oggi» e «Prossima uscita» */
+  .zoom-tools{left:var(--r-s3);right:auto;top:44px;bottom:auto}
+}
+/* Computer stretto (1000–1199px): meno margini, più spazio alla linea del tempo */
+@media(min-width:1000px) and (max-width:1199px){
+  .wrap{padding:0 var(--r-s5)}
+  .work{gap:var(--r-s4)}
+}
+/* Tastiera: il fuoco su un elemento della mappa si vede */
+.node:focus{outline:none}
+.node:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.node:focus-visible circle{stroke:var(--r-text);stroke-width:3}
 </style>
 </head>
 <body class="is-list">
@@ -131,6 +223,7 @@ footer a{color:var(--ink)}
     <a class="back" href="/radar/">Pagina completa</a>
   </header>
 
+  <div class="intro">
   <section class="hero">
     <h1>Dieci giovani scritti il 18 ottobre, ciascuno con le fonti. A maggio si vede chi era giusto.</h1>
     <p>In Serie D i numeri ci sono, ma quasi nessuno li legge con un metodo che si possa controllare. Questa è una lista datata: le scelte non si riscrivono, gli errori si pubblicano, una clip si può agganciare dopo senza cambiare il nome.</p>
@@ -149,11 +242,12 @@ footer a{color:var(--ink)}
       <ul id="caveats"></ul>
     </details>
   </aside>
+  </div>
 
   <div class="toolbar">
     <div class="search">
       <label for="q" style="position:absolute;left:-999px">Cerca</label>
-      <input id="q" type="search" placeholder="Cerca un giocatore o un club" autocomplete="off">
+      <input id="q" type="search" placeholder="Cerca un giocatore" autocomplete="off">
     </div>
     <div class="seg" role="group" aria-label="Vista">
       <button data-view="list" aria-pressed="true" type="button">Lista</button>
@@ -161,18 +255,63 @@ footer a{color:var(--ink)}
     </div>
   </div>
 
+  <div class="chip-row" id="chip-row">
+    <button type="button" class="chip" id="filters-toggle" aria-expanded="false" aria-controls="filters-drawer">Filtri</button>
+    <button type="button" class="chip is-reset map-only" id="reset-focus" hidden>Azzera</button>
+    <button type="button" class="chip is-reset map-only" id="fit-btn" hidden>Adatta</button>
+  </div>
+
+  <div class="drawer" id="filters-drawer" hidden>
+    <div>
+      <label for="f-role">Ruolo</label>
+      <select id="f-role"><option value="">Tutti</option></select>
+    </div>
+    <div>
+      <label for="f-club">Club</label>
+      <select id="f-club"><option value="">Tutti</option></select>
+    </div>
+    <div>
+      <label for="f-release">Uscita</label>
+      <select id="f-release"><option value="">Tutte</option></select>
+    </div>
+    <div>
+      <label for="f-conf">Confidenza</label>
+      <select id="f-conf">
+        <option value="">Tutte</option>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+      </select>
+    </div>
+    <div style="grid-column:1/-1">
+      <button type="button" class="chip is-reset" id="clear-filters">Pulisci filtri</button>
+    </div>
+  </div>
+
+  <p class="map-hint" id="map-hint" hidden><strong>La fascia in alto è il tempo:</strong> ogni colonna è un’uscita. Trascina per spostare, pizzica per zoom. Tocca un nome per il percorso.</p>
+
+  <div class="work">
   <div id="stage">
     <ol class="list" id="list"></ol>
-    <svg id="canvas" hidden viewBox="-96 -64 592 560" role="img" aria-label="Mappa delle scelte"></svg>
+    <div id="canvas-wrap">
+      <svg id="canvas" viewBox="0 0 420 560" role="group" aria-label="Mappa delle scelte lungo il tempo"></svg>
+      <div class="zoom-tools" aria-label="Zoom">
+        <button type="button" id="zoom-out" title="Riduci">−</button>
+        <button type="button" id="zoom-in" title="Ingrandisci">+</button>
+        <button type="button" id="zoom-fit" title="Adatta">⤢</button>
+      </div>
+    </div>
     <p class="legend" hidden>
-      <span><i style="background:#1f5a40"></i>Giocatore</span>
-      <span><i style="background:#1e4a6d"></i>Club</span>
-      <span><i style="background:#161310"></i>Uscita</span>
-      <span><i style="background:#8a6230"></i>Verifica</span>
+      <span><i style="background:var(--r-node-player);width:11px;height:11px"></i>Giocatore</span>
+      <span><i style="background:var(--r-node-club);width:9px;height:9px"></i>Club</span>
+      <span><i style="background:var(--r-node-release);width:13px;height:13px"></i>Uscita</span>
+      <span><i style="background:var(--r-node-check);width:8px;height:8px"></i>Verifica</span>
+      <span><i style="background:transparent;border:1.5px dashed var(--r-muted);border-radius:0;width:12px;height:10px"></i>Prossima uscita</span>
+      <span class="wide-only">Numero verde e grandezza del punto: punteggio pubblicato</span>
     </p>
   </div>
 
   <aside class="sheet" id="sheet" aria-live="polite"></aside>
+  </div>
 
   <aside class="postman" id="postino">
     <p class="k">Progetto parallelo</p>
@@ -208,7 +347,7 @@ footer a{color:var(--ink)}
     <p><a href="/radar/">Metodo, registro ed errata sulla pagina pubblica</a></p>
   </footer>
 </div>
-<script type="application/json" id="graph-data">{"generated": "2026-11-07", "nodes": [{"id": "release:2026-10-girone-d", "type": "release", "label": "Uscita 01", "release_id": "2026-10-girone-d", "written": "2026-10-18", "season": "2026/27", "public": true, "caveats": [{"title": "Il metodo viene prima delle scelte", "text": "Le regole sono del 17 e 18 ottobre 2026, prima della classifica definitiva e prima di pubblicare l’uscita. Da allora ogni modifica crea una versione nuova e vale solo dopo."}, {"title": "I minuti non hanno una fonte ufficiale", "text": "In Serie D non esiste un tabellino ufficiale dei minuti. Si confrontano fonti pubbliche; se discordano si usa il valore più cauto. «Alta» vuol dire confermato partita per partita; «media» che due fonti concordano."}, {"title": "Un caso è già dichiarato", "text": "Il 19 ottobre una seconda lettura ha indicato che Jacopo Tirapelle avrebbe superato Andrea Arpini (60,8 contro 60,7). La scelta del 18 ottobre resta. Il caso sarà segnalato alla verifica del 24 novembre."}], "note": "Le dieci scelte pubbliche dell’Uscita 01, nell’ordine della pagina del 18/10/2026. Gli id sono U01-001–U01-010. Le voci E01 dell’errata del 19/10 sono correzioni sui dati, non l’elenco pubblicato."}, {"id": "method:v1", "type": "method", "label": "Metodo v1", "version": "v1"}, {"id": "competition:serie-d", "type": "competition", "label": "Serie D"}, {"id": "group:serie-d:d", "type": "group", "label": "Girone D", "group": "D"}, {"id": "check:2026-10-girone-d:2026-11-24", "type": "check", "label": "2026-11-24", "date": "2026-11-24", "approx": true}, {"id": "check:2026-10-girone-d:2027-01-31", "type": "check", "label": "2027-01-31", "date": "2027-01-31", "approx": true}, {"id": "check:2026-10-girone-d:2027-05-03", "type": "check", "label": "2027-05-03", "date": "2027-05-03", "approx": false}, {"id": "pick:U01-001", "type": "pick", "label": "U01-001", "pick_id": "U01-001", "chosen": true, "in_pool_csv": true, "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/mattia-valmori/profil/spieler/1307976", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:mattia-valmori", "type": "player", "label": "Mattia Valmori", "name": "Mattia Valmori", "identity": "provisional-name", "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/mattia-valmori/profil/spieler/1307976", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "club:castellanzese", "type": "club", "label": "Castellanzese", "name": "Castellanzese"}, {"id": "pick:U01-002", "type": "pick", "label": "U01-002", "pick_id": "U01-002", "chosen": true, "in_pool_csv": true, "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:tommaso-lagomarsino", "type": "player", "label": "Tommaso Lagomarsino", "name": "Tommaso Lagomarsino", "identity": "provisional-name", "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "club:pistoiese", "type": "club", "label": "Pistoiese", "name": "Pistoiese"}, {"id": "pick:U01-003", "type": "pick", "label": "U01-003", "pick_id": "U01-003", "chosen": true, "in_pool_csv": true, "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:giorgio-citterio", "type": "player", "label": "Giorgio Citterio", "name": "Giorgio Citterio", "identity": "provisional-name", "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:casatese-merate", "type": "club", "label": "Casatese Merate", "name": "Casatese Merate"}, {"id": "pick:U01-004", "type": "pick", "label": "U01-004", "pick_id": "U01-004", "chosen": true, "in_pool_csv": true, "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-latini", "type": "player", "label": "Alessandro Latini", "name": "Alessandro Latini", "identity": "provisional-name", "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:oltrepo", "type": "club", "label": "Oltrepò", "name": "Oltrepò"}, {"id": "pick:U01-005", "type": "pick", "label": "U01-005", "pick_id": "U01-005", "chosen": true, "in_pool_csv": true, "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.transfermarkt.it/orso-maria-de-ponti/profil/spieler/934783", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "player:orso-maria-de-ponti", "type": "player", "label": "Orso Maria De Ponti", "name": "Orso Maria De Ponti", "identity": "provisional-name", "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.transfermarkt.it/orso-maria-de-ponti/profil/spieler/934783", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "club:varese", "type": "club", "label": "Varese", "name": "Varese"}, {"id": "pick:U01-006", "type": "pick", "label": "U01-006", "pick_id": "U01-006", "chosen": true, "in_pool_csv": true, "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "player:andrea-arpini", "type": "player", "label": "Andrea Arpini", "name": "Andrea Arpini", "identity": "provisional-name", "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "club:crema", "type": "club", "label": "Crema", "name": "Crema"}, {"id": "pick:U01-007", "type": "pick", "label": "U01-007", "pick_id": "U01-007", "chosen": true, "in_pool_csv": true, "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:pietro-itraloni", "type": "player", "label": "Pietro Itraloni", "name": "Pietro Itraloni", "identity": "provisional-name", "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-008", "type": "pick", "label": "U01-008", "pick_id": "U01-008", "chosen": true, "in_pool_csv": true, "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/tommaso-matella/profil/spieler/1317591", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:tommaso-matella", "type": "player", "label": "Tommaso Matella", "name": "Tommaso Matella", "identity": "provisional-name", "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/tommaso-matella/profil/spieler/1317591", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "pick:U01-009", "type": "pick", "label": "U01-009", "pick_id": "U01-009", "chosen": true, "in_pool_csv": true, "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-sassaro", "type": "player", "label": "Alessandro Sassaro", "name": "Alessandro Sassaro", "identity": "provisional-name", "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-010", "type": "pick", "label": "U01-010", "pick_id": "U01-010", "chosen": true, "in_pool_csv": true, "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}, {"id": "player:alessandro-diana", "type": "player", "label": "Alessandro Diana", "name": "Alessandro Diana", "identity": "provisional-name", "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}], "edges": [{"source": "release:2026-10-girone-d", "target": "method:v1", "type": "uses_method"}, {"source": "release:2026-10-girone-d", "target": "competition:serie-d", "type": "in_competition"}, {"source": "release:2026-10-girone-d", "target": "group:serie-d:d", "type": "in_group"}, {"source": "group:serie-d:d", "target": "competition:serie-d", "type": "part_of"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2026-11-24", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-01-31", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-05-03", "type": "has_check"}, {"source": "pick:U01-001", "target": "player:mattia-valmori", "type": "identifies"}, {"source": "pick:U01-001", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:mattia-valmori", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:mattia-valmori", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-001"}, {"source": "pick:U01-002", "target": "player:tommaso-lagomarsino", "type": "identifies"}, {"source": "pick:U01-002", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-lagomarsino", "target": "club:pistoiese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-lagomarsino", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-002"}, {"source": "pick:U01-003", "target": "player:giorgio-citterio", "type": "identifies"}, {"source": "pick:U01-003", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:giorgio-citterio", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:giorgio-citterio", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-003"}, {"source": "pick:U01-004", "target": "player:alessandro-latini", "type": "identifies"}, {"source": "pick:U01-004", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-latini", "target": "club:oltrepo", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-latini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-004"}, {"source": "pick:U01-005", "target": "player:orso-maria-de-ponti", "type": "identifies"}, {"source": "pick:U01-005", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:orso-maria-de-ponti", "target": "club:varese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:orso-maria-de-ponti", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-005"}, {"source": "pick:U01-006", "target": "player:andrea-arpini", "type": "identifies"}, {"source": "pick:U01-006", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:andrea-arpini", "target": "club:crema", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:andrea-arpini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-006"}, {"source": "pick:U01-007", "target": "player:pietro-itraloni", "type": "identifies"}, {"source": "pick:U01-007", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:pietro-itraloni", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:pietro-itraloni", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-007"}, {"source": "pick:U01-008", "target": "player:tommaso-matella", "type": "identifies"}, {"source": "pick:U01-008", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-matella", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-matella", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-008"}, {"source": "pick:U01-009", "target": "player:alessandro-sassaro", "type": "identifies"}, {"source": "pick:U01-009", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-sassaro", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-sassaro", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-009"}, {"source": "pick:U01-010", "target": "player:alessandro-diana", "type": "identifies"}, {"source": "pick:U01-010", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-diana", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-diana", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-010"}]}</script>
+<script type="application/json" id="graph-data">{"generated": "2026-11-10", "nodes": [{"id": "release:2026-10-girone-d", "type": "release", "label": "Uscita 01", "release_id": "2026-10-girone-d", "written": "2026-10-18", "season": "2026/27", "public": true, "caveats": [{"title": "Il metodo viene prima delle scelte", "text": "Le regole sono del 17 e 18 ottobre 2026, prima della classifica definitiva e prima di pubblicare l’uscita. Da allora ogni modifica crea una versione nuova e vale solo dopo."}, {"title": "I minuti non hanno una fonte ufficiale", "text": "In Serie D non esiste un tabellino ufficiale dei minuti. Si confrontano fonti pubbliche; se discordano si usa il valore più cauto. «Alta» vuol dire confermato partita per partita; «media» che due fonti concordano."}, {"title": "Un caso è già dichiarato", "text": "Il 19 ottobre una seconda lettura ha indicato che Jacopo Tirapelle avrebbe superato Andrea Arpini (60,8 contro 60,7). La scelta del 18 ottobre resta. Il caso sarà segnalato alla verifica del 24 novembre."}], "note": "Le dieci scelte pubbliche dell’Uscita 01, nell’ordine della pagina del 18/10/2026. Gli id sono U01-001–U01-010. Le voci E01 dell’errata del 19/10 sono correzioni sui dati, non l’elenco pubblicato."}, {"id": "method:v1", "type": "method", "label": "Metodo v1", "version": "v1"}, {"id": "competition:serie-d", "type": "competition", "label": "Serie D"}, {"id": "group:serie-d:d", "type": "group", "label": "Girone D", "group": "D"}, {"id": "check:2026-10-girone-d:2026-11-24", "type": "check", "label": "2026-11-24", "date": "2026-11-24", "approx": true}, {"id": "check:2026-10-girone-d:2027-01-31", "type": "check", "label": "2027-01-31", "date": "2027-01-31", "approx": true}, {"id": "check:2026-10-girone-d:2027-05-03", "type": "check", "label": "2027-05-03", "date": "2027-05-03", "approx": false}, {"id": "pick:U01-001", "type": "pick", "label": "U01-001", "pick_id": "U01-001", "chosen": true, "in_pool_csv": true, "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/mattia-valmori/profil/spieler/1307976", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:mattia-valmori", "type": "player", "label": "Mattia Valmori", "name": "Mattia Valmori", "identity": "provisional-name", "why": "Gioca sempre e ha già segnato 5 gol in 7 partite.", "role": "centravanti", "age_label": "21 anni", "score": "94,4", "facts": [{"text": "5 gol e 1 assist in 555' (88% dei minuti)", "url": "https://www.transfermarkt.it/mattia-valmori/profil/spieler/1307976", "label": "fonte"}, {"text": "Tripletta al Pontedera il 06/09, poi a segno con Crema e Sant'Angelo", "url": "https://www.varesesport.com/2026/la-castellanzese-non-si-ferma-chessa-e-valmori-mandano-il-santangelo-al-tappeto-1-2/", "label": "fonte"}, {"text": "Produzione 0,77 (G+A)/90 dopo la correzione per campioni piccoli; Castellanzese 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "club:castellanzese", "type": "club", "label": "Castellanzese", "name": "Castellanzese"}, {"id": "pick:U01-002", "type": "pick", "label": "U01-002", "pick_id": "U01-002", "chosen": true, "in_pool_csv": true, "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:tommaso-lagomarsino", "type": "player", "label": "Tommaso Lagomarsino", "name": "Tommaso Lagomarsino", "identity": "provisional-name", "why": "Terzino titolare della prima in classifica, ha già fatto 4 assist.", "role": "terzino sinistro", "age_label": "20 anni", "score": "87,0", "facts": [{"text": "4 assist e 1 gol in 604' (96% dei minuti)", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Terzino titolare 7 volte su 7; 0,45 assist/90 dopo la correzione per campioni piccoli", "url": "https://www.transfermarkt.it/tommaso-lagomarsino/profil/spieler/1123927", "label": "fonte"}, {"text": "Pistoiese 1ª dopo 7 giornate; classe 2006", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "club:pistoiese", "type": "club", "label": "Pistoiese", "name": "Pistoiese"}, {"id": "pick:U01-003", "type": "pick", "label": "U01-003", "pick_id": "U01-003", "chosen": true, "in_pool_csv": true, "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:giorgio-citterio", "type": "player", "label": "Giorgio Citterio", "name": "Giorgio Citterio", "identity": "provisional-name", "why": "Ha segnato 4 gol: è il miglior marcatore della sua squadra.", "role": "ala destra", "age_label": "23 anni", "score": "75,6", "facts": [{"text": "4 gol in 427' (68% dei minuti), capocannoniere della Casatese", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "0,65 gol+assist per 90' dopo la correzione per campione piccolo, secondo tra gli attaccanti idonei", "url": "https://www.transfermarkt.it/giorgio-citterio/profil/spieler/907633", "label": "fonte"}, {"text": "Classe 2003, ala destra; Casatese 6ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:casatese-merate", "type": "club", "label": "Casatese Merate", "name": "Casatese Merate"}, {"id": "pick:U01-004", "type": "pick", "label": "U01-004", "pick_id": "U01-004", "chosen": true, "in_pool_csv": true, "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-latini", "type": "player", "label": "Alessandro Latini", "name": "Alessandro Latini", "identity": "provisional-name", "why": "Non ha saltato un minuto, in una squadra che lotta in fondo alla classifica.", "role": "mediano", "age_label": "23 anni", "score": "68,8", "facts": [{"text": "630' su 630 (100%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "1 gol e 1 assist da mediano", "url": "https://www.transfermarkt.it/alessandro-latini/profil/spieler/933098", "label": "fonte"}, {"text": "Classe 2003, arrivato dal Crema; Oltrepò 17°: gioca sempre in una squadra in difficoltà", "url": "https://www.oltrepofbc.it/news/prima-squadra-benvenuto-alessandro-latini", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "club:oltrepo", "type": "club", "label": "Oltrepò", "name": "Oltrepò"}, {"id": "pick:U01-005", "type": "pick", "label": "U01-005", "pick_id": "U01-005", "chosen": true, "in_pool_csv": true, "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.transfermarkt.it/orso-maria-de-ponti/profil/spieler/934783", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "player:orso-maria-de-ponti", "type": "player", "label": "Orso Maria De Ponti", "name": "Orso Maria De Ponti", "identity": "provisional-name", "why": "A 20 anni ha giocato tutti i minuti del Varese, 630 su 630.", "role": "mediano", "age_label": "20 anni", "score": "67,7", "facts": [{"text": "630' su 630 (100%): 90' in tutte le 7 giornate", "url": "https://www.transfermarkt.it/orso-maria-de-ponti/profil/spieler/934783", "label": "fonte"}, {"text": "Mediano (ruolo principale Transfermarkt), 1 assist; 90' anche contro Crema e Oltrepò (giornate 6 e 7)", "url": "https://varesefc.com/varese-oltrepo-2-0/", "label": "fonte"}, {"text": "Classe 2005; Varese 9° dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "alta", "assist": "media"}}, {"id": "club:varese", "type": "club", "label": "Varese", "name": "Varese"}, {"id": "pick:U01-006", "type": "pick", "label": "U01-006", "pick_id": "U01-006", "chosen": true, "in_pool_csv": true, "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "player:andrea-arpini", "type": "player", "label": "Andrea Arpini", "name": "Andrea Arpini", "identity": "provisional-name", "why": "Titolare in tutte le 7 partite, con un assist.", "role": "terzino destro", "age_label": "23 anni", "score": "65,6", "facts": [{"text": "572' su 630 (91%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "1 assist, nel 3-2 al Varese del 04/10", "url": "https://www.transfermarkt.it/andrea-arpini/profil/spieler/708634", "label": "fonte"}, {"text": "Classe 2003, rinnovo biennale a giugno 2026; Crema 15°", "url": "https://www.seried.it/2026/06/crema-rinnovo-biennale-per-il-difensore-classe-2003-andrea-arpini/", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Il 19 ottobre una seconda lettura ha mostrato che Jacopo Tirapelle (Arconatese) avrebbe superato Arpini di un decimo (60,8 contro 60,7), perché zerozero mescolava un omonimo. La scelta del 18 ottobre non si riscrive: il caso sarà segnalato alla verifica del 24 novembre."}, {"id": "club:crema", "type": "club", "label": "Crema", "name": "Crema"}, {"id": "pick:U01-007", "type": "pick", "label": "U01-007", "pick_id": "U01-007", "chosen": true, "in_pool_csv": true, "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "player:pietro-itraloni", "type": "player", "label": "Pietro Itraloni", "name": "Pietro Itraloni", "identity": "provisional-name", "why": "Titolare in 6 partite su 7 in una squadra da parte alta della classifica.", "role": "centrocampista", "age_label": "21 anni", "score": "61,8", "facts": [{"text": "562' su 630 (89%), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "1 assist, nel 4-2 alla Varesina del 27/09", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}, {"text": "Classe 2005, 35 presenze col Pavia nel 2025/26; Casatese 6ª", "url": "https://www.transfermarkt.it/pietro-itraloni/profil/spieler/914508", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-008", "type": "pick", "label": "U01-008", "pick_id": "U01-008", "chosen": true, "in_pool_csv": true, "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/tommaso-matella/profil/spieler/1317591", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "player:tommaso-matella", "type": "player", "label": "Tommaso Matella", "name": "Tommaso Matella", "identity": "provisional-name", "why": "A 19 anni è titolare fisso in una delle difese migliori del girone.", "role": "difensore centrale", "age_label": "19 anni", "score": "59,8", "facts": [{"text": "621' su 630 (99%), titolare 7 volte su 7", "url": "https://www.transfermarkt.it/tommaso-matella/profil/spieler/1317591", "label": "fonte"}, {"text": "1 gol (4-0 al Crema del 27/09) e 1 assist", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2007, titolare fisso in una squadra 4ª", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "alta", "assist": "media"}}, {"id": "pick:U01-009", "type": "pick", "label": "U01-009", "pick_id": "U01-009", "chosen": true, "in_pool_csv": true, "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "player:alessandro-sassaro", "type": "player", "label": "Alessandro Sassaro", "name": "Alessandro Sassaro", "identity": "provisional-name", "why": "Sempre in campo in una delle difese migliori del girone, e ha anche segnato.", "role": "difensore centrale", "age_label": "22 anni", "score": "57,7", "facts": [{"text": "596' su 630 disponibili (95%), titolare in tutte le 7 giornate", "url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876", "label": "fonte"}, {"text": "1 gol, nel 4-0 al Crema del 27/09; Castellanzese 5 gol subiti in 7 partite (0,71 a partita)", "url": "https://www.castellanzese.com/castellanzese-travolgente-poker-al-crema-con-boccadamo-matella-valmori-e-sassaro/", "label": "fonte"}, {"text": "Classe 2004 (22 anni); Castellanzese 4ª dopo 7 giornate", "url": "https://www.transfermarkt.it/serie-d-girone-d/tabelle/wettbewerb/IT4D/saison_id/2026", "label": "fonte"}], "confidence": {"gol": "alta", "minuti": "media", "assist": "media"}}, {"id": "pick:U01-010", "type": "pick", "label": "U01-010", "pick_id": "U01-010", "chosen": true, "in_pool_csv": true, "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}, {"id": "player:alessandro-diana", "type": "player", "label": "Alessandro Diana", "name": "Alessandro Diana", "identity": "provisional-name", "why": "Quasi sempre titolare, 2 assist; salterà una partita per squalifica.", "role": "ala sinistra", "age_label": "22 anni", "score": "55,6", "facts": [{"text": "395' (63% dei minuti), 6 gare da titolare su 7", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "2 assist (valore più basso tra le fonti: Transfermarkt ne conta 3)", "url": "https://www.transfermarkt.it/alessandro-diana/profil/spieler/1049715", "label": "fonte"}, {"text": "Espulso l'11/10 contro il Cittadella Modena, 1 giornata di squalifica (C.U. LND n.33 del 13/10/2026)", "url": "https://comunicati.lnd.it/storage/comunicati/2026/2027/Interregionale/1791894343_Giudice_Sportivo_Serie_D_-_VII_Andata.pdf", "label": "fonte"}], "confidence": {"gol": "media", "minuti": "media", "assist": "media"}, "caveat": "Nella lista è scritto 2 assist, il valore più basso tra le fonti di ottobre (Transfermarkt ne contava 3). Il 19 ottobre Transfermarkt e SofaScore concordavano su 3. Il punteggio pubblicato, 55,6, non si modifica."}], "edges": [{"source": "release:2026-10-girone-d", "target": "method:v1", "type": "uses_method"}, {"source": "release:2026-10-girone-d", "target": "competition:serie-d", "type": "in_competition"}, {"source": "release:2026-10-girone-d", "target": "group:serie-d:d", "type": "in_group"}, {"source": "group:serie-d:d", "target": "competition:serie-d", "type": "part_of"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2026-11-24", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-01-31", "type": "has_check"}, {"source": "release:2026-10-girone-d", "target": "check:2026-10-girone-d:2027-05-03", "type": "has_check"}, {"source": "pick:U01-001", "target": "player:mattia-valmori", "type": "identifies"}, {"source": "pick:U01-001", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:mattia-valmori", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:mattia-valmori", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-001"}, {"source": "pick:U01-002", "target": "player:tommaso-lagomarsino", "type": "identifies"}, {"source": "pick:U01-002", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-lagomarsino", "target": "club:pistoiese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-lagomarsino", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-002"}, {"source": "pick:U01-003", "target": "player:giorgio-citterio", "type": "identifies"}, {"source": "pick:U01-003", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:giorgio-citterio", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:giorgio-citterio", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-003"}, {"source": "pick:U01-004", "target": "player:alessandro-latini", "type": "identifies"}, {"source": "pick:U01-004", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-latini", "target": "club:oltrepo", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-latini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-004"}, {"source": "pick:U01-005", "target": "player:orso-maria-de-ponti", "type": "identifies"}, {"source": "pick:U01-005", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:orso-maria-de-ponti", "target": "club:varese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:orso-maria-de-ponti", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-005"}, {"source": "pick:U01-006", "target": "player:andrea-arpini", "type": "identifies"}, {"source": "pick:U01-006", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:andrea-arpini", "target": "club:crema", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:andrea-arpini", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-006"}, {"source": "pick:U01-007", "target": "player:pietro-itraloni", "type": "identifies"}, {"source": "pick:U01-007", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:pietro-itraloni", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:pietro-itraloni", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-007"}, {"source": "pick:U01-008", "target": "player:tommaso-matella", "type": "identifies"}, {"source": "pick:U01-008", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:tommaso-matella", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:tommaso-matella", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-008"}, {"source": "pick:U01-009", "target": "player:alessandro-sassaro", "type": "identifies"}, {"source": "pick:U01-009", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-sassaro", "target": "club:castellanzese", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-sassaro", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-009"}, {"source": "pick:U01-010", "target": "player:alessandro-diana", "type": "identifies"}, {"source": "pick:U01-010", "target": "release:2026-10-girone-d", "type": "chosen_in"}, {"source": "player:alessandro-diana", "target": "club:casatese-merate", "type": "plays_for", "release": "2026-10-girone-d"}, {"source": "player:alessandro-diana", "target": "release:2026-10-girone-d", "type": "selected_in", "pick_id": "U01-010"}]}</script>
 <script>
 (function(){
   const data = JSON.parse(document.getElementById("graph-data").textContent);
@@ -217,8 +356,9 @@ footer a{color:var(--ink)}
   const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
   const players = nodes.filter(n => n.type === "player");
   const clubs = nodes.filter(n => n.type === "club");
-  const releases = nodes.filter(n => n.type === "release");
+  const releases = nodes.filter(n => n.type === "release").slice().sort((a,b) => (a.written||"").localeCompare(b.written||""));
   const checks = nodes.filter(n => n.type === "check");
+  const methods = nodes.filter(n => n.type === "method");
 
   const neighbors = {};
   function link(a,b){ (neighbors[a] ||= new Set()).add(b); (neighbors[b] ||= new Set()).add(a); }
@@ -232,13 +372,19 @@ footer a{color:var(--ink)}
     return e ? byId[e.target] : null;
   }
   function clubPlayers(clubId){
-    return edges.filter(e => e.type === "plays_for" && e.target === clubId).map(e => byId[e.source]);
+    return edges.filter(e => e.type === "plays_for" && e.target === clubId).map(e => byId[e.source]).filter(Boolean);
   }
   function releaseChecks(releaseId){
-    return edges.filter(e => e.type === "has_check" && e.source === releaseId).map(e => byId[e.target]);
+    return edges.filter(e => e.type === "has_check" && e.source === releaseId).map(e => byId[e.target]).filter(Boolean);
   }
   function playerEvidence(playerId){
-    return edges.filter(e => e.type === "has_evidence" && e.source === playerId).map(e => byId[e.target]);
+    return edges.filter(e => e.type === "has_evidence" && e.source === playerId).map(e => byId[e.target]).filter(Boolean);
+  }
+  function releasesForPlayer(playerId){
+    return edges.filter(e => e.type === "selected_in" && e.source === playerId).map(e => byId[e.target]).filter(Boolean);
+  }
+  function playersInRelease(releaseId){
+    return edges.filter(e => e.type === "selected_in" && e.target === releaseId).map(e => byId[e.source]).filter(Boolean);
   }
   function pickOrder(p){
     const pk = picksFor(p.id)[0];
@@ -246,13 +392,32 @@ footer a{color:var(--ink)}
     const m = id.match(/(\d+)$/);
     return m ? Number(m[1]) : 99;
   }
+  function confValues(p){
+    const c = p.confidence || {};
+    return ["gol","minuti","assist"].map(k => c[k]).filter(Boolean);
+  }
+  function nextUscitaLabel(){
+    let maxN = 0;
+    releases.forEach(r => {
+      const m = (r.label||"").match(/(\d+)/);
+      if(m) maxN = Math.max(maxN, Number(m[1]));
+    });
+    const n = String(maxN + 1).padStart(2, "0");
+    return { num: n, title: "Uscita " + n + " · in arrivo" };
+  }
 
   const MONTHS = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  const MONTHS_SHORT = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
   function niceDate(iso, approx){
     if(!iso) return "";
     const [y,m,d] = iso.split("-").map(Number);
     const s = d + " " + MONTHS[m-1] + " " + y;
     return approx ? "intorno al " + s : s;
+  }
+  function shortDate(iso){
+    if(!iso) return "";
+    const [y,m,d] = iso.split("-");
+    return Number(d) + " " + MONTHS_SHORT[Number(m)-1] + " " + y;
   }
   function sourceName(url){
     try{
@@ -270,46 +435,47 @@ footer a{color:var(--ink)}
     }catch(e){ return "Fonte"; }
   }
 
-  const rel = releases[0] || {};
+  const rel0 = releases[0] || {};
   const caveatsEl = document.getElementById("caveats");
-  (rel.caveats || []).forEach(c => {
+  (rel0.caveats || []).forEach(c => {
     const li = document.createElement("li");
     li.innerHTML = "<strong>"+c.title+".</strong> "+c.text;
     caveatsEl.appendChild(li);
   });
 
+  const roleSel = document.getElementById("f-role");
+  const clubSel = document.getElementById("f-club");
+  const relSel = document.getElementById("f-release");
+  [...new Set(players.map(p => p.role).filter(Boolean))].sort().forEach(r => {
+    const o = document.createElement("option"); o.value = r; o.textContent = r; roleSel.appendChild(o);
+  });
+  clubs.slice().sort((a,b)=>a.label.localeCompare(b.label)).forEach(c => {
+    const o = document.createElement("option"); o.value = c.id; o.textContent = c.label; clubSel.appendChild(o);
+  });
+  releases.forEach(r => {
+    const o = document.createElement("option"); o.value = r.id; o.textContent = r.label + (r.written ? " · " + shortDate(r.written) : "");
+    relSel.appendChild(o);
+  });
+
   const svg = document.getElementById("canvas");
-  const CX = 195, CY = 188;
+  const wrap = document.getElementById("canvas-wrap");
   const positions = {};
-  function layout(){
-    if(rel.id) positions[rel.id] = {x:CX, y:CY};
-    const ordered = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
-    ordered.forEach((p,i) => {
-      const a = (-Math.PI/2) + (i * 2 * Math.PI / ordered.length);
-      positions[p.id] = {x: CX + Math.cos(a)*126, y: CY + Math.sin(a)*112};
-    });
-    clubs.forEach(c => {
-      const ps = clubPlayers(c.id);
-      let sx=0, sy=0, n=0;
-      ps.forEach(p => {
-        const pt = positions[p.id]; if(!pt) return;
-        const dx = pt.x-CX, dy = pt.y-CY, L = Math.hypot(dx,dy)||1;
-        sx += dx/L; sy += dy/L; n++;
-      });
-      if(!n){ positions[c.id] = {x:CX,y:CY}; return; }
-      const mag = Math.hypot(sx,sy);
-      let ang;
-      if(mag < 0.35){
-        const pt = positions[ps[0].id];
-        ang = Math.atan2(pt.y-CY, pt.x-CX);
-      } else ang = Math.atan2(sy, sx);
-      positions[c.id] = {x: CX + Math.cos(ang)*186, y: CY + Math.sin(ang)*166};
-    });
-    checks.forEach((c,i) => {
-      const gap = 390 / (checks.length + 1);
-      positions[c.id] = {x: gap*(i+1), y: 392};
-    });
+  let viewBox = {w:420, h:560};
+  let ghost = null;
+  let zoom = 1, panX = 0, panY = 0;
+  // Computer: linea del tempo larga. Telefono: colonne, come prima.
+  const wideQuery = window.matchMedia("(min-width:1000px)");
+  let wideMode = false, wideGeo = null;
+  // Solo computer: finché non si clicca nulla, la scheda mostra il primo nome della lista
+  let previewId = null;
+  const hintEl = document.getElementById("map-hint");
+  const hintNarrow = hintEl.innerHTML;
+  const hintWide = "<strong>Il tempo scorre da sinistra a destra:</strong> ogni riga è un giocatore, dal giorno in cui è stato scritto fino alle verifiche già fissate. Clicca un nome per vedere solo il suo percorso.";
+  function dayNum(iso){
+    const [y,m,d] = iso.split("-").map(Number);
+    return Date.UTC(y, m-1, d) / 864e5;
   }
+
   function lastName(label){
     const parts = (label||"").trim().split(/\s+/);
     const particle = /^(de|di|del|della|dei|degli|lo|la|van|von|da)$/i;
@@ -317,19 +483,263 @@ footer a{color:var(--ink)}
     return parts[parts.length-1] || label;
   }
   function shortClub(label){
-    if(label === "Casatese Merate") return "Casatese";
-    return label;
+    const map = {
+      "Casatese Merate":"Casatese",
+      "Castellanzese":"Castell.",
+      "Pistoiese":"Pistoiese",
+      "Oltrepò":"Oltrepò",
+      "Varese":"Varese",
+      "Crema":"Crema"
+    };
+    return map[label] || ((label||"").length > 10 ? label.slice(0,9)+"…" : label);
   }
 
-  let selected = null, view = "list", search = "";
+  let selected = null, view = "list";
+  let search = "", filterRole = "", filterClub = "", filterRelease = "", filterConf = "";
+  let drawerOpen = false;
 
-  function matchSearch(n){
-    if(!search) return true;
-    const hay = (n.label+" "+(n.name||"")+" "+(n.why||"")+" "+((clubFor(n.id)||{}).label||"")).toLowerCase();
-    return hay.includes(search);
+  function activeFilterCount(){
+    return [filterRole, filterClub, filterRelease, filterConf].filter(Boolean).length;
+  }
+  function updateFilterChip(){
+    const n = activeFilterCount();
+    const btn = document.getElementById("filters-toggle");
+    btn.innerHTML = n ? ('Filtri<span class="count">'+n+"</span>") : "Filtri";
+    btn.classList.toggle("is-on", drawerOpen || n > 0);
+    btn.setAttribute("aria-expanded", drawerOpen ? "true" : "false");
+  }
+
+  function playerMatchesFilters(p){
+    if(search){
+      const hay = (p.label+" "+(p.name||"")+" "+(p.why||"")+" "+((clubFor(p.id)||{}).label||"")).toLowerCase();
+      if(!hay.includes(search)) return false;
+    }
+    if(filterRole && p.role !== filterRole) return false;
+    if(filterClub){
+      const c = clubFor(p.id);
+      if(!c || c.id !== filterClub) return false;
+    }
+    if(filterRelease){
+      const rels = releasesForPlayer(p.id);
+      if(!rels.some(r => r.id === filterRelease)) return false;
+    }
+    if(filterConf){
+      if(!confValues(p).includes(filterConf)) return false;
+    }
+    return true;
   }
   function visiblePlayers(){
-    return players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b)).filter(matchSearch);
+    return players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b)).filter(playerMatchesFilters);
+  }
+  function matchingSet(){
+    const set = new Set();
+    visiblePlayers().forEach(p => {
+      set.add(p.id);
+      const c = clubFor(p.id); if(c) set.add(c.id);
+      releasesForPlayer(p.id).forEach(r => {
+        set.add(r.id);
+        releaseChecks(r.id).forEach(ch => set.add(ch.id));
+        const meth = edges.find(e => e.type==="uses_method" && e.source===r.id);
+        if(meth) set.add(meth.target);
+      });
+      picksFor(p.id).forEach(pk => set.add(pk.id));
+    });
+    if(filterRelease) set.add(filterRelease);
+    return set;
+  }
+
+  function separateY(items, minGap){
+    const arr = items.slice().sort((a,b)=>a.y-b.y);
+    for(let i=1;i<arr.length;i++){
+      if(arr[i].y - arr[i-1].y < minGap) arr[i].y = arr[i-1].y + minGap;
+    }
+    return arr;
+  }
+
+  // Linea del tempo larga: asse in giorni veri, una riga per giocatore, righe raggruppate per club.
+  function layoutWide(){
+    Object.keys(positions).forEach(k => delete positions[k]);
+    const ghostMeta = nextUscitaLabel();
+    ghost = { id: "ghost:next", label: ghostMeta.title, num: ghostMeta.num };
+    const w = Math.max(wrap.clientWidth, 640);
+    const clubW = 150, nameW = 240;
+    const x0 = clubW + nameW + 14, x1 = w - 48;
+    const axisY = 58, bandH = 94, rowStart = bandH + 34, rowGap = 38, groupGap = 14;
+
+    const days = releases.filter(r => r.written).map(r => dayNum(r.written))
+      .concat(checks.filter(c => c.date).map(c => dayNum(c.date)));
+    const d0 = days.length ? Math.min(...days) : 0;
+    let d1 = days.length ? Math.max(...days) : 30;
+    if(d1 - d0 < 30) d1 = d0 + 30;
+    const X = d => x0 + (d - d0) / (d1 - d0) * (x1 - x0);
+
+    releases.forEach(r => { positions[r.id] = {x: r.written ? X(dayNum(r.written)) : x0, y: axisY}; });
+    checks.forEach(c => { if(c.date) positions[c.id] = {x: X(dayNum(c.date)), y: axisY}; });
+
+    // Gruppi per club, nell'ordine in cui il club compare nella lista pubblicata
+    const groups = [];
+    players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b)).forEach(p => {
+      const c = clubFor(p.id);
+      const key = c ? c.id : "";
+      let g = groups.find(x => x.key === key);
+      if(!g){ g = {key, club: c, players: []}; groups.push(g); }
+      g.players.push(p);
+    });
+    let y = rowStart, lastY = rowStart;
+    groups.forEach(g => {
+      const first = y;
+      g.players.forEach(p => {
+        const xs = releasesForPlayer(p.id).map(r => positions[r.id] && positions[r.id].x).filter(v => v != null);
+        positions[p.id] = {x: xs.length ? Math.min(...xs) : x0, y};
+        lastY = y; y += rowGap;
+      });
+      if(g.club) positions[g.club.id] = {x: 18, y: (first + lastY) / 2, y0: first, y1: lastY};
+      y += groupGap;
+    });
+    const rowsBottom = lastY + 24;
+    const h = rowsBottom + 60;
+
+    // Oggi (data del dispositivo di chi guarda), solo se cade dentro l'asse
+    const now = new Date();
+    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 864e5;
+    const todayX = (today >= d0 && today <= d1) ? X(today) : null;
+    // Prossima uscita: senza data. Una linea tratteggiata sottile subito dopo «Oggi», senza larghezza:
+    // non è una colonna e non indica un giorno.
+    const lastRelX = releases.length ? Math.max(...releases.map(r => positions[r.id].x)) : x0;
+    const gx = Math.min(Math.max(todayX == null ? 0 : todayX + 9, lastRelX + 30), x1);
+    positions[ghost.id] = {x: gx, y: bandH + 36, x0: gx, x1: gx, ghost: true};
+
+    // La prima uscita ha l'etichetta a sinistra del punto (lì c'è spazio). Le altre etichette stanno sopra l'asse:
+    // se sono vicine, le date si scrivono senza anno.
+    const labelXs = checks.filter(c => positions[c.id]).map(c => positions[c.id].x)
+      .concat(releases.slice(1).map(r => positions[r.id].x)).sort((a,b) => a - b);
+    let minGap = Infinity;
+    for(let i = 1; i < labelXs.length; i++) minGap = Math.min(minGap, labelXs[i] - labelXs[i-1]);
+    const compact = minGap < 120;
+    wideGeo = {x0, x1, d0, d1, X, axisY, bandH, clubW, rowsBottom, todayX, now, compact};
+    viewBox = {w, h};
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+    wrap.style.height = h + "px";
+  }
+
+  function layout(){
+    wideMode = wideQuery.matches;
+    hintEl.innerHTML = wideMode ? hintWide : hintNarrow;
+    if(wideMode){ layoutWide(); return; }
+    wrap.style.height = "";
+    Object.keys(positions).forEach(k => delete positions[k]);
+    const ghostMeta = nextUscitaLabel();
+    ghost = { id: "ghost:next", label: ghostMeta.title, num: ghostMeta.num };
+    const nCols = Math.max(releases.length, 1) + 1; // + ghost
+    const leftPad = 78;
+    const rightPad = 24;
+    const bandH = 64;
+    const releaseY = bandH + 36;
+    const playerStart = releaseY + 48;
+    const playerGap = 36;
+    const clubX = 40;
+
+    let maxPlayersInCol = 1;
+    releases.forEach(r => {
+      maxPlayersInCol = Math.max(maxPlayersInCol, playersInRelease(r.id).length || 1);
+    });
+
+    const playersBlock = maxPlayersInCol * playerGap + 8;
+    const checksBand = 56;
+    const h = playerStart + playersBlock + checksBand + 36;
+    // Fill typical mobile width: columns share available space
+    const avail = 420;
+    const colW = Math.max(150, (avail - leftPad - rightPad) / nCols);
+    const w = leftPad + rightPad + colW * nCols;
+    viewBox = {w, h};
+
+    releases.forEach((r, i) => {
+      const x = leftPad + colW * i + colW / 2;
+      positions[r.id] = {x, y: releaseY, col: i, x0: leftPad + colW * i, x1: leftPad + colW * (i+1)};
+    });
+    // ghost column after last
+    const gi = releases.length;
+    const gx = leftPad + colW * gi + colW / 2;
+    positions[ghost.id] = {
+      x: gx, y: releaseY, col: gi,
+      x0: leftPad + colW * gi, x1: leftPad + colW * (gi+1),
+      ghost: true
+    };
+
+    const slotInCol = {};
+    releases.forEach(r => { slotInCol[r.id] = 0; });
+    const orderedAll = players.slice().sort((a,b)=>pickOrder(a)-pickOrder(b));
+    orderedAll.forEach(p => {
+      const rels = releasesForPlayer(p.id);
+      if(!rels.length){
+        positions[p.id] = {x: leftPad + colW/2, y: playerStart};
+        return;
+      }
+      if(rels.length === 1){
+        const r = rels[0];
+        const slot = slotInCol[r.id]++;
+        positions[p.id] = {x: positions[r.id].x, y: playerStart + slot * playerGap, cols: [r.id]};
+      } else {
+        let slot = 0;
+        rels.forEach(r => { slot = Math.max(slot, slotInCol[r.id] || 0); });
+        rels.forEach(r => { slotInCol[r.id] = Math.max(slotInCol[r.id], slot + 1); });
+        const xs = rels.map(r => positions[r.id].x);
+        positions[p.id] = {
+          x: xs.reduce((a,b)=>a+b,0)/xs.length,
+          y: playerStart + slot * playerGap,
+          cols: rels.map(r=>r.id),
+          span: true
+        };
+      }
+    });
+
+    // Clubs: left rail, collision-separated
+    const clubItems = clubs.map(c => {
+      const ps = clubPlayers(c.id).filter(p => positions[p.id]);
+      const ay = ps.length ? ps.reduce((s,p)=>s+positions[p.id].y,0)/ps.length : playerStart;
+      return {id: c.id, y: ay, x: clubX};
+    });
+    separateY(clubItems, 42).forEach((it, idx) => {
+      positions[it.id] = {x: it.x + (idx % 2 ? 10 : 0), y: it.y};
+    });
+
+    // Checks: under their release, spaced across column width; labels only when focused
+    releases.forEach(r => {
+      const chs = releaseChecks(r.id).slice().sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+      const baseY = playerStart + playersBlock + 22;
+      const col = positions[r.id];
+      const inner = Math.max(colW - 28, 40);
+      chs.forEach((ch, i) => {
+        const t = chs.length === 1 ? 0.5 : i / (chs.length - 1);
+        const x = col.x0 + 14 + t * inner;
+        positions[ch.id] = {x, y: baseY, hideLabel: true};
+      });
+    });
+
+    methods.forEach(m => {
+      const r = releases[0];
+      if(!r || !positions[r.id]) return;
+      positions[m.id] = {x: positions[r.id].x + Math.min(48, colW*0.28), y: releaseY - 22, hideLabel: true};
+    });
+
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+  }
+
+  function applyView(){
+    const g = svg.querySelector("#viewport");
+    if(g) g.setAttribute("transform", "translate("+panX+","+panY+") scale("+zoom+")");
+  }
+  function fitView(){
+    zoom = 1; panX = 0; panY = 0; applyView();
+  }
+  function zoomBy(factor, cx, cy){
+    const prev = zoom;
+    zoom = Math.max(0.7, Math.min(3.2, zoom * factor));
+    if(cx != null){
+      panX = cx - (cx - panX) * (zoom / prev);
+      panY = cy - (cy - panY) * (zoom / prev);
+    }
+    applyView();
   }
 
   function renderList(){
@@ -343,7 +753,7 @@ footer a{color:var(--ink)}
         <span><h3>${p.label}</h3><div class="meta">${bits}</div>${p.why?`<div class="why">${p.why}</div>`:""}</span>
         <span class="score">${p.score||""}</span>
       </button></li>`;
-    }).join("") || `<li style="padding:18px;color:#5c564e">Nessun nome coincide.</li>`;
+    }).join("") || `<li style="padding:18px;color:var(--r-muted)">Nessun nome coincide.</li>`;
     document.getElementById("list").querySelectorAll("button[data-id]").forEach(b => {
       b.addEventListener("click", () => select(b.getAttribute("data-id")));
     });
@@ -352,71 +762,333 @@ footer a{color:var(--ink)}
   function focusSet(){
     if(!selected) return null;
     const set = new Set([selected]);
+    const n = byId[selected];
     (neighbors[selected]||[]).forEach(id => set.add(id));
+    if(n && n.type === "player"){
+      picksFor(n.id).forEach(pk => {
+        set.add(pk.id);
+        const e = edges.find(x => x.type==="chosen_in" && x.source===pk.id);
+        if(e) set.add(e.target);
+      });
+      releasesForPlayer(n.id).forEach(r => {
+        set.add(r.id);
+        releaseChecks(r.id).forEach(ch => set.add(ch.id));
+        edges.filter(e => e.source===r.id && (e.type==="uses_method"||e.type==="in_competition"||e.type==="in_group"))
+          .forEach(e => set.add(e.target));
+      });
+      const c = clubFor(n.id); if(c) set.add(c.id);
+      playerEvidence(n.id).forEach(ev => set.add(ev.id));
+    } else if(n && n.type === "club"){
+      clubPlayers(n.id).forEach(p => {
+        set.add(p.id);
+        releasesForPlayer(p.id).forEach(r => set.add(r.id));
+      });
+    } else if(n && n.type === "release"){
+      playersInRelease(n.id).forEach(p => {
+        set.add(p.id);
+        const c = clubFor(p.id); if(c) set.add(c.id);
+      });
+      releaseChecks(n.id).forEach(ch => set.add(ch.id));
+      edges.filter(e => e.source===n.id).forEach(e => set.add(e.target));
+    } else if(n && n.type === "check"){
+      const e = edges.find(x => x.type==="has_check" && x.target===n.id);
+      if(e){
+        set.add(e.source);
+        playersInRelease(e.source).forEach(p => set.add(p.id));
+      }
+    }
     return set;
   }
+
+  // Raggio del punto in proporzione al punteggio già pubblicato (letto così com'è, nessun ricalcolo)
+  function scoreRadius(p){
+    const v = parseFloat(String(p.score || "").replace(",", "."));
+    return isFinite(v) ? Math.max(4, 12 * v / 100) : 9;
+  }
+  function drawWide(isBright, focus){
+    const g = wideGeo, {w} = viewBox;
+    const state = on => on ? (focus ? " is-on" : "") : " is-dim";
+    let m = "";
+    // Fascia del tempo con i mesi
+    m += `<rect class="tl-band" x="0" y="0" width="${w}" height="${g.bandH}"></rect>`;
+    m += `<text class="tl-label" x="16" y="24">Tempo</text>`;
+    m += `<line class="tl-axis" x1="${g.x0-14}" y1="${g.axisY}" x2="${g.x1+20}" y2="${g.axisY}"></line>`;
+    m += `<path d="M${g.x1+28},${g.axisY} l-9,-5 l0,10 z" style="fill:var(--r-text)"></path>`;
+    const start = new Date(g.d0 * 864e5);
+    let yy = start.getUTCFullYear(), mm = start.getUTCMonth() + 1;
+    let monthEnd = -Infinity; // dove finisce l'ultimo nome di mese scritto: se il prossimo non ci sta, resta solo la tacca
+    for(let guard = 0; guard < 60; guard++){
+      if(mm > 11){ mm = 0; yy++; }
+      const d = Date.UTC(yy, mm, 1) / 864e5;
+      if(d > g.d1) break;
+      const x = g.X(d);
+      const label = MONTHS_SHORT[mm] + (mm===0 ? " "+yy : "");
+      m += `<line class="month-tick" x1="${x}" y1="${g.axisY}" x2="${x}" y2="${g.axisY+7}"></line>`;
+      if(x + 4 >= monthEnd + 10){
+        m += `<text class="tl-title" x="${x+4}" y="${g.axisY+24}">${label}</text>`;
+        monthEnd = x + 4 + label.length * 7.5;
+      }
+      mm++;
+    }
+    // Guide verticali: uscite (piene) e verifiche (tratteggiate)
+    releases.forEach(r => {
+      const p = positions[r.id];
+      m += `<line class="col-guide" style="stroke-dasharray:none" x1="${p.x}" y1="${g.bandH}" x2="${p.x}" y2="${g.rowsBottom}"></line>`;
+    });
+    checks.forEach(c => {
+      const p = positions[c.id]; if(!p) return;
+      m += `<line class="col-guide" x1="${p.x}" y1="${g.bandH}" x2="${p.x}" y2="${g.rowsBottom}"></line>`;
+    });
+    // Riga evidenziata del giocatore scelto
+    const rowId = selected || previewId;
+    const selNode = rowId && byId[rowId];
+    if(selNode && selNode.type === "player" && positions[rowId]){
+      m += `<rect class="row-on" x="${g.clubW}" y="${positions[rowId].y-17}" width="${w-g.clubW-12}" height="34" rx="4"></rect>`;
+    }
+    if(g.todayX != null){
+      m += `<line class="today-line" x1="${g.todayX}" y1="${g.bandH}" x2="${g.todayX}" y2="${g.rowsBottom+26}"></line>`;
+      m += `<text class="today-label" x="${g.todayX-7}" y="${g.rowsBottom+22}" text-anchor="end">Oggi · ${g.now.getDate()} ${MONTHS_SHORT[g.now.getMonth()]}</text>`;
+    }
+    // Club: etichetta a sinistra e graffa sulle sue righe
+    clubs.forEach(c => {
+      const p = positions[c.id]; if(!p) return;
+      const on = isBright(c.id), sel = selected === c.id;
+      const bx = g.clubW - 8;
+      m += `<path class="edge bracket${on?"":" is-dim"}" d="M${bx+6},${p.y0-13} H${bx} V${p.y1+13} H${bx+6}"></path>`;
+      m += `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${c.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="7" style="fill:var(--r-node-club)"></circle>
+        <text x="${p.x+13}" y="${p.y+4}">${c.label}</text></g>`;
+    });
+    // Giocatori: nome, punto nel giorno dell'uscita, percorso fino all'ultima verifica.
+    // Disegnati dall'alto in basso: è anche l'ordine in cui li raggiunge il tasto Tab.
+    players.filter(p => positions[p.id]).sort((a,b) => positions[a.id].y - positions[b.id].y).forEach(p => {
+      const pos = positions[p.id]; if(!pos) return;
+      const on = isBright(p.id), sel = (selected || previewId) === p.id;
+      const pk = picksFor(p.id)[0];
+      const num = pk && pk.pick_id ? pk.pick_id.slice(-2) : "";
+      const nameX = pos.x - 19 - (p.score ? 42 : 0);
+      m += `<line class="edge path${state(on)}" x1="${pos.x}" y1="${pos.y}" x2="${g.x1+14}" y2="${pos.y}"></line>`;
+      releasesForPlayer(p.id).forEach(r => releaseChecks(r.id).forEach(ch => {
+        const cp = positions[ch.id]; if(!cp) return;
+        m += `<circle class="tick${on?"":" is-dim"}" cx="${cp.x}" cy="${pos.y}" r="4"></circle>`;
+      }));
+      m += `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${p.id}">
+        <line class="hit" x1="${g.clubW+6}" y1="${pos.y}" x2="${g.x1+14}" y2="${pos.y}"></line>
+        <circle cx="${pos.x}" cy="${pos.y}" r="${scoreRadius(p)}" style="fill:var(--r-node-player)"></circle>
+        ${p.score ? `<text class="pscore" x="${pos.x-19}" y="${pos.y+4}" text-anchor="end">${p.score}</text>` : ""}
+        <text x="${nameX}" y="${pos.y+4}" text-anchor="end"><tspan class="pnum">${num}</tspan>  ${p.label}</text></g>`;
+    });
+    // Sull'asse: uscite e verifiche, con la data sopra
+    releases.forEach(r => {
+      const p = positions[r.id];
+      const on = isBright(r.id), sel = selected === r.id;
+      const num = (r.label || "").replace(/\D+/g, "") || "01";
+      const first = r === releases[0];
+      const lx = first ? p.x - 22 : p.x, la = first ? "end" : "middle";
+      const ly = first ? p.y - 5 : 17;
+      m += `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${r.id}">
+        <text class="tl-title" x="${lx}" y="${ly}" text-anchor="${la}" style="stroke:none">${r.label||""}</text>
+        <text class="tl-date" x="${lx}" y="${ly+18}" text-anchor="${la}" style="stroke:none">${shortDate(r.written)}</text>
+        <circle cx="${p.x}" cy="${p.y}" r="13" style="fill:var(--r-node-release)"></circle>
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#ffffff;stroke:none;font-size:12px">${num}</text></g>`;
+    });
+    checks.forEach(c => {
+      const p = positions[c.id]; if(!p) return;
+      const on = isBright(c.id), sel = selected === c.id;
+      m += `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${c.id}">
+        <text class="tl-title" x="${p.x}" y="17" text-anchor="middle" style="stroke:none">Verifica</text>
+        <text class="tl-date" x="${p.x}" y="35" text-anchor="middle" style="stroke:none;font-size:13px">${c.approx?"~ ":""}${g.compact ? shortDate(c.date).replace(/ \d{4}$/, "") : shortDate(c.date)}</text>
+        <circle cx="${p.x}" cy="${p.y}" r="7" style="fill:var(--r-node-check)"></circle></g>`;
+    });
+    // Prossima uscita: linea tratteggiata sottile, senza data e senza nomi
+    const gp = positions[ghost.id];
+    m += `<g class="node ghost${isBright(ghost.id)?"":" is-dim"}" data-id="${ghost.id}">
+      <line class="ghost-line" x1="${gp.x}" y1="${g.bandH}" x2="${gp.x}" y2="${g.rowsBottom+26}"></line>
+      <text class="ghost-note strong" x="${gp.x+7}" y="${g.rowsBottom+22}">Prossima uscita: data da definire</text>
+    </g>`;
+    return m;
+  }
+
+  // Nome letto dai lettori di schermo per un elemento della mappa
+  function nodeAria(id){
+    if(id && id.startsWith("ghost:")) return wideMode ? "Prossima uscita: data da definire" : ghost.label;
+    const n = byId[id]; if(!n) return "";
+    if(n.type === "player"){
+      const c = clubFor(n.id);
+      return [n.label, c && c.label, n.score ? "punteggio " + n.score : ""].filter(Boolean).join(", ");
+    }
+    if(n.type === "club") return "Club " + n.label;
+    if(n.type === "release") return n.label + (n.written ? ", " + niceDate(n.written) : "");
+    if(n.type === "check") return "Verifica, " + niceDate(n.date, n.approx);
+    return n.label || "";
+  }
   function draw(){
+    // se il fuoco della tastiera è su un elemento della mappa, lo si ritrova dopo il ridisegno
+    const act = document.activeElement;
+    const focusedId = (act && svg.contains(act) && act.getAttribute) ? act.getAttribute("data-id") : null;
     const focus = focusSet();
-    const visualEdges = edges.filter(e =>
+    const match = matchingSet();
+    const filtersOn = !!(search || filterRole || filterClub || filterRelease || filterConf);
+    function isBright(id){
+      if(id && String(id).startsWith("ghost:")) return !focus && !filtersOn;
+      if(focus) return focus.has(id);
+      if(filtersOn) return match.has(id);
+      return true;
+    }
+
+    let markup = "";
+    const {w, h} = viewBox;
+    const bandH = 64;
+    if(wideMode){ markup = drawWide(isBright, focus); }
+    else { // vista a colonne (telefono): blocco invariato, non rientrato per tenere piccolo il diff
+
+    // Timeline band
+    markup += `<rect class="tl-band" x="0" y="0" width="${w}" height="${bandH}"></rect>`;
+    markup += `<text class="tl-label" x="12" y="22">Tempo</text>`;
+
+    if(releases.length || ghost){
+      const cols = releases.map(r => positions[r.id]).concat(ghost ? [positions[ghost.id]] : []);
+      const xs = cols.map(c => c.x);
+      const y = 40;
+      const x0 = Math.min(...xs) - 16;
+      const x1 = Math.max(...xs) + 16;
+      markup += `<line class="tl-axis" x1="${x0}" y1="${y}" x2="${x1}" y2="${y}"></line>`;
+      markup += `<path d="M${x1},${y} l-9,-5 l0,10 z" style="fill:var(--r-text)"></path>`;
+
+      releases.forEach(r => {
+        const p = positions[r.id];
+        markup += `<line class="col-guide" x1="${p.x}" y1="${bandH}" x2="${p.x}" y2="${h-16}"></line>`;
+        markup += `<text class="tl-date" x="${p.x}" y="28" text-anchor="middle">${shortDate(r.written)}</text>`;
+        markup += `<text class="tl-title" x="${p.x}" y="56" text-anchor="middle">${r.label||""}</text>`;
+      });
+      if(ghost && positions[ghost.id]){
+        const p = positions[ghost.id];
+        const pad = 8;
+        markup += `<rect class="ghost-col" x="${p.x0+pad}" y="${bandH+8}" width="${(p.x1-p.x0)-pad*2}" height="${h-bandH-24}" rx="6"></rect>`;
+        markup += `<text class="tl-date" x="${p.x}" y="28" text-anchor="middle" style="fill:var(--r-muted);font-size:13px">prossima</text>`;
+        markup += `<text class="tl-title" x="${p.x}" y="56" text-anchor="middle">${ghost.label}</text>`;
+      }
+    }
+
+    // Span edges
+    players.forEach(p => {
+      const pos = positions[p.id];
+      if(!pos || !pos.span || !pos.cols) return;
+      pos.cols.forEach(rid => {
+        const rp = positions[rid];
+        if(!rp) return;
+        const on = isBright(p.id) && isBright(rid);
+        markup += `<path class="edge span${on?(focus?" is-on":""):" is-dim"}" d="M${rp.x},${rp.y+16} C${rp.x},${(rp.y+pos.y)/2} ${pos.x},${(rp.y+pos.y)/2} ${pos.x},${pos.y-12}"></path>`;
+      });
+    });
+
+    edges.filter(e =>
       (e.type === "plays_for" || e.type === "selected_in" || e.type === "has_check") &&
       positions[e.source] && positions[e.target]
-    );
-    let markup = "";
-    visualEdges.forEach(e => {
+    ).forEach(e => {
+      if(e.type === "selected_in" && positions[e.source] && positions[e.source].span) return;
       const a = positions[e.source], b = positions[e.target];
-      const on = !focus || (focus.has(e.source) && focus.has(e.target));
+      const on = isBright(e.source) && isBright(e.target);
       markup += `<line class="edge${on?(focus?" is-on":""):" is-dim"}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>`;
     });
-    function nodeMark(n, r, fill, label, inside){
+
+    function nodeMark(n, r, fill, label, opts){
+      opts = opts || {};
       if(!positions[n.id]) return "";
       const p = positions[n.id];
-      const on = !focus || focus.has(n.id);
-      if(inside){
-        return `<g class="node${on?(selected===n.id?" is-on":""):" is-dim"}" data-id="${n.id}">
-        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
-        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#f3eee4;stroke:none;font-size:10px">${label}</text></g>`;
+      const on = isBright(n.id);
+      const sel = selected === n.id;
+      const showLabel = opts.forceLabel || !(p.hideLabel && !sel && !(focus && focus.has(n.id)));
+      if(opts.inside){
+        return `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${n.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" style="fill:${fill}"></circle>
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="fill:#ffffff;stroke:none;font-size:12px">${label}</text></g>`;
       }
-      const dx = p.x - CX, dy = p.y - CY;
-      const L = Math.hypot(dx, dy) || 1;
-      const extra = r + 15;
-      const tx = p.x + (dx / L) * extra;
-      const ty = p.y + (dy / L) * extra + 3;
-      const anchor = Math.abs(dx) < 28 ? "middle" : (dx > 0 ? "start" : "end");
-      return `<g class="node${on?(selected===n.id?" is-on":""):" is-dim"}" data-id="${n.id}">
-        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}"></circle>
-        <text x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text></g>`;
+      const isClub = n.type === "club";
+      const isCheck = n.type === "check";
+      let tx, ty, anchor;
+      if(isClub){ tx = p.x + r + 7; ty = p.y + 4; anchor = "start"; }
+      else if(isCheck){ tx = p.x; ty = p.y + r + 14; anchor = "middle"; }
+      else { tx = p.x + r + 8; ty = p.y + 4; anchor = "start"; }
+      const labelMarkup = showLabel ? `<text x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text>` : "";
+      return `<g class="node${on?(sel?" is-on":""):" is-dim"}" data-id="${n.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" style="fill:${fill}"></circle>
+        ${labelMarkup}</g>`;
     }
-    clubs.forEach(c => { markup += nodeMark(c, 9, "#1e4a6d", shortClub(c.label)); });
-    players.forEach(p => { markup += nodeMark(p, 11, "#1f5a40", lastName(p.label)); });
-    releases.forEach(r => { markup += nodeMark(r, 18, "#161310", "01", true); });
-    checks.forEach(c => {
-      const short = c.date ? c.date.slice(8)+"/"+c.date.slice(5,7) : c.label;
-      markup += nodeMark(c, 8, "#8a6230", short);
+
+    clubs.forEach(c => { markup += nodeMark(c, 9, "var(--r-node-club)", shortClub(c.label), {forceLabel:true}); });
+    players.forEach(p => { markup += nodeMark(p, 11, "var(--r-node-player)", lastName(p.label), {forceLabel:true}); });
+    releases.forEach(r => {
+      const num = (r.label || "").replace(/\D+/g, "") || "01";
+      markup += nodeMark(r, 18, "var(--r-node-release)", num, {inside:true, forceLabel:true});
     });
+    checks.forEach(c => {
+      const short = c.date ? (c.date.slice(8)+"/"+c.date.slice(5,7)) : c.label;
+      markup += nodeMark(c, 8, "var(--r-node-check)", short);
+    });
+    // Ghost node (no data)
+    if(ghost && positions[ghost.id]){
+      const p = positions[ghost.id];
+      markup += `<g class="node ghost" data-id="${ghost.id}">
+        <circle cx="${p.x}" cy="${p.y}" r="16"></circle>
+        <text x="${p.x}" y="${p.y+4}" text-anchor="middle">${ghost.num}</text>
+        <text x="${p.x}" y="${p.y+38}" text-anchor="middle">vuota</text>
+      </g>`;
+    }
+    } // fine vista a colonne
+
     const ns = "http://www.w3.org/2000/svg";
-    const parsed = new DOMParser().parseFromString('<svg xmlns="'+ns+'">'+markup+"</svg>", "image/svg+xml");
+    const inner = '<g id="viewport" transform="translate('+panX+','+panY+') scale('+zoom+')">'+markup+"</g>";
+    const parsed = new DOMParser().parseFromString('<svg xmlns="'+ns+'">'+inner+"</svg>", "image/svg+xml");
     while(svg.firstChild) svg.removeChild(svg.firstChild);
     const root = parsed.documentElement;
     if(root && !parsed.querySelector("parsererror")){
       Array.from(root.childNodes).forEach(node => svg.appendChild(document.importNode(node, true)));
     } else {
-      svg.innerHTML = markup;
+      svg.innerHTML = inner;
     }
-    svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", () => select(g.getAttribute("data-id"))));
+    svg.querySelectorAll(".node").forEach(g => g.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const id = g.getAttribute("data-id");
+      if(id && id.startsWith("ghost:")){
+        select(null);
+        previewId = null; draw();
+        if(wideMode){
+          document.getElementById("sheet").innerHTML = `<h2>Prossima uscita: data da definire</h2><p class="hint">Nessun nome e nessun dato inventato. Quando l’uscita sarà pubblica, i nomi appariranno qui.</p>`;
+          return;
+        }
+        document.getElementById("sheet").innerHTML = `<div class="k">Prossima uscita</div><h2>${ghost.label}</h2><p class="hint">Colonna segnaposto: nessun dato inventato. Quando l’uscita sarà pubblica, i nomi appariranno qui.</p>`;
+        return;
+      }
+      select(id);
+    }));
+    // Tastiera: Tab arriva su ogni elemento, Invio o Spazio fanno ciò che fa il clic
+    svg.querySelectorAll(".node").forEach(g => {
+      const id = g.getAttribute("data-id");
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.setAttribute("aria-label", nodeAria(id));
+      if(!(id && id.startsWith("ghost:"))) g.setAttribute("aria-pressed", selected === id ? "true" : "false");
+      g.addEventListener("keydown", ev => {
+        if(ev.key !== "Enter" && ev.key !== " ") return;
+        ev.preventDefault();
+        g.dispatchEvent(new MouseEvent("click", {bubbles: true}));
+      });
+      if(focusedId && id === focusedId) g.focus({preventScroll: true});
+    });
   }
 
-  function sheetFor(id){
+  function sheetFor(id, guide){
     const n = byId[id];
+    const resetBtn = (id && !guide) ? `<button type="button" class="reset" id="sheet-reset">Azzera</button>` : "";
     if(!n){
-      return `<p class="hint">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. La mappa serve se vuoi vedere chi condivide il club.</p>`;
+      return `<div class="sheet-top"><p class="hint" style="margin:0">Apri un nome: vedi perché è in lista, i numeri e il link alla fonte. La fascia in alto è il tempo: ogni colonna è un’uscita.</p>${resetBtn}</div>`;
     }
+    let body = "";
     if(n.type === "player"){
       const c = clubFor(n.id);
       const pks = picksFor(n.id);
-      const rels = pks.map(pk => {
-        const e = edges.find(x => x.type==="chosen_in" && x.source===pk.id);
-        return e ? byId[e.target] : null;
-      }).filter(Boolean);
+      const rels = releasesForPlayer(n.id);
       const chks = rels.flatMap(r => releaseChecks(r.id));
       const ev = playerEvidence(n.id);
       const facts = (n.facts||[]).map(f =>
@@ -427,67 +1099,197 @@ footer a{color:var(--ink)}
         const lab = k[0].toUpperCase()+k.slice(1);
         return `${lab} <b class="${conf[k]}">${conf[k]}</b>`;
       }).join(" · ");
-      return `<div class="k">${(pks[0]&&pks[0].pick_id)||""}${n.score? " · punteggio "+n.score:""}</div>
+      body = `<div class="k">${(pks[0]&&pks[0].pick_id)||""}${n.score? " · punteggio "+n.score:""}</div>
         <h2>${n.label}</h2>
-        <p class="meta" style="color:#5c564e">${[n.age_label,n.role,c&&c.label].filter(Boolean).join(" · ")}</p>
+        <p class="meta" style="color:var(--r-muted)">${[n.age_label,n.role,c&&c.label].filter(Boolean).join(" · ")}</p>
         ${n.why?`<p class="why">${n.why}</p>`:""}
         ${facts?`<ul class="facts">${facts}</ul>`:""}
         ${confLine?`<p class="conf">Quanto sono sicuri i numeri: ${confLine}. Alta = confermato partita per partita; media = due fonti concordano.</p>`:""}
         ${n.caveat?`<p class="caveat">${n.caveat}</p>`:""}
+        ${rels.length?`<p class="conf">Uscite: ${rels.map(r => r.label + (r.written?" ("+niceDate(r.written)+")":"")).join("; ")}.</p>`:""}
         ${chks.length?`<p class="conf">Verifiche già scritte: ${chks.map(c=>niceDate(c.date,c.approx)).join("; ")}.</p>`:""}
         <div class="hook">${ev.length
           ? ev.map(e => (e.evidence_type||"prova")+(e.date?" · "+e.date:"")).join("<br>")
           : "Nessuna clip ancora. Un video si può agganciare a questa scelta più avanti, senza cambiare il nome. C’è anche un progetto parallelo, un postino tra sistemi: può dare una mano a questo, ma resta una cosa a parte. <a href=\'#postino\'>Sotto c’è una prima prova</a>."}</div>`;
-    }
-    if(n.type === "club"){
+    } else if(n.type === "club"){
       const ps = clubPlayers(n.id).sort((a,b)=>pickOrder(a)-pickOrder(b));
-      return `<div class="k">Club</div><h2>${n.label}</h2>
+      body = `<div class="k">Club</div><h2>${n.label}</h2>
         <p>${ps.length} ${ps.length===1?"scelta":"scelte"} in questa uscita.</p>
         <ul>${ps.map(p=>`<li>${p.label}${p.why? " — "+p.why:""}</li>`).join("")}</ul>`;
-    }
-    if(n.type === "release"){
-      return `<div class="k">${n.written?niceDate(n.written):""}</div><h2>${n.label}</h2>
+    } else if(n.type === "release"){
+      body = `<div class="k">${n.written?niceDate(n.written):""}</div><h2>${n.label}</h2>
         <p>Stagione ${n.season||""}. <a href="/radar/">Apri la pagina pubblica, con metodo ed errata</a>.</p>`;
-    }
-    if(n.type === "check"){
-      return `<div class="k">Verifica</div><h2>${niceDate(n.date, n.approx)}</h2>
+    } else if(n.type === "check"){
+      body = `<div class="k">Verifica</div><h2>${niceDate(n.date, n.approx)}</h2>
         <p>Data dichiarata in anticipo. L’esito si aggiunge, senza riscrivere le scelte.</p>`;
+    } else if(n.type === "method"){
+      body = `<div class="k">Metodo</div><h2>${n.label}</h2>
+        <p>Le regole usate per le scelte di questa uscita.</p>`;
+    } else {
+      body = `<div class="k">${n.type}</div><h2>${n.label}</h2>`;
     }
-    return `<div class="k">${n.type}</div><h2>${n.label}</h2>`;
+    return `${guide?`<p class="guide">${guide}</p>`:""}<div class="sheet-top"><div style="flex:1">${body}</div>${resetBtn}</div>`;
+  }
+  function renderSheet(){
+    previewId = null;
+    if(!selected && wideQuery.matches){
+      const first = visiblePlayers()[0];
+      if(first) previewId = first.id;
+    }
+    const guide = previewId ? (view === "graph" ? "Clicca un nome per vedere il suo percorso." : "Clicca un nome per aprire la sua scheda.") : "";
+    document.getElementById("sheet").innerHTML = sheetFor(selected || previewId, guide);
+    bindSheetReset();
   }
 
+  function bindSheetReset(){
+    const b = document.getElementById("sheet-reset");
+    if(b) b.addEventListener("click", () => select(null));
+  }
   function select(id){
-    selected = (selected === id) ? null : id;
-    document.getElementById("sheet").innerHTML = sheetFor(selected);
+    if(id === null) selected = null;
+    else selected = (selected === id) ? null : id;
+    renderSheet();
     draw();
-    if(selected) document.getElementById("sheet").scrollIntoView({behavior:"smooth", block:"nearest"});
+    const noscroll = new URLSearchParams(location.search).get("nosheetscroll") === "1";
+    // Su computer la scheda è già a fianco: non si scorre. Sul telefono sì, senza animazione se è chiesto «movimento ridotto».
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(selected && !noscroll && !wideQuery.matches) document.getElementById("sheet").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"nearest"});
   }
   function setView(v){
     view = v;
     document.body.classList.toggle("is-list", v==="list");
     document.body.classList.toggle("is-map", v==="graph");
     document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.view===v ? "true":"false"));
-    document.getElementById("canvas").hidden = v !== "graph";
-    document.getElementById("list").hidden = v !== "list";
+    document.getElementById("map-hint").hidden = v !== "graph";
+    document.getElementById("reset-focus").hidden = v !== "graph";
+    document.getElementById("fit-btn").hidden = v !== "graph";
     document.querySelector(".legend").hidden = v !== "graph";
+    if(!selected) renderSheet();
     if(v==="list") renderList();
-    else requestAnimationFrame(() => { layout(); draw(); });
+    else requestAnimationFrame(() => { layout(); fitView(); draw(); });
   }
+  function refresh(){
+    updateFilterChip();
+    renderList();
+    if(!selected) renderSheet();
+    if(view === "graph"){ layout(); draw(); }
+    else draw();
+  }
+
+  // Filters drawer
+  const drawer = document.getElementById("filters-drawer");
+  document.getElementById("filters-toggle").addEventListener("click", () => {
+    drawerOpen = !drawerOpen;
+    drawer.hidden = !drawerOpen;
+    drawer.classList.toggle("is-open", drawerOpen);
+    updateFilterChip();
+  });
 
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
   document.getElementById("q").addEventListener("input", e => {
     search = (e.target.value||"").trim().toLowerCase();
-    renderList(); draw();
+    refresh();
   });
+  roleSel.addEventListener("change", e => { filterRole = e.target.value; refresh(); });
+  clubSel.addEventListener("change", e => { filterClub = e.target.value; refresh(); });
+  relSel.addEventListener("change", e => { filterRelease = e.target.value; refresh(); });
+  document.getElementById("f-conf").addEventListener("change", e => { filterConf = e.target.value; refresh(); });
+  document.getElementById("reset-focus").addEventListener("click", () => select(null));
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    search = ""; filterRole = ""; filterClub = ""; filterRelease = ""; filterConf = "";
+    document.getElementById("q").value = "";
+    roleSel.value = ""; clubSel.value = ""; relSel.value = "";
+    document.getElementById("f-conf").value = "";
+    refresh();
+  });
+  document.getElementById("fit-btn").addEventListener("click", fitView);
+  document.getElementById("zoom-fit").addEventListener("click", fitView);
+  document.getElementById("zoom-in").addEventListener("click", () => zoomBy(1.2, viewBox.w/2, viewBox.h/2));
+  document.getElementById("zoom-out").addEventListener("click", () => zoomBy(1/1.2, viewBox.w/2, viewBox.h/2));
+
+  // Pan / pinch / wheel on canvas
+  let dragging = false, lastX = 0, lastY = 0, moved = false;
+  let pinch = null;
+  function svgPoint(clientX, clientY){
+    const rect = svg.getBoundingClientRect();
+    const sx = viewBox.w / rect.width;
+    const sy = viewBox.h / rect.height;
+    return { x: (clientX - rect.left) * sx, y: (clientY - rect.top) * sy };
+  }
+  svg.addEventListener("pointerdown", e => {
+    if(e.target.closest && e.target.closest(".node")) return;
+    dragging = true; moved = false;
+    lastX = e.clientX; lastY = e.clientY;
+    svg.classList.add("is-dragging");
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", e => {
+    if(!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    if(Math.abs(dx)+Math.abs(dy) > 3) moved = true;
+    const rect = svg.getBoundingClientRect();
+    panX += dx * (viewBox.w / rect.width);
+    panY += dy * (viewBox.h / rect.height);
+    lastX = e.clientX; lastY = e.clientY;
+    applyView();
+  });
+  function endDrag(e){
+    if(!dragging) return;
+    dragging = false;
+    svg.classList.remove("is-dragging");
+    try{ svg.releasePointerCapture(e.pointerId); }catch(_){}
+  }
+  svg.addEventListener("pointerup", endDrag);
+  svg.addEventListener("pointercancel", endDrag);
+  svg.addEventListener("wheel", e => {
+    if(wideMode && !e.ctrlKey && !e.metaKey) return;
+    e.preventDefault();
+    const p = svgPoint(e.clientX, e.clientY);
+    zoomBy(e.deltaY < 0 ? 1.12 : 1/1.12, p.x, p.y);
+  }, {passive:false});
+
+  // Pinch
+  wrap.addEventListener("touchstart", e => {
+    if(e.touches.length === 2){
+      const a = e.touches[0], b = e.touches[1];
+      pinch = {
+        dist: Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY),
+        cx: (a.clientX+b.clientX)/2,
+        cy: (a.clientY+b.clientY)/2
+      };
+      dragging = false;
+    }
+  }, {passive:true});
+  wrap.addEventListener("touchmove", e => {
+    if(e.touches.length === 2 && pinch){
+      e.preventDefault();
+      const a = e.touches[0], b = e.touches[1];
+      const dist = Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY);
+      const p = svgPoint((a.clientX+b.clientX)/2, (a.clientY+b.clientY)/2);
+      zoomBy(dist / pinch.dist, p.x, p.y);
+      pinch.dist = dist;
+    }
+  }, {passive:false});
+  wrap.addEventListener("touchend", () => { pinch = null; });
 
   layout();
   renderList();
-  document.getElementById("sheet").innerHTML = sheetFor(null);
+  updateFilterChip();
+  renderSheet();
   draw();
   const params = new URLSearchParams(location.search);
   if(params.get("vista")==="mappa" || params.get("vista")==="grafo") setView("graph");
+  else if(params.get("vista")!=="lista" && wideQuery.matches) setView("graph");
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { if(!selected) renderSheet(); if(view === "graph"){ layout(); fitView(); draw(); } }, 150);
+  });
   const preset = params.get("nodo");
-  if(preset && byId[preset]) select(preset);
+  if(preset && byId[preset]){
+    if(view !== "graph") setView("graph");
+    select(preset);
+  }
 })();
 </script>
 </body>
