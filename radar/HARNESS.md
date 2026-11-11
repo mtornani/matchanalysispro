@@ -13,9 +13,19 @@ python3 -m unittest tests.test_radar
 
 Entrambi devono uscire senza errori.
 
+## Uscite riservate agli abbonati (dal novembre 2026)
+
+Questo repo è pubblico e GitHub Pages pubblica tutto `main`: qualsiasi file qui dentro è leggibile da chiunque, anche nella cronologia git.
+
+- Un’uscita a pagamento (`"public": false`) **non entra mai** in `radar/releases/`: sta in una cartella privata fuori dal repo, indicata da `RADAR_PRIVATE_DIR` (struttura `releases/YYYY-MM-<ambito>/release.json`, CSV, note).
+- `python3 radar/build.py` fallisce se trova nel repo un’uscita non pubblica. Con `RADAR_PRIVATE_DIR` impostato valida anche le uscite private e scrive il grafo completo in `$RADAR_PRIVATE_DIR/graph/graph.full.json`; `radar/graph/graph.json`, `graph.public.json` e `radar/did/` contengono solo uscite pubbliche.
+- Nel repo può stare solo la **vetrina** dell’uscita (`radar/uscita-NN/index.html`): metodo in breve, numeri, una scheda d’esempio, link a `radar/accesso/`.
+- Prima di un merge: `RADAR_PRIVATE_DIR=… python3 -m unittest tests.test_radar` controlla che nessun file aggiunga, rispetto a `origin/main`, nomi delle uscite private (eccetto la scheda d’esempio).
+- Mai fare merge di un ramo che ha avuto i dati privati nella cronologia: ripartire da `main`.
+
 ## Come si aggiunge un’uscita
 
-1. Crea `radar/releases/YYYY-MM-<ambito>/`.
+1. Crea `radar/releases/YYYY-MM-<ambito>/` se l’uscita è pubblica, altrimenti `$RADAR_PRIVATE_DIR/releases/YYYY-MM-<ambito>/`.
 2. Scrivi `release.json` con lo stesso schema di `radar/schema/release.schema.json`.
 3. Ogni scelta ha un id nuovo e stabile (`U02-001`, …, oppure `E02-001`). Non riutilizzare id di uscite precedenti. Le voci `E01` dell’errata di ottobre sono correzioni sui dati, non gli id delle dieci scelte pubbliche (`U01-001`–`U01-010`).
 4. Se le regole sono le stesse, `method_version` resta `v1`. Se cambi un criterio, crea `radar/method/v2.md` datato: vale solo da questa uscita in poi.
@@ -40,7 +50,7 @@ Questo mattone non rigenera `radar/index.html`. La prova di ottobre e la landing
 
 ## Grafo di conoscenza
 
-`python3 radar/build.py` scrive anche `radar/graph/graph.json` (tutto ciò che è nel repo) e `radar/graph/graph.public.json` (solo uscite con `"public": true`). Il mock di interfaccia legge il grafo pubblico.
+`python3 radar/build.py` scrive anche `radar/graph/graph.json` (tutto ciò che è nel repo, quindi solo uscite pubbliche) e `radar/graph/graph.public.json` (solo uscite con `"public": true`). Il grafo con le uscite private va solo in `$RADAR_PRIVATE_DIR/graph/graph.full.json`. Il mock di interfaccia legge il grafo pubblico.
 
 Nodi: giocatore, scelta (`U01-001`, …), club, uscita, metodo, verifica, prova, competizione, girone.
 

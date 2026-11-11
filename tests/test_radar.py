@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -72,6 +73,53 @@ class RadarTests(unittest.TestCase):
         public = build.build_graph([first, second], [], public_only=True)
         self.assertFalse(any(n.get("release_id") == "2026-11-girone-d" for n in public["nodes"]))
 
+    def test_repo_releases_are_public(self):
+        # GitHub Pages serve tutto main: nel repo solo uscite pubbliche.
+        for path in build.repo_release_files():
+            self.assertTrue(json.loads(path.read_text()).get("public"), f"{path} non è pubblica")
+
+    def test_repo_graph_has_only_public_releases(self):
+        for name in ("graph.json", "graph.public.json"):
+            graph = json.loads((ROOT / "radar" / "graph" / name).read_text())
+            rel = [n for n in graph["nodes"] if n["type"] == "release"]
+            self.assertTrue(rel)
+            self.assertTrue(all(n.get("public") for n in rel), name)
+
+    def test_no_private_names_in_public_repo(self):
+        # Con RADAR_PRIVATE_DIR impostato: rispetto a origin/main nessun file del repo deve
+        # citare più volte di prima un nome delle uscite private (i 40 candidati di ottobre sono
+        # già pubblici nella tabella dell'Uscita 01: conta l'aggiunta, non la presenza).
+        # Unica eccezione: la scheda d'esempio della vetrina (U02-001).
+        if build.PRIVATE_DIR is None:
+            self.skipTest("RADAR_PRIVATE_DIR non impostato")
+        import subprocess
+        base = os.environ.get("RADAR_LEAK_BASE", "origin/main")
+        names = set()
+        sample = None
+        for path in build.private_release_files():
+            picks = json.loads(path.read_text())["picks"]
+            names |= {p["name"] for p in picks}
+            sample = sample or next((p["name"] for p in picks if p["id"] == "U02-001"), None)
+        self.assertTrue(names)
+        files = subprocess.run(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout.split()
+        leaks = []
+        for rel in files:
+            try:
+                text = (ROOT / rel).read_text(errors="ignore")
+            except (IsADirectoryError, FileNotFoundError, UnicodeDecodeError):
+                continue
+            old = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=ROOT, capture_output=True, text=True, errors="ignore").stdout
+            for n in names:
+                if n == sample and rel == "radar/uscita-02/index.html":
+                    continue
+                if text.count(n) > old.count(n):
+                    leaks.append(f"{rel}: {n}")
+        self.assertEqual(leaks, [])
+        # Nessun dato grezzo dell'uscita privata nel repo.
+        self.assertFalse(any("2026-11-girone-d" in rel for rel in files))
 
 if __name__ == "__main__":
     unittest.main()

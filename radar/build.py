@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -14,6 +15,28 @@ RADAR = ROOT / "radar"
 RELEASE_SCHEMA = json.loads((RADAR / "schema" / "release.schema.json").read_text())
 EVIDENCE_SCHEMA = json.loads((RADAR / "schema" / "evidence.schema.json").read_text())
 GRAPH_SCHEMA = json.loads((RADAR / "schema" / "graph.schema.json").read_text())
+
+# Uscite riservate agli abbonati: stanno FUORI dal repo pubblico (GitHub Pages serve tutto main).
+# Se RADAR_PRIVATE_DIR punta a una cartella con releases/*/release.json, build.py le valida e
+# scrive il grafo completo lì dentro; nel repo finiscono solo uscite con "public": true.
+PRIVATE_DIR = Path(os.environ["RADAR_PRIVATE_DIR"]).resolve() if os.environ.get("RADAR_PRIVATE_DIR") else None
+
+
+def repo_release_files() -> list[Path]:
+    return sorted((RADAR / "releases").glob("*/release.json"))
+
+
+def private_release_files() -> list[Path]:
+    if PRIVATE_DIR is None:
+        return []
+    return sorted((PRIVATE_DIR / "releases").glob("*/release.json"))
+
+
+def _rel(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
 
 
 class ValidationError(Exception):
@@ -80,7 +103,7 @@ def load_json(path: Path):
 
 def check_release(path: Path):
     data = load_json(path)
-    errors = validate(data, RELEASE_SCHEMA, str(path.relative_to(ROOT)))
+    errors = validate(data, RELEASE_SCHEMA, _rel(path))
     ids = [p.get("id") for p in data.get("picks", []) if isinstance(p, dict)]
     if len(ids) != len(set(ids)):
         errors.append(f"{path.name}: duplicate pick ids")
@@ -89,7 +112,7 @@ def check_release(path: Path):
 
 def check_evidence(path: Path, known_ids: set[str] | None):
     data = load_json(path)
-    errors = validate(data, EVIDENCE_SCHEMA, str(path.relative_to(ROOT)))
+    errors = validate(data, EVIDENCE_SCHEMA, _rel(path))
     player_id = data.get("player_id")
     if known_ids is not None and player_id and player_id not in known_ids:
         errors.append(f"{path.name}: player_id {player_id} is not a known pick")
@@ -98,7 +121,7 @@ def check_evidence(path: Path, known_ids: set[str] | None):
 
 def collect_pick_ids():
     ids = set()
-    for release_file in sorted((RADAR / "releases").glob("*/release.json")):
+    for release_file in repo_release_files() + private_release_files():
         data = load_json(release_file)
         for pick in data.get("picks", []):
             if isinstance(pick, dict) and "id" in pick:
@@ -265,15 +288,27 @@ def inject_mock(public_graph: dict) -> None:
 
 def main() -> int:
     errors = []
-    release_files = sorted((RADAR / "releases").glob("*/release.json"))
+    release_files = repo_release_files()
     if not release_files:
         errors.append("no release.json files found")
     releases = []
     for path in release_files:
         data, errs = check_release(path)
+        if not data.get("public"):
+            errs.append(
+                f"{_rel(path)}: uscita non pubblica dentro il repo pubblico. "
+                "Spostala in $RADAR_PRIVATE_DIR/releases/ (vedi radar/HARNESS.md)."
+            )
         errors.extend(errs)
         releases.append(data)
         print(f"OK release {data.get('id')} ({len(data.get('picks', []))} picks)" if not errs else f"FAIL {path}")
+
+    private_releases = []
+    for path in private_release_files():
+        data, errs = check_release(path)
+        errors.extend(errs)
+        private_releases.append(data)
+        print(f"OK private release {data.get('id')} ({len(data.get('picks', []))} picks)" if not errs else f"FAIL {path}")
 
     known_ids = collect_pick_ids()
     evidence_files = sorted(p for p in (RADAR / "evidence").glob("*.json"))
@@ -285,10 +320,15 @@ def main() -> int:
         print(f"{'OK' if not errs else 'FAIL'} evidence {path.name}")
 
     if not errors:
+        # Nel repo: solo le uscite del repo (tutte pubbliche). Il grafo completo resta privato.
         graph = build_graph(releases, evidence, public_only=False)
         public_graph = build_graph(releases, evidence, public_only=True)
         graph_errors = validate(graph, GRAPH_SCHEMA, "graph.json")
         graph_errors += validate(public_graph, GRAPH_SCHEMA, "graph.public.json")
+        full_graph = None
+        if private_releases:
+            full_graph = build_graph(releases + private_releases, evidence, public_only=False)
+            graph_errors += validate(full_graph, GRAPH_SCHEMA, "graph.full.json (privato)")
         if graph_errors:
             errors.extend(graph_errors)
         else:
@@ -298,13 +338,18 @@ def main() -> int:
                 f"OK graph ({len(graph['nodes'])} nodes, {len(graph['edges'])} edges; "
                 f"public {len(public_graph['nodes'])} nodes)"
             )
+            if full_graph is not None:
+                out = PRIVATE_DIR / "graph"
+                out.mkdir(exist_ok=True)
+                (out / "graph.full.json").write_text(json.dumps(full_graph, ensure_ascii=False, indent=2) + "\n")
+                print(f"OK private graph ({len(full_graph['nodes'])} nodes) -> {out / 'graph.full.json'}")
 
     if errors:
         print("Validation failed:", file=sys.stderr)
         for err in errors:
             print(f"  - {err}", file=sys.stderr)
         return 1
-    print(f"Validated {len(release_files)} release(s), {len(evidence_files)} evidence file(s).")
+    print(f"Validated {len(release_files)} release(s), {len(private_releases)} private release(s), {len(evidence_files)} evidence file(s).")
     return 0
 
 

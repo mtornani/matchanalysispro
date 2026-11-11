@@ -6,3 +6,5 @@
 *.local.json
 __pycache__/
 node_modules/
+# Uscite riservate agli abbonati: mai nel repo pubblico (vedi radar/HARNESS.md)
+radar/private/
